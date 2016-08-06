@@ -1,0 +1,81 @@
+
+
+
+		ImgDataSrc_LocHist::ClustShare * buf_1 = 
+			m_pPixShareArrColl_Tot->GetHeadAt( a_nIdx_1 );
+
+		int nLen_1 = m_pPixShareArrColl_Tot->GetSizeAt( a_nIdx_1 );
+
+		ImgDataSrc_LocHist::ClustShare * buf_2 = 
+			m_pPixShareArrColl_Tot->GetHeadAt( a_nIdx_2 );
+
+		int nLen_2 = m_pPixShareArrColl_Tot->GetSizeAt( a_nIdx_2 );
+
+
+		//ImgDataSrc_LocHist::
+
+		FixedVector< ImgDataSrc_LocHist::Cluster > & rClusterArr =
+			*m_pDataMgr_LH->m_pClustHisto->m_pClusterArr;
+
+		int nofPixs_Tot =  Sqr( m_pDataMgr_LH->m_nAprSiz );
+
+		//bool bDone = false;
+		//	if( ! bDone )
+		//	{
+
+		//	}
+
+		float dif_Tot = 0;
+
+
+		//F32ColorVal meanColor_1;
+		//meanColor_1.AssignVal( 0, 0, 0 );
+
+		//for( int i=0; i < nLen_1; i++ )
+		//{
+		//	ImgDataSrc_LocHist::ClustShare & rS_1 = buf_1[ i ];
+		//	float ratio_1 = (float)rS_1.nofPixes / nofPixs_Tot;
+		//					
+		//	F32ColorVal & rC1 = rClusterArr[ rS_1.nClustIdx ].OrgColor;
+		//	meanColor_1.IncBy( rC1.MultBy( ratio_1 ) );
+		//}
+
+		//F32ColorVal meanColor_2;
+		//meanColor_2.AssignVal( 0, 0, 0 );
+
+		//for( int i=0; i < nLen_2; i++ )
+		//{
+		//	ImgDataSrc_LocHist::ClustShare & rS_2 = buf_2[ i ];
+		//	float ratio_2 = (float)rS_2.nofPixes / nofPixs_Tot;
+		//					
+		//	F32ColorVal & rC2 = rClusterArr[ rS_2.nClustIdx ].OrgColor;
+		//	meanColor_2.IncBy( rC2.MultBy( ratio_2 ) );
+		//}
+
+		//dif_Tot = F32ColorVal::Sub( meanColor_1, meanColor_2 ).CalcMag();
+
+		for( int i=0; i < nLen_1; i++ )
+		{
+			ImgDataSrc_LocHist::ClustShare & rS_1 = buf_1[ i ];
+			float ratio_1 = (float)rS_1.nofPixes / nofPixs_Tot;
+							
+			F32ColorVal & rC1 = rClusterArr[ rS_1.nClustIdx ].OrgColor;
+			
+							
+			for( int j=0; j < nLen_1; j++ )
+			{
+				ImgDataSrc_LocHist::ClustShare & rS_2 = buf_2[ j ];			
+				float ratio_2 = (float)rS_2.nofPixes / nofPixs_Tot;
+
+				F32ColorVal & rC2 = rClusterArr[ rS_2.nClustIdx ].OrgColor;
+
+				float colorDif = F32ColorVal::Sub( rC1, rC2 ).CalcMag();
+
+				dif_Tot += colorDif * ratio_1 * ratio_2;
+			}
+		}
+
+		return dif_Tot;
+
+
+
