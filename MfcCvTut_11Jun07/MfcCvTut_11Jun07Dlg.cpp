@@ -270,27 +270,29 @@ HCURSOR CMfcCvTut_11Jun07Dlg::OnQueryDragIcon()
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 {
-	//if( false )
+	//if (false)
 	{
 		CString sFolder =
-		"E:\\HthmWork\\Lib\\Projects\\Images";
+			//"E:\\HthmWork\\Lib\\Projects\\Images";
+			"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
 
-		//CString sFile = "h4_3C_3_Dn.jpg";
-		//CString sFile = "h4_3C_3_Dn_By2.jpg";
-		//CString sFile = "diamond_1_Dn_By2.jpg";
-		CString sFile = "41004.jpg";
-		//CString sFile = "24004.jpg";
-		//CString sFile = "clrpic1_U.jpg";
-		//CString sFile = "clrpic1.jpg";
-		//CString sFile = "White-All.png";
+		////CString sFile = "h4_3C_3_Dn.jpg";
+		////CString sFile = "h4_3C_3_Dn_By2.jpg";
+		////CString sFile = "diamond_1_Dn_By2.jpg";
+		//CString sFile = "41004.jpg";
+		////CString sFile = "24004.jpg";
+		////CString sFile = "clrpic1_U.jpg";
+		////CString sFile = "clrpic1.jpg";
+		////CString sFile = "White-All.png";
 
+		CString sFile = "patternReflection2_2.jpg";
 
 		CString path = sFolder + "\\" + sFile;
 
-		//proc = new ImageProcessor(path);
-		proc = new ImageProcessor(
-			//"E:\\HthmWork\\Computer - Vision\\Image - Data - Sets\\RSDataset - Stuff\\RSDataset\\Residential\\residential_24.jpg");
-			"E:\\residential_24.jpg");
+		proc = new ImageProcessor(path);
+		//proc = new ImageProcessor(
+		//	//"E:\\HthmWork\\Computer - Vision\\Image - Data - Sets\\RSDataset - Stuff\\RSDataset\\Residential\\residential_24.jpg");
+		//	"E:\\residential_24.jpg");
 
 
 
