@@ -2914,18 +2914,23 @@ void ImageProcessor::Try26()
 
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
+	ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
+
+	F32ImageRef res1 = rotMgr1->GetResImg();
+
 	CircDiff2Ref cd1 = new CircDiff2( src, nRadius );
 
+	ShowImage(res1, "Rot1");
 
-	ShowImage( cd1->GetDifAngleImg(), "Diff Angle" );
+	//ShowImage( cd1->GetDifAngleImg(), "Diff Angle" );
 
-	ShowImage( cd1->GenColorShowImg(), "Color Show Img" );
+	//ShowImage( cd1->GenColorShowImg(), "Color Show Img" );
 
-	F32ImageRef difMagImg = cd1->GetDifMagImg();
-	ShowImage( difMagImg, "Diff Mag" );
+	//F32ImageRef difMagImg = cd1->GetDifMagImg();
+	//ShowImage( difMagImg, "Diff Mag" );
 
-	GlobalStuff::SetLinePathImg( difMagImg );
-	GlobalStuff::ShowLinePathImg();
+	//GlobalStuff::SetLinePathImg( difMagImg );
+	//GlobalStuff::ShowLinePathImg();
 }
 
 
