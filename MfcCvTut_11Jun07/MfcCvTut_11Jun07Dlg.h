@@ -139,6 +139,7 @@ public:
 	afx_msg void OnBnClickedTry23Btn();
 	afx_msg void OnBnClickedTry24Btn();
 	afx_msg void OnBnClickedTry25Btn();
+	afx_msg void OnBnClickedTry26Btn_0();
 	afx_msg void OnBnClickedTry26Btn();
 	CEdit edtScanDir1D;
 	afx_msg void OnBnClickedCbisBerkExecute();

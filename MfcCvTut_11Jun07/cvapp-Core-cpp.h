@@ -2883,6 +2883,29 @@ void ImageProcessor::TryRS20()
 }
 
 
+void ImageProcessor::Try26_0()
+{
+	const int nRadius = GlobalStuff::AprSize1D;
+	//const int nRadius = 3;
+
+
+	F32ImageRef src = GlobalStuff::GetLinePathImg();
+
+	CircDiff2Ref cd1 = new CircDiff2(src, nRadius);
+
+
+	ShowImage(cd1->GetDifAngleImg(), "Diff Angle");
+
+	ShowImage(cd1->GenColorShowImg(), "Color Show Img");
+
+	F32ImageRef difMagImg = cd1->GetDifMagImg();
+	ShowImage(difMagImg, "Diff Mag");
+
+	GlobalStuff::SetLinePathImg(difMagImg);
+	GlobalStuff::ShowLinePathImg();
+}
+
+//	This is the TRUE Try26()
 void ImageProcessor::Try26()
 {
 	const int nRadius = GlobalStuff::AprSize1D;

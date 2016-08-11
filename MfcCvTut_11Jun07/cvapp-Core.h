@@ -208,7 +208,8 @@ class ImageProcessor {
     void Try23();	
     void Try24();	
     void Try25();	
-    void Try26();	
+	void Try26_0();
+	void Try26();
     void TryRS20();	
     void Undo();	
     void Redo();	
