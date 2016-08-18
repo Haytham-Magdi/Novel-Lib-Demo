@@ -9,6 +9,7 @@
 
 using namespace Hcpl;
 using namespace Hcv;
+//using namespace Hcv::Ns;
 
 //using namespace Hcpl::MfcEx;
 
@@ -2914,13 +2915,38 @@ void ImageProcessor::Try26()
 
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
-	ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
+	
+	Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 4);
+	//Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 8);
+
+	ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
+	ImageItrMgrRef imgItr33 = rot33->GetImageItrMgr();
+	ImageLineItrProvider & imgLineItrPorv33 = imgItr33->GetItrProvAt(1);
+	FixedVector< ImageLineItr > & lineItrArr33 = imgLineItrPorv33.GetLineItrArr();
+	ImageLineItr & lineItr33 = lineItrArr33[0];
+
+	Ns_Saica::AngleDirMgrCollRef angleDirColl = new Ns_Saica::AngleDirMgrColl(rotColl1, 3, 7);
+	//Ns_Saica::ImgAngleDirMgrRef 
+	//imagean
+
+	ShowImage(rotColl1->GetRotAt(0)->GetResImg(), "Rot1_0");
+	ShowImage(rotColl1->GetRotAt(1)->GetResImg(), "Rot1_1");
+	ShowImage(rotColl1->GetRotAt(2)->GetResImg(), "Rot1_2");
+	ShowImage(rotColl1->GetRotAt(3)->GetResImg(), "Rot1_3");
+
+	//ShowImage(rotColl1->GetRotAt(4)->GetResImg(), "Rot1_4");
+	//ShowImage(rotColl1->GetRotAt(5)->GetResImg(), "Rot1_5");
+	//ShowImage(rotColl1->GetRotAt(6)->GetResImg(), "Rot1_6");
+	//ShowImage(rotColl1->GetRotAt(7)->GetResImg(), "Rot1_7");
+
+	//ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
+	ImgRotationMgrRef rotMgr1 = rotColl1->GetRotAt(1);
 
 	F32ImageRef res1 = rotMgr1->GetResImg();
 
-	CircDiff2Ref cd1 = new CircDiff2( src, nRadius );
+	//CircDiff2Ref cd1 = new CircDiff2( src, nRadius );
 
-	ShowImage(res1, "Rot1");
+	//ShowImage(res1, "Rot1");
 
 	//ShowImage( cd1->GetDifAngleImg(), "Diff Angle" );
 
