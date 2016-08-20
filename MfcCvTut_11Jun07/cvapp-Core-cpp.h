@@ -2919,8 +2919,9 @@ void ImageProcessor::Try26()
 	F32Image3C_F32ColorVal_MemAccessor_2D_Ref imgAcc1 = new F32Image3C_F32ColorVal_MemAccessor_2D(src);
 	MemAccessor_2D_REF(F32ColorVal) acc1 = imgAcc1->GetMemAccessor()->CloneUnlocked();
 	//acc1->SetRange_Relative_Y(100, 200);
-	acc1->SwitchXY();
+	//acc1->SwitchXY();
 	acc1->SetRange_Relative_X(50, 150);
+	//acc1->SetRange_Relative_X(50, 53);
 
 	F32ColorVal color1;
 	color1.AssignVal(50, 50, 200);
