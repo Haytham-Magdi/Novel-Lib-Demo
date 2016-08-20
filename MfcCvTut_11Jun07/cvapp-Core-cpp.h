@@ -2915,7 +2915,25 @@ void ImageProcessor::Try26()
 
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
-	
+
+	F32Image3C_F32ColorVal_MemAccessor_2D_Ref imgAcc1 = new F32Image3C_F32ColorVal_MemAccessor_2D(src);
+	MemAccessor_2D_REF(F32ColorVal) acc1 = imgAcc1->GetMemAccessor()->CloneUnlocked();
+	//acc1->SetRange_Relative_Y(100, 200);
+	acc1->SwitchXY();
+	acc1->SetRange_Relative_X(50, 150);
+
+	F32ColorVal color1;
+	color1.AssignVal(50, 50, 200);
+
+	F32ColorVal color2;
+	color2.AssignVal(250, 50, 50);
+
+	//ImageUtil::FillImage<F32ColorVal>(acc1, color1);
+	ImageUtil::FillImage_Stripes<F32ColorVal>(acc1, color1, color2);
+	ShowImage(imgAcc1->GetSrcImg(), "imgAcc1->GetSrcImg()");
+
+	return;
+
 	Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 4);
 	//Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 8);
 
@@ -2924,6 +2942,9 @@ void ImageProcessor::Try26()
 	ImageLineItrProvider & imgLineItrPorv33 = imgItr33->GetItrProvAt(1);
 	FixedVector< ImageLineItr > & lineItrArr33 = imgLineItrPorv33.GetLineItrArr();
 	ImageLineItr & lineItr33 = lineItrArr33[0];
+	ShowImage(rotColl1->GetRotAt(3)->GetResImg(), "Rot1_3");
+
+	return;
 
 	Ns_Saica::AngleDirMgrCollRef angleDirColl = new Ns_Saica::AngleDirMgrColl(rotColl1, 3, 7);
 	//Ns_Saica::ImgAngleDirMgrRef 

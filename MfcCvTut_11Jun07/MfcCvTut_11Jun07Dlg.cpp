@@ -285,6 +285,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 		////CString sFile = "clrpic1.jpg";
 		////CString sFile = "White-All.png";
 
+		//CString sFile = "patternReflection2.png";
 		CString sFile = "patternReflection2_2.jpg";
 
 		CString path = sFolder + "\\" + sFile;
