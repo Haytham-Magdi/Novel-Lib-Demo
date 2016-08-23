@@ -1674,7 +1674,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 
 		MultiColorSignal1DViewerRef mcv1 = new MultiColorSignal1DViewer();
 
-		F32ImageRef avgImg = GenFastAvgImg(src, GlobalStuff::AprSize1D);
+		F32ImageRef avg_Img = GenFastAvgImg(src, GlobalStuff::AprSize1D);
 		//IndexCalc2D indexCalc( srcSiz.width, srcSiz.height );
 
 		F32Point srcPnt(a_x, a_y);
@@ -1687,7 +1687,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 		{
 			float srcVal = *src->GetPixAt(srcPnt.x, srcPnt.y);
 
-			float avgVal = *avgImg->GetPixAt(srcPnt.x, srcPnt.y);
+			float avgVal = *avg_Img->GetPixAt(srcPnt.x, srcPnt.y);
 
 			F32Point & rPnt = acSlide.GetAt(srcPnt.x, srcPnt.y);
 
@@ -1696,7 +1696,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 
 			float dstVal = *src->GetPixAt(pnt1.x, pnt1.y);
 
-			float dstAvgVal = *avgImg->GetPixAt(pnt1.x, pnt1.y);
+			float dstAvgVal = *avg_Img->GetPixAt(pnt1.x, pnt1.y);
 
 			GlobalStuff::SetPoint1(pnt1);
 
@@ -1864,7 +1864,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 		FixedVector< float > valArr(200);
 
 		{
-			F32ImageRef avgImg = GenFastAvgImg(src, GlobalStuff::AprSize1D);
+			F32ImageRef avg_Img = GenFastAvgImg(src, GlobalStuff::AprSize1D);
 
 			IndexCalc2D indexCalc(srcSiz.width, srcSiz.height);
 
@@ -1872,7 +1872,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 
 			float srcVal = *src->GetPixAt(srcPnt.x, srcPnt.y);
 
-			float avgVal = *avgImg->GetPixAt(srcPnt.x, srcPnt.y);
+			float avgVal = *avg_Img->GetPixAt(srcPnt.x, srcPnt.y);
 
 			//F32Point & rPnt = pntArr[ indexCalc.Calc( a_x, a_y ) ];
 			F32Point & rPnt = acSlide.GetAt(a_x, a_y);
@@ -1882,7 +1882,7 @@ void ImageProcessor::CircPntOfLinePathImg(int a_x, int a_y)
 
 			float dstVal = *src->GetPixAt(pnt1.x, pnt1.y);
 
-			float dstAvgVal = *avgImg->GetPixAt(pnt1.x, pnt1.y);
+			float dstAvgVal = *avg_Img->GetPixAt(pnt1.x, pnt1.y);
 
 			GlobalStuff::SetPoint1(pnt1);
 
@@ -2680,15 +2680,15 @@ void ImageProcessor::TryRS20()
 	//res = GenTriChGrayImg( res );
 
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSiz = 81;
 	//int nAprSiz = 41;
 	//int nAprSiz = 5;
 	//int nAprSiz = 3;
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res,
-		//F32ImageRef avgImg = GenFastAvgImg( res, 
+	F32ImageRef avg_Img = GenCvSmoothedImg(res,
+		//F32ImageRef avg_Img = GenFastAvgImg( res, 
 		//(nAprSiz - 1) * 2 + 1  );
 		//nAprSiz);
 		//		5);
@@ -2698,20 +2698,20 @@ void ImageProcessor::TryRS20()
 	//45);
 	//GlobalStuff::AprSize1D );
 
-	avgImg = res;
+	avg_Img = res;
 
 	{
-		GlobalStuff::SetLinePathImg(avgImg);
+		GlobalStuff::SetLinePathImg(avg_Img);
 
 		ShowImage(GlobalStuff::GetLinePathImg(), "LinePathImg");
 	}
 
 
-	//F32ImageRef avgImg = res;
+	//F32ImageRef avg_Img = res;
 
-	GlobalStuff::SetLinePathImg(avgImg);
+	GlobalStuff::SetLinePathImg(avg_Img);
 
-	//ShowImage(avgImg, "avgImg");
+	//ShowImage(avg_Img, "avg_Img");
 
 	{
 		F32ColorVal colorFact;
@@ -2724,25 +2724,25 @@ void ImageProcessor::TryRS20()
 		colorFact.val1 = 1.44;
 		colorFact.val2 = 1.048;
 
-		//avgImg = GenMultByColorImg( avgImg, colorFact);
+		//avg_Img = GenMultByColorImg( avg_Img, colorFact);
 
-		//BalanceImageWithIntensityFactors(avgImg);
+		//BalanceImageWithIntensityFactors(avg_Img);
 	}
 
 
-	res = avgImg;
+	res = avg_Img;
 
-	//ShowImage(avgImg, "avgImg");
-
-
+	//ShowImage(avg_Img, "avg_Img");
 
 
 
-	S16ImageRef res2_1 = GenS16FromF32Image(avgImg);
+
+
+	S16ImageRef res2_1 = GenS16FromF32Image(avg_Img);
 
 	//res2_1 = GenUpSampledImage( res2_1, 8 );
 
-	//SaveImage(res2_1, "avgImg.jpg");
+	//SaveImage(res2_1, "avg_Img.jpg");
 
 
 
@@ -2750,7 +2750,7 @@ void ImageProcessor::TryRS20()
 
 
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSizG1 = nAprSiz;
 	int nAprSizG1 = 1;
@@ -2774,12 +2774,12 @@ void ImageProcessor::TryRS20()
 
 
 	//weightImgS16 = GenPyrUpImg( weightImgS16, nPyrIterCnt);
-	//avgImg = GenPyrUpImg( avgImg, nPyrIterCnt);
+	//avg_Img = GenPyrUpImg( avg_Img, nPyrIterCnt);
 
 	{
 		//dsp = GenU8FromS16Image(
 		//	GenBinImposedImg( 
-		//	GenS16FromF32Image(avgImg), 
+		//	GenS16FromF32Image(avg_Img), 
 		//	weightImgS16 ) );
 		//	//weightImgS16 );
 
@@ -2790,9 +2790,9 @@ void ImageProcessor::TryRS20()
 		//ShowImage(NULL, "weightImgS16");
 	}
 
-	F32ImageRef avgImg0 = avgImg;
+	F32ImageRef avgImg0 = avg_Img;
 	F32ImageRef avgImg2 = avgImg0;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -2917,9 +2917,9 @@ void ImageProcessor::Try26()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-	F32ImageAccessor3C_Ref imgAcc1 = new F32ImageAccessor3C(src);
+	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
 
-	MemAccessor_2D_REF(F32ColorVal) acc1 = imgAcc1->GetMemAccessor()->Clone();
+	MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
 	//acc1->SetRange_Relative_Y(100, 200);
 	//acc1->SwitchXY();
 	acc1->SetRange_Relative_X(50, 150);
@@ -2932,41 +2932,61 @@ void ImageProcessor::Try26()
 	color2.AssignVal(250, 50, 50);
 
 	F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
-	CopyImage(imgAcc0->GetMemAccessor(), imgAcc1->GetMemAccessor());
+	CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
-	F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(imgAcc1, color1, color2, 25);
+	F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
 	ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
 
-	/////-----------------------------------------------------------------------------------
-	Window<int> win1 = Window<int>::New(-3, 3, -7, 7);
+	F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
 
-	F32ImageAccessor3C_Ref imgAcc3 = imgAcc1->CloneAccAndImage();
-	//F32ImageAccessor3C_Ref imgAcc3 = imgAcc1->CloneAccessorOnly();
+	//F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccessorOnly();
 	//DivideImageByNum(imgAcc3->GetMemAccessor(), 2);
 
+	//F32ImageAccessor1C_Ref imgMag = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	//CalcMagImage(imgAcc3->GetMemAccessor(), imgMag->GetMemAccessor());
+	//ShowImage(imgMag->GetSrcImg(), "imgMag->GetSrcImg()");
 
-	AvgImage(imgAcc1->GetMemAccessor(), imgAcc3->GetMemAccessor(), win1);
-
-
-	ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
+	/////-----------------------------------------------------------------------------------
 	
-	
+	Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
+
+	//----
+
+	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
+	AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+
+	F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
+
+	//----
+
+	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+
+	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+
+	//----
+
+
+
 	/////-----------------------------------------------------------------------------------
 
-	
+	ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
+
 	//GlobalStuff::ShowLinePathImg();
 
 	return;
 
 	//	new F32ImageAccessor3C(src->CloneNew());
-	//CopyImage(imgAcc0->GetMemAccessor(), imgAcc1->GetMemAccessor());
+	//CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
 	//FillImage<F32ColorVal>(acc1, color1);
 	FillImage_Stripes_H<F32ColorVal>(acc1, color1, color2, 25);
-	//FillImage_Stripes_H<F32ColorVal>(imgAcc1->GetMemAccessor(), color1, color2, 25);
+	//FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
 
 	//ShowImage(imgAcc0->GetSrcImg(), "imgAcc0->GetSrcImg()");
-	ShowImage(imgAcc1->GetSrcImg(), "imgAcc1->GetSrcImg()");
+	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 	
 
 	return;
@@ -3455,7 +3475,7 @@ void ImageProcessor::Try23()
 	Accessor2D< F32Point > acSlide(&pntArr[0], srcSiz.width, srcSiz.height);
 	Accessor2D< PixInfo > acPixInfo(&pixInfoArr[0], srcSiz.width, srcSiz.height);
 
-	F32ImageRef avgImg = GenFastAvgImg(src, GlobalStuff::AprSize1D);
+	F32ImageRef avg_Img = GenFastAvgImg(src, GlobalStuff::AprSize1D);
 
 
 	for (int y = 0; y < srcSiz.height; y++)
@@ -3490,7 +3510,7 @@ void ImageProcessor::Try23()
 			rPixInfo.bIsValley = false;
 
 			rPixInfo.val = *src->GetPixAt(x, y);
-			rPixInfo.avgVal = *avgImg->GetPixAt(x, y);
+			rPixInfo.avgVal = *avg_Img->GetPixAt(x, y);
 		}
 	}
 
@@ -3532,7 +3552,7 @@ void ImageProcessor::Try23()
 			//const float srcVal = *src->GetPixAt( x, y );
 			const float srcVal = pSrcPI->val;
 
-			const float avgSrcVal = *avgImg->GetPixAt(x, y);
+			const float avgSrcVal = *avg_Img->GetPixAt(x, y);
 			//F32Point & rPnt = acSlide.GetAt( x, y );
 			//F32Point pnt1 = rPnt.Round();
 
@@ -3540,8 +3560,8 @@ void ImageProcessor::Try23()
 			//const float dstVal = *src->GetPixAt( pnt1.x, pnt1.y );
 			const float dstVal = pDstPI->val;
 
-			//const float avgDstVal = *avgImg->GetPixAt( pnt1.x, pnt1.y );
-			//const float avgDstVal = *avgImg->GetPixAt( pDstPI->pos.x, pDstPI->pos.y );
+			//const float avgDstVal = *avg_Img->GetPixAt( pnt1.x, pnt1.y );
+			//const float avgDstVal = *avg_Img->GetPixAt( pDstPI->pos.x, pDstPI->pos.y );
 			const float avgDstVal = pDstPI->avgVal;
 
 			const float abvVal = pSrcPI->pAbovePix->val;
@@ -3676,7 +3696,7 @@ void ImageProcessor::Try22()
 
 	Accessor2D< F32Point > acSlide(&pntArr[0], srcSiz.width, srcSiz.height);
 
-	F32ImageRef avgImg = GenFastAvgImg(src, GlobalStuff::AprSize1D);
+	F32ImageRef avg_Img = GenFastAvgImg(src, GlobalStuff::AprSize1D);
 
 
 	//F32ImageRef dsp = GenTriChGrayImg( GlobalStuff::GetLinePathImg() );
@@ -3694,14 +3714,14 @@ void ImageProcessor::Try22()
 
 			const float srcVal = *src->GetPixAt(x, y);
 
-			const float avgSrcVal = *avgImg->GetPixAt(x, y);
+			const float avgSrcVal = *avg_Img->GetPixAt(x, y);
 			F32Point & rPnt = acSlide.GetAt(x, y);
 			F32Point pnt1 = rPnt.Round();
 
 
 			const float dstVal = *src->GetPixAt(pnt1.x, pnt1.y);
 
-			const float avgDstVal = *avgImg->GetPixAt(pnt1.x, pnt1.y);
+			const float avgDstVal = *avg_Img->GetPixAt(pnt1.x, pnt1.y);
 
 			F32ColorVal * resPix = (F32ColorVal *)res->GetPixAt(pnt1.x, pnt1.y);
 
@@ -4821,7 +4841,7 @@ void ImageProcessor::Try19()
 	//res = GenTriChGrayImg( res );
 
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSiz = 81;
 	//int nAprSiz = 41;
@@ -4829,7 +4849,7 @@ void ImageProcessor::Try19()
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
 
-	//	F32ImageRef avgImg = GenCvSmoothedImg( res, 
+	//	F32ImageRef avg_Img = GenCvSmoothedImg( res, 
 	//(nAprSiz - 1) * 2 + 1  );
 	//nAprSiz);
 	//		5);
@@ -4837,9 +4857,9 @@ void ImageProcessor::Try19()
 	//25);
 	//45);
 
-	F32ImageRef avgImg = res;
+	F32ImageRef avg_Img = res;
 
-	//ShowImage(avgImg, "avgImg");
+	//ShowImage(avg_Img, "avg_Img");
 
 	{
 		F32ColorVal colorFact;
@@ -4852,25 +4872,25 @@ void ImageProcessor::Try19()
 		colorFact.val1 = 1.44;
 		colorFact.val2 = 1.048;
 
-		//avgImg = GenMultByColorImg( avgImg, colorFact);
+		//avg_Img = GenMultByColorImg( avg_Img, colorFact);
 
-		//BalanceImageWithIntensityFactors(avgImg);
+		//BalanceImageWithIntensityFactors(avg_Img);
 	}
 
 
-	res = avgImg;
+	res = avg_Img;
 
-	//ShowImage(avgImg, "avgImg");
-
-
+	//ShowImage(avg_Img, "avg_Img");
 
 
 
-	S16ImageRef res2_1 = GenS16FromF32Image(avgImg);
+
+
+	S16ImageRef res2_1 = GenS16FromF32Image(avg_Img);
 
 	res2_1 = GenUpSampledImage(res2_1, 8);
 
-	SaveImage(res2_1, "avgImg.jpg");
+	SaveImage(res2_1, "avg_Img.jpg");
 
 
 
@@ -4878,7 +4898,7 @@ void ImageProcessor::Try19()
 
 
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSizG1 = nAprSiz;
 	int nAprSizG1 = 1;
@@ -4901,12 +4921,12 @@ void ImageProcessor::Try19()
 
 
 	//weightImgS16 = GenPyrUpImg( weightImgS16, nPyrIterCnt);
-	//avgImg = GenPyrUpImg( avgImg, nPyrIterCnt);
+	//avg_Img = GenPyrUpImg( avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
 			GenBinImposedImg(
-			GenS16FromF32Image(avgImg),
+			GenS16FromF32Image(avg_Img),
 			weightImgS16));
 		//weightImgS16 );
 
@@ -4917,9 +4937,9 @@ void ImageProcessor::Try19()
 		//ShowImage(NULL, "weightImgS16");
 	}
 
-	F32ImageRef avgImg0 = avgImg;
+	F32ImageRef avgImg0 = avg_Img;
 	F32ImageRef avgImg2 = avgImg0;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -4936,25 +4956,25 @@ void ImageProcessor::Try19()
 		//int nThrVal = 45;
 		//int nThrVal = 10;
 
-		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);	
 		//	From 9, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
@@ -5032,7 +5052,7 @@ void ImageProcessor::Try18()
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res,
+	F32ImageRef avg_Img = GenCvSmoothedImg(res,
 		//(nAprSiz - 1) * 2 + 1  );
 		//nAprSiz);
 		5);
@@ -5050,17 +5070,17 @@ void ImageProcessor::Try18()
 		colorFact.val1 = 1.44;
 		colorFact.val2 = 1.048;
 
-		//avgImg = GenMultByColorImg( avgImg, colorFact);
+		//avg_Img = GenMultByColorImg( avg_Img, colorFact);
 
-		BalanceImageWithIntensityFactors(avgImg);
+		BalanceImageWithIntensityFactors(avg_Img);
 	}
 
 
-	res = avgImg;
+	res = avg_Img;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSizG1 = nAprSiz;
 	int nAprSizG1 = 1;
@@ -5080,12 +5100,12 @@ void ImageProcessor::Try18()
 
 
 	//weightImgS16 = GenPyrUpImg( weightImgS16, nPyrIterCnt);
-	//avgImg = GenPyrUpImg( avgImg, nPyrIterCnt);
+	//avg_Img = GenPyrUpImg( avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
 			GenBinImposedImg(
-			GenS16FromF32Image(avgImg),
+			GenS16FromF32Image(avg_Img),
 			weightImgS16));
 		//weightImgS16 );
 
@@ -5095,9 +5115,9 @@ void ImageProcessor::Try18()
 		ShowImage(dsp->GetIplImagePtr(), "weightImgS16");
 	}
 
-	F32ImageRef avgImg0 = avgImg;
+	F32ImageRef avgImg0 = avg_Img;
 	F32ImageRef avgImg2 = avgImg0;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -5113,25 +5133,25 @@ void ImageProcessor::Try18()
 		//int nThrVal = 45;
 		//int nThrVal = 10;
 
-		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);	
 		//	From 9, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
@@ -5190,7 +5210,7 @@ void ImageProcessor::Try17()
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res,
+	F32ImageRef avg_Img = GenCvSmoothedImg(res,
 		//(nAprSiz - 1) * 2 + 1  );
 		//nAprSiz);
 		5);
@@ -5207,17 +5227,17 @@ void ImageProcessor::Try17()
 		colorFact.val1 = 1.44;
 		colorFact.val2 = 1.048;
 
-		//avgImg = GenMultByColorImg( avgImg, colorFact);
+		//avg_Img = GenMultByColorImg( avg_Img, colorFact);
 
-		BalanceImageWithIntensityFactors(avgImg);
+		BalanceImageWithIntensityFactors(avg_Img);
 	}
 
 
-	res = avgImg;
+	res = avg_Img;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSizG1 = nAprSiz;
 	int nAprSizG1 = 1;
@@ -5237,12 +5257,12 @@ void ImageProcessor::Try17()
 
 
 	//weightImgS16 = GenPyrUpImg( weightImgS16, nPyrIterCnt);
-	//avgImg = GenPyrUpImg( avgImg, nPyrIterCnt);
+	//avg_Img = GenPyrUpImg( avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
 			GenBinImposedImg(
-			GenS16FromF32Image(avgImg),
+			GenS16FromF32Image(avg_Img),
 			weightImgS16));
 		//weightImgS16 );
 
@@ -5252,9 +5272,9 @@ void ImageProcessor::Try17()
 		ShowImage(dsp->GetIplImagePtr(), "weightImgS16");
 	}
 
-	F32ImageRef avgImg0 = avgImg;
+	F32ImageRef avgImg0 = avg_Img;
 	F32ImageRef avgImg2 = avgImg0;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -5270,25 +5290,25 @@ void ImageProcessor::Try17()
 		//int nThrVal = 45;
 		//int nThrVal = 10;
 
-		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);	
 		//	From 9, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
@@ -5341,16 +5361,16 @@ void ImageProcessor::Try16()
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res,
+	F32ImageRef avg_Img = GenCvSmoothedImg(res,
 		//(nAprSiz - 1) * 2 + 1  );
 		//nAprSiz);
 		5);
 
-	res = avgImg;
+	res = avg_Img;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
-	//SaveImage(avgImg, "avgImg.jpg");
+	//SaveImage(avg_Img, "avg_Img.jpg");
 
 	//int nAprSizG1 = nAprSiz;
 	int nAprSizG1 = 1;
@@ -5370,12 +5390,12 @@ void ImageProcessor::Try16()
 
 
 	//weightImgS16 = GenPyrUpImg( weightImgS16, nPyrIterCnt);
-	//avgImg = GenPyrUpImg( avgImg, nPyrIterCnt);
+	//avg_Img = GenPyrUpImg( avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
 			GenBinImposedImg(
-			GenS16FromF32Image(avgImg),
+			GenS16FromF32Image(avg_Img),
 			weightImgS16));
 		//weightImgS16 );
 
@@ -5385,9 +5405,9 @@ void ImageProcessor::Try16()
 		ShowImage(dsp->GetIplImagePtr(), "weightImgS16");
 	}
 
-	F32ImageRef avgImg0 = avgImg;
+	F32ImageRef avgImg0 = avg_Img;
 	F32ImageRef avgImg2 = avgImg0;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -5403,25 +5423,25 @@ void ImageProcessor::Try16()
 		//int nThrVal = 45;
 		//int nThrVal = 10;
 
-		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);	
 		//	From 9, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
@@ -5468,15 +5488,15 @@ void ImageProcessor::EdgeDir2()
 
 	ShowImage(src, "src");
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res, 5);
-	//S16ImageRef avgImg = res;
+	F32ImageRef avg_Img = GenCvSmoothedImg(res, 5);
+	//S16ImageRef avg_Img = res;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avgImg );
-	//avgImg = GenS16FromF32Image( avgImgF32 );
+	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
+	//avg_Img = GenS16FromF32Image( avgImgF32 );
 
-	res = avgImg;
+	res = avg_Img;
 
 	F32ImageRef gradImg = GenMorphGradImg(res, 1);
 
@@ -5542,15 +5562,15 @@ void ImageProcessor::EdgeDir()
 
 	ShowImage(src, "src");
 
-	F32ImageRef avgImg = GenCvSmoothedImg(res, 5);
-	//S16ImageRef avgImg = res;
+	F32ImageRef avg_Img = GenCvSmoothedImg(res, 5);
+	//S16ImageRef avg_Img = res;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avgImg );
-	//avgImg = GenS16FromF32Image( avgImgF32 );
+	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
+	//avg_Img = GenS16FromF32Image( avgImgF32 );
 
-	res = avgImg;
+	res = avg_Img;
 
 	F32ImageRef gradImg = GenMorphGradImg(res, 1);
 
@@ -5657,21 +5677,21 @@ void ImageProcessor::Try15()
 	int nAprSiz = 5;
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz * 10 );
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz);
-	S16ImageRef avgImg = GenCvSmoothedImg(res, nAprSiz);
-	//S16ImageRef avgImg = res;
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz * 10 );
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz);
+	S16ImageRef avg_Img = GenCvSmoothedImg(res, nAprSiz);
+	//S16ImageRef avg_Img = res;
 
 
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avgImg );
-	//avgImg = GenS16FromF32Image( avgImgF32 );
+	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
+	//avg_Img = GenS16FromF32Image( avgImgF32 );
 
-	res = avgImg;
+	res = avg_Img;
 
 	//y = res->GetHeight() / 2;
 
 	SobelBuilderRef sobelBuilder = new SobelBuilder(
-		GenF32FromS16Image(avgImg), 3);
+		GenF32FromS16Image(avg_Img), 3);
 
 
 	//nShift += nAprSiz / 2;
@@ -5688,9 +5708,9 @@ void ImageProcessor::Try15()
 		);
 
 
-	ShowImage(dsp->GetIplImagePtr(), "avgImg");
-	//ShowImage(avgImg, "avgImg");
-	HCV_CALL(cvvSaveImage("avgImg.jpg",
+	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
+	//ShowImage(avg_Img, "avg_Img");
+	HCV_CALL(cvvSaveImage("avg_Img.jpg",
 		dsp->GetIplImagePtr()));
 
 
@@ -5733,11 +5753,11 @@ void ImageProcessor::Try15()
 	viewer->AddSignal(sig, u8ColorVal(0, 180, 0), gradScale);
 
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 0 );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 0 );
 	//nShift += (nAprSiz + 0) / 2;
-	//res = GenFastAvgImg( avgImg, nAprSiz);
+	//res = GenFastAvgImg( avg_Img, nAprSiz);
 	//nShift += nAprSiz / 2;
-	//res = GenWeightedColorMideanImg( avgImg, gradImg, 3 );
+	//res = GenWeightedColorMideanImg( avg_Img, gradImg, 3 );
 	//nShift += 1;
 
 	int nAprSizG2 = nAprSizG1;
@@ -5802,7 +5822,7 @@ void ImageProcessor::Try15()
 
 
 	//F32ImageRef weightImg = GenWeightImg3( 
-	//	avgImg, gradImg, gradImg2, nAprSiz / 5 );
+	//	avg_Img, gradImg, gradImg2, nAprSiz / 5 );
 
 
 
@@ -5810,11 +5830,11 @@ void ImageProcessor::Try15()
 
 
 	weightImgS16 = GenPyrUpImg(weightImgS16, nPyrIterCnt);
-	avgImg = GenPyrUpImg(avgImg, nPyrIterCnt);
+	avg_Img = GenPyrUpImg(avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
-			//GenBinImposedImg( avgImg, weightImgS16 ) );
+			//GenBinImposedImg( avg_Img, weightImgS16 ) );
 			weightImgS16);
 
 
@@ -5836,8 +5856,8 @@ void ImageProcessor::Try15()
 
 	/*
 
-			S16ImageRef avgImg2 = avgImg;
-			//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+			S16ImageRef avgImg2 = avg_Img;
+			//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 			//dsp = GenU8FromS16Image(avgImg2);
 			//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -5849,25 +5869,25 @@ void ImageProcessor::Try15()
 			//int nThrVal = 45;
 			//int nThrVal = 10;
 
-			//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);
+			//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);
 			//	From 9, Conflicts are guided by Edge Roots.
 
-			//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);
+			//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);
 			//	From 10, Conflicts are guided by Edge Roots.
 
-			//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);
+			//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);
 			//	From 10, Conflicts are guided by Edge Roots.
 
-			//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);
+			//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);
 			//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);
 			//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);
 			//	From 10, Conflicts are guided by Edge Roots.
 
-			//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);
+			//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);
 			//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);
 			//	From 13, Conflicts are guided by Edge Roots.
 
-			RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);
+			RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);
 			//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);
 			//	From 13, Conflicts are guided by Edge Roots.
 
@@ -5891,8 +5911,8 @@ void ImageProcessor::Try15()
 
 	//int nAprSizF = nAprSiz - 1;
 	int nAprSizF = nAprSiz * 0.5;
-	//res = GenFlattenedImg( avgImg, gradImg2, nAprSizF );
-	//res = GenFlattenedImg( avgImg, weightImg, nAprSizF );	
+	//res = GenFlattenedImg( avg_Img, gradImg2, nAprSizF );
+	//res = GenFlattenedImg( avg_Img, weightImg, nAprSizF );	
 	nShift += nAprSizF / 2;
 
 	dsp = GenU8FromS16Image(res);
@@ -5919,7 +5939,7 @@ void ImageProcessor::Try15()
 	//res = GenThresholdImg(res, 40);
 
 	//	AdaptiveConv2Ref ac = AdaptiveConv2::CreateBlur(7);	
-	//	res = ac->GenResult( avgImg , gradImg );	
+	//	res = ac->GenResult( avg_Img , gradImg );	
 
 
 
@@ -6027,23 +6047,23 @@ void ImageProcessor::Try14()
 	int nAprSiz = 5;
 	//int nAprSiz = 3;
 	//int nAprSiz = 19;
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz * 10 );
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz);
-	S16ImageRef avgImg = GenCvSmoothedImg(res,
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz * 10 );
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz);
+	S16ImageRef avg_Img = GenCvSmoothedImg(res,
 		(nAprSiz - 1) * 2 + 1);
-	//S16ImageRef avgImg = GenCvSmoothedImg( res, 80);
-	//S16ImageRef avgImg = res;
+	//S16ImageRef avg_Img = GenCvSmoothedImg( res, 80);
+	//S16ImageRef avg_Img = res;
 
 
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avgImg );
-	//avgImg = GenS16FromF32Image( avgImgF32 );
+	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
+	//avg_Img = GenS16FromF32Image( avgImgF32 );
 
-	res = avgImg;
+	res = avg_Img;
 
 	//y = res->GetHeight() / 2;
 
 	SobelBuilderRef sobelBuilder = new SobelBuilder(
-		GenF32FromS16Image(avgImg), 3);
+		GenF32FromS16Image(avg_Img), 3);
 
 
 	//nShift += nAprSiz / 2;
@@ -6060,9 +6080,9 @@ void ImageProcessor::Try14()
 		);
 
 
-	ShowImage(dsp->GetIplImagePtr(), "avgImg");
-	//ShowImage(avgImg, "avgImg");
-	HCV_CALL(cvvSaveImage("avgImg.jpg",
+	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
+	//ShowImage(avg_Img, "avg_Img");
+	HCV_CALL(cvvSaveImage("avg_Img.jpg",
 		dsp->GetIplImagePtr()));
 
 
@@ -6104,11 +6124,11 @@ void ImageProcessor::Try14()
 	viewer->AddSignal(sig, u8ColorVal(0, 180, 0), gradScale);
 
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 0 );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 0 );
 	//nShift += (nAprSiz + 0) / 2;
-	//res = GenFastAvgImg( avgImg, nAprSiz);
+	//res = GenFastAvgImg( avg_Img, nAprSiz);
 	//nShift += nAprSiz / 2;
-	//res = GenWeightedColorMideanImg( avgImg, gradImg, 3 );
+	//res = GenWeightedColorMideanImg( avg_Img, gradImg, 3 );
 	//nShift += 1;
 
 	int nAprSizG2 = nAprSizG1;
@@ -6175,7 +6195,7 @@ void ImageProcessor::Try14()
 
 
 	//F32ImageRef weightImg = GenWeightImg3( 
-	//	avgImg, gradImg, gradImg2, nAprSiz / 5 );
+	//	avg_Img, gradImg, gradImg2, nAprSiz / 5 );
 
 
 
@@ -6183,11 +6203,11 @@ void ImageProcessor::Try14()
 
 
 	weightImgS16 = GenPyrUpImg(weightImgS16, nPyrIterCnt);
-	avgImg = GenPyrUpImg(avgImg, nPyrIterCnt);
+	avg_Img = GenPyrUpImg(avg_Img, nPyrIterCnt);
 
 	{
 		dsp = GenU8FromS16Image(
-			GenBinImposedImg(avgImg, weightImgS16));
+			GenBinImposedImg(avg_Img, weightImgS16));
 		//weightImgS16 );
 
 
@@ -6209,8 +6229,8 @@ void ImageProcessor::Try14()
 
 
 
-	S16ImageRef avgImg2 = avgImg;
-	//S16ImageRef avgImg2 = GenCvMedGausImg( avgImg, 51);
+	S16ImageRef avgImg2 = avg_Img;
+	//S16ImageRef avgImg2 = GenCvMedGausImg( avg_Img, 51);
 
 	//dsp = GenU8FromS16Image(avgImg2);
 	//ShowImage(dsp->GetIplImagePtr(), "avgImg2");
@@ -6223,25 +6243,25 @@ void ImageProcessor::Try14()
 		//int nThrVal = 45;
 		//int nThrVal = 10;
 
-		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor10Ref rs2 = new RegionSegmentor10(avg_Img, weightImgS16, nThrVal);	
 		//	From 9, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor11Ref rs2 = new RegionSegmentor11(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avgImg, weightImgS16, nThrVal);	
+		//RegionSegmentor12Ref rs2 = new RegionSegmentor12(avg_Img, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal, src);	
 		//RegionSegmentor13Ref rs2 = new RegionSegmentor13(avgImg2, weightImgS16, nThrVal);	
 		//	From 10, Conflicts are guided by Edge Roots.
 
-		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avgImg);	
+		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, avg_Img);	
 		//RegionSegmentor14Ref rs2 = new RegionSegmentor14(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
-		RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avgImg);
+		RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, avg_Img);
 		//RegionSegmentor15Ref rs2 = new RegionSegmentor15(avgImg2, weightImgS16, nThrVal, src);	
 		//	From 13, Conflicts are guided by Edge Roots.
 
@@ -6265,8 +6285,8 @@ void ImageProcessor::Try14()
 
 	//int nAprSizF = nAprSiz - 1;
 	int nAprSizF = nAprSiz * 0.5;
-	//res = GenFlattenedImg( avgImg, gradImg2, nAprSizF );
-	//res = GenFlattenedImg( avgImg, weightImg, nAprSizF );	
+	//res = GenFlattenedImg( avg_Img, gradImg2, nAprSizF );
+	//res = GenFlattenedImg( avg_Img, weightImg, nAprSizF );	
 	nShift += nAprSizF / 2;
 
 	dsp = GenU8FromS16Image(res);
@@ -6293,7 +6313,7 @@ void ImageProcessor::Try14()
 	//res = GenThresholdImg(res, 40);
 
 	//	AdaptiveConv2Ref ac = AdaptiveConv2::CreateBlur(7);	
-	//	res = ac->GenResult( avgImg , gradImg );	
+	//	res = ac->GenResult( avg_Img , gradImg );	
 
 
 
@@ -6359,10 +6379,10 @@ void ImageProcessor::Try13()
 
 	int nAprSiz = 81;
 	//int nAprSiz = 5;
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz * 10 );
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz);
-	S16ImageRef avgImg = GenCvSmoothedImg(res, nAprSiz);
-	res = avgImg;
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz * 10 );
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz);
+	S16ImageRef avg_Img = GenCvSmoothedImg(res, nAprSiz);
+	res = avg_Img;
 
 	//nShift += nAprSiz / 2;
 
@@ -6378,8 +6398,8 @@ void ImageProcessor::Try13()
 		);
 
 
-	ShowImage(dsp->GetIplImagePtr(), "avgImg");
-	//ShowImage(avgImg, "avgImg");
+	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
+	//ShowImage(avg_Img, "avg_Img");
 
 
 
@@ -6418,11 +6438,11 @@ void ImageProcessor::Try13()
 	viewer->AddSignal(sig, u8ColorVal(0, 180, 0), gradScale);
 
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 0 );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 0 );
 	//nShift += (nAprSiz + 0) / 2;
-	//res = GenFastAvgImg( avgImg, nAprSiz);
+	//res = GenFastAvgImg( avg_Img, nAprSiz);
 	//nShift += nAprSiz / 2;
-	//res = GenWeightedColorMideanImg( avgImg, gradImg, 3 );
+	//res = GenWeightedColorMideanImg( avg_Img, gradImg, 3 );
 	//nShift += 1;
 
 	//int nAprSizG2 = nAprSizG1;
@@ -6430,8 +6450,8 @@ void ImageProcessor::Try13()
 	int nAprSizG2 = 3;
 	//int nAprSizG2 = nAprSizG1 * 2;
 	//S16ImageRef gradImg2 = GenMorphGradImg( gradImg, nAprSizG2 );
-	//S16ImageRef gradImg2 = GenCvLaplaceImg( avgImg, 7 );
-	S16ImageRef gradImg2 = GenCvSobelImg(avgImg, 0, 1, 7);
+	//S16ImageRef gradImg2 = GenCvLaplaceImg( avg_Img, 7 );
+	S16ImageRef gradImg2 = GenCvSobelImg(avg_Img, 0, 1, 7);
 
 	//gradImg2 = GenFastAvgImg( gradImg2, 3);
 	//nShift += 1;
@@ -6469,7 +6489,7 @@ void ImageProcessor::Try13()
 	/*
 		//int nAprSizF = nAprSiz - 1;
 		int nAprSizF = nAprSiz;
-		res = GenFlattenedImg( avgImg, gradImg2, nAprSizF );
+		res = GenFlattenedImg( avg_Img, gradImg2, nAprSizF );
 		nShift += (nAprSiz + 0) / 2;
 
 		dsp = GenU8FromS16Image(res);
@@ -6496,7 +6516,7 @@ void ImageProcessor::Try13()
 	//res = GenThresholdImg(res, 40);
 
 	//	AdaptiveConv2Ref ac = AdaptiveConv2::CreateBlur(7);	
-	//	res = ac->GenResult( avgImg , gradImg );	
+	//	res = ac->GenResult( avg_Img , gradImg );	
 
 
 
@@ -6558,10 +6578,10 @@ void ImageProcessor::Try12()
 
 	int nAprSiz = 81;
 	//int nAprSiz = 21;
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz * 10 );
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz);
-	S16ImageRef avgImg = GenCvSmoothedImg(res, nAprSiz);
-	res = avgImg;
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz * 10 );
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz);
+	S16ImageRef avg_Img = GenCvSmoothedImg(res, nAprSiz);
+	res = avg_Img;
 
 	//nShift += nAprSiz / 2;
 
@@ -6577,8 +6597,8 @@ void ImageProcessor::Try12()
 		);
 
 
-	ShowImage(dsp->GetIplImagePtr(), "avgImg");
-	//ShowImage(avgImg, "avgImg");
+	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
+	//ShowImage(avg_Img, "avg_Img");
 
 
 
@@ -6617,11 +6637,11 @@ void ImageProcessor::Try12()
 	viewer->AddSignal(sig, u8ColorVal(0, 180, 0), gradScale);
 
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 0 );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 0 );
 	//nShift += (nAprSiz + 0) / 2;
-	//res = GenFastAvgImg( avgImg, nAprSiz);
+	//res = GenFastAvgImg( avg_Img, nAprSiz);
 	//nShift += nAprSiz / 2;
-	//res = GenWeightedColorMideanImg( avgImg, gradImg, 3 );
+	//res = GenWeightedColorMideanImg( avg_Img, gradImg, 3 );
 	//nShift += 1;
 
 	int nAprSizG2 = nAprSizG1;
@@ -6659,8 +6679,8 @@ void ImageProcessor::Try12()
 
 	//int nAprSizF = nAprSiz - 1;
 	int nAprSizF = nAprSiz * 0.5;
-	//res = GenFlattenedImg( avgImg, gradImg2, nAprSizF );
-	res = GenFlattenedImg(avgImg, weightImg, nAprSizF);
+	//res = GenFlattenedImg( avg_Img, gradImg2, nAprSizF );
+	res = GenFlattenedImg(avg_Img, weightImg, nAprSizF);
 	nShift += nAprSizF / 2;
 
 	dsp = GenU8FromS16Image(res);
@@ -6687,7 +6707,7 @@ void ImageProcessor::Try12()
 	//res = GenThresholdImg(res, 40);
 
 	//	AdaptiveConv2Ref ac = AdaptiveConv2::CreateBlur(7);	
-	//	res = ac->GenResult( avgImg , gradImg );	
+	//	res = ac->GenResult( avg_Img , gradImg );	
 
 
 
@@ -6736,13 +6756,13 @@ void ImageProcessor::Try11()
 	ShowImage(dsp->GetIplImagePtr(), "Org Gray");
 
 	int nAprSiz = 80;
-	//S16ImageRef avgImg = GenFastAvgImg( res, nAprSiz * 10 );
-	S16ImageRef avgImg = GenFastAvgImg(res, nAprSiz);
-	res = avgImg;
+	//S16ImageRef avg_Img = GenFastAvgImg( res, nAprSiz * 10 );
+	S16ImageRef avg_Img = GenFastAvgImg(res, nAprSiz);
+	res = avg_Img;
 
 	nShift += nAprSiz / 2;
 
-	ShowImage(avgImg, "avgImg");
+	ShowImage(avg_Img, "avg_Img");
 
 
 
@@ -6766,11 +6786,11 @@ void ImageProcessor::Try11()
 	viewer->AddSignal(sig, u8ColorVal(0, 180, 0));
 
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 0 );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 0 );
 	//nShift += (nAprSiz + 0) / 2;
-	//res = GenFastAvgImg( avgImg, nAprSiz);
+	//res = GenFastAvgImg( avg_Img, nAprSiz);
 	//nShift += nAprSiz / 2;
-	//res = GenWeightedColorMideanImg( avgImg, gradImg, 3 );
+	//res = GenWeightedColorMideanImg( avg_Img, gradImg, 3 );
 	//nShift += 1;
 
 	int nAprSizG2 = nAprSizG1;
@@ -6787,7 +6807,7 @@ void ImageProcessor::Try11()
 
 	//int nAprSizF = nAprSiz - 1;
 	int nAprSizF = nAprSiz;
-	res = GenFlattenedImg(avgImg, weightImg, nAprSizF);
+	res = GenFlattenedImg(avg_Img, weightImg, nAprSizF);
 	nShift += (nAprSiz + 0) / 2;
 	ShowImage(res, "FlattenedImg");
 
@@ -6799,7 +6819,7 @@ void ImageProcessor::Try11()
 	//res = GenThresholdImg(res, 40);
 
 	//	AdaptiveConv2Ref ac = AdaptiveConv2::CreateBlur(7);	
-	//	res = ac->GenResult( avgImg , gradImg );	
+	//	res = ac->GenResult( avg_Img , gradImg );	
 
 
 
@@ -6824,10 +6844,10 @@ void ImageProcessor::MaxMinEdge()
 
 	int nAprSiz = 5;
 
-	S16ImageRef avgImg = GenFastAvgImg(res, nAprSiz);
-	//S16ImageRef avgImg = res;
+	S16ImageRef avg_Img = GenFastAvgImg(res, nAprSiz);
+	//S16ImageRef avg_Img = res;
 
-	res = avgImg;
+	res = avg_Img;
 
 	U8ImageRef resU8 = GenU8FromS16Image(res);
 
@@ -6872,13 +6892,13 @@ void ImageProcessor::MaxMinEdge()
 
 	res = gradImg;
 
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz );
-	//res = GenFlattenedImg( avgImg, gradImg, nAprSiz + 2 );
-	//res = GenColorMideanImg( avgImg );
-	res = GenWeightedColorMideanImg(avgImg, gradImg, 3);
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz );
+	//res = GenFlattenedImg( avg_Img, gradImg, nAprSiz + 2 );
+	//res = GenColorMideanImg( avg_Img );
+	res = GenWeightedColorMideanImg(avg_Img, gradImg, 3);
 
 	//AdaptiveConvRef ac = AdaptiveConv::CreateBlur(5);	
-	//res = ac->GenResult( avgImg );	
+	//res = ac->GenResult( avg_Img );	
 	//res = ac->GenResult( res );	
 
 
@@ -6887,8 +6907,8 @@ void ImageProcessor::MaxMinEdge()
 
 	bool bColorDsp = false;
 
-	dsp = GenU8FromS16Image(avgImg);
-	ShowImage(dsp->GetIplImagePtr(), "avgImg");
+	dsp = GenU8FromS16Image(avg_Img);
+	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
 
 	dsp = GenU8FromS16Image(res);
 	ShowImage(dsp->GetIplImagePtr(), "Result");
