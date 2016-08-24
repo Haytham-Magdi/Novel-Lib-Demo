@@ -2949,7 +2949,11 @@ void ImageProcessor::Try26()
 
 	/////-----------------------------------------------------------------------------------
 	
-	Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
+	//Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
+	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
+	//Window<int> avgWin = Window<int>::New(-1, 1, -3, 3);
+	Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
+	//Window<int> avgWin = Window<int>::New(0, 0, -1, 1);
 
 	//----
 
@@ -2972,12 +2976,18 @@ void ImageProcessor::Try26()
 	//----
 
 	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), standev_Img->GetMemAccessor());
+	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), 
+		standev_Img->GetMemAccessor());
 
 	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
 
+	//Range<int> confRange = Range<int>::New(-2, 2);
+	Range<int> confRange = Range<int>::New(
+		-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
+
 	F32ImageAccessor1C_Ref conflict_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), conflict_Img->GetMemAccessor());
+	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), 
+		conflict_Img->GetMemAccessor(), confRange);
 
 	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
 
