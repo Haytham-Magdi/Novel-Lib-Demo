@@ -2918,6 +2918,7 @@ void ImageProcessor::Try26()
 
 
 	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 
 	MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
 	//acc1->SetRange_Relative_Y(100, 200);
@@ -2934,10 +2935,10 @@ void ImageProcessor::Try26()
 	F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
 	CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
-	F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
-	ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
+	//F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
+	//ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
 
-	F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
+	//F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
 
 	//F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccessorOnly();
 	//DivideImageByNum(imgAcc3->GetMemAccessor(), 2);
@@ -2969,11 +2970,15 @@ void ImageProcessor::Try26()
 	}
 	//----
 
+	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), standev_Img->GetMemAccessor());
+
+	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
 
 
 	/////-----------------------------------------------------------------------------------
 
-	ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
+	//ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
 
 	//GlobalStuff::ShowLinePathImg();
 
