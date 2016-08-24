@@ -2955,17 +2955,18 @@ void ImageProcessor::Try26()
 	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
 	AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
 
-	F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
+	//F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	//CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
 
 	//----
 
-	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
-
 	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+	{
+		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+		CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
 
+		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+	}
 	//----
 
 
