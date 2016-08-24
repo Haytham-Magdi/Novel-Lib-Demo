@@ -2968,12 +2968,18 @@ void ImageProcessor::Try26()
 
 		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
 	}
+
 	//----
 
 	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), standev_Img->GetMemAccessor());
 
 	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
+
+	F32ImageAccessor1C_Ref conflict_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), conflict_Img->GetMemAccessor());
+
+	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
 
 
 	/////-----------------------------------------------------------------------------------
