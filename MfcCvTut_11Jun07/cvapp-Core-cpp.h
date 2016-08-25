@@ -2913,11 +2913,23 @@ void ImageProcessor::Try26()
 	const int nRadius = GlobalStuff::AprSize1D;
 	//const int nRadius = 3;
 
-
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
+	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
+	//F32ImageRef res1 = rotMgr1->GetResImg();
+	
+	GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
+
+
+	src = GlobalStuff::GetLinePathImg();
+
+
 	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	//org_Img->SwitchXY();
+
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 
 	MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
@@ -2932,7 +2944,8 @@ void ImageProcessor::Try26()
 	F32ColorVal color2;
 	color2.AssignVal(250, 50, 50);
 
-	F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
+	//F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
+	F32ImageAccessor3C_Ref imgAcc0 = org_Img->CloneAccAndImage();
 	CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
 	//F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
@@ -2952,8 +2965,10 @@ void ImageProcessor::Try26()
 	//Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
 	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
 	//Window<int> avgWin = Window<int>::New(-1, 1, -3, 3);
-	Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
+	//Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
 	//Window<int> avgWin = Window<int>::New(0, 0, -1, 1);
+	//Window<int> avgWin = Window<int>::New(-1, 1, -2, 2);
+	Window<int> avgWin = Window<int>::New(-1, 0, -1, 0);
 
 	//----
 
@@ -2988,6 +3003,10 @@ void ImageProcessor::Try26()
 	F32ImageAccessor1C_Ref conflict_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), 
 		conflict_Img->GetMemAccessor(), confRange);
+
+	//SaveImage(conflict_Img->GetSrcImg(), "E:\\result_V.jpg");
+	//SaveImage(conflict_Img->GetSrcImg(), "result_V.jpg");
+	SaveImage(conflict_Img->GetSrcImg(), "result_H.jpg");
 
 	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
 
@@ -3058,6 +3077,9 @@ void ImageProcessor::Try26()
 	//GlobalStuff::SetLinePathImg( difMagImg );
 	//GlobalStuff::ShowLinePathImg();
 }
+
+
+
 
 
 void ImageProcessor::Try25()
