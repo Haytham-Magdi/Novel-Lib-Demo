@@ -2917,7 +2917,8 @@ void ImageProcessor::Try26()
 
 
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
-	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
+	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
 	//F32ImageRef res1 = rotMgr1->GetResImg();
 	
