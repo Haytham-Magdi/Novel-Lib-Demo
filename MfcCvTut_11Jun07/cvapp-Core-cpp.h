@@ -3007,7 +3007,7 @@ void ImageProcessor::Try26()
 
 	//SaveImage(conflict_Img->GetSrcImg(), "E:\\result_V.jpg");
 	//SaveImage(conflict_Img->GetSrcImg(), "result_V.jpg");
-	SaveImage(conflict_Img->GetSrcImg(), "result_H.jpg");
+	//SaveImage(conflict_Img->GetSrcImg(), "result_H.jpg");
 
 	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
 
