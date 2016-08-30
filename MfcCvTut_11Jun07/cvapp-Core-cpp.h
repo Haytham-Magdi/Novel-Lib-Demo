@@ -2988,7 +2988,8 @@ void ImageProcessor::Try26()
 		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 		CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
 
-		ShowImage(magSqr_Img->GetSrcImg(), "magSqr_Img->GetSrcImg()");
+		//ShowImage(magSqr_Img->GetSrcImg(), "magSqr_Img->GetSrcImg()");
+		//return;
 
 		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
 	}
@@ -3002,7 +3003,7 @@ void ImageProcessor::Try26()
 		standev_Img->GetMemAccessor());
 
 	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
-	return;
+	//return;
 
 	//Range<int> confRange = Range<int>::New(-2, 2);
 	Range<int> confRange = Range<int>::New(
