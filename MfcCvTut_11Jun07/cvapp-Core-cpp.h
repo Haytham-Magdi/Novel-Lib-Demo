@@ -2916,50 +2916,51 @@ void ImageProcessor::Try26()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
-	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
+	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
+	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
+	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
-	//F32ImageRef res1 = rotMgr1->GetResImg();
+	////F32ImageRef res1 = rotMgr1->GetResImg();
 	
-	GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
+	//GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
 
 
-	src = GlobalStuff::GetLinePathImg();
+	//src = GlobalStuff::GetLinePathImg();
 
 
-	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-	//org_Img->SwitchXY();
+	//F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(GlobalStuff::GetLinePathImg());
+	org_Img->SwitchXY();
 
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 
-	MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
-	//acc1->SetRange_Relative_Y(100, 200);
-	//acc1->SwitchXY();
-	acc1->SetRange_Relative_X(50, 150);
-	//acc1->SetRange_Relative_X(50, 53);
+	//MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
+	////acc1->SetRange_Relative_Y(100, 200);
+	////acc1->SwitchXY();
+	//acc1->SetRange_Relative_X(50, 150);
+	////acc1->SetRange_Relative_X(50, 53);
 
-	F32ColorVal color1;
-	color1.AssignVal(50, 50, 200);
+	//F32ColorVal color1;
+	//color1.AssignVal(50, 50, 200);
 
-	F32ColorVal color2;
-	color2.AssignVal(250, 50, 50);
+	//F32ColorVal color2;
+	//color2.AssignVal(250, 50, 50);
 
-	//F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
-	F32ImageAccessor3C_Ref imgAcc0 = org_Img->CloneAccAndImage();
-	CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
+	////F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
+	//F32ImageAccessor3C_Ref imgAcc0 = org_Img->CloneAccAndImage();
+	//CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
-	//F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
-	//ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
+	////F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
+	////ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
 
-	//F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
+	////F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
 
-	//F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccessorOnly();
-	//DivideImageByNum(imgAcc3->GetMemAccessor(), 2);
+	////F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccessorOnly();
+	////DivideImageByNum(imgAcc3->GetMemAccessor(), 2);
 
-	//F32ImageAccessor1C_Ref imgMag = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	//CalcMagImage(imgAcc3->GetMemAccessor(), imgMag->GetMemAccessor());
-	//ShowImage(imgMag->GetSrcImg(), "imgMag->GetSrcImg()");
+	////F32ImageAccessor1C_Ref imgMag = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	////CalcMagImage(imgAcc3->GetMemAccessor(), imgMag->GetMemAccessor());
+	////ShowImage(imgMag->GetSrcImg(), "imgMag->GetSrcImg()");
 
 	/////-----------------------------------------------------------------------------------
 	
@@ -2975,6 +2976,7 @@ void ImageProcessor::Try26()
 
 	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
 	AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+	ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
 
 	//F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	//CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
@@ -2986,9 +2988,13 @@ void ImageProcessor::Try26()
 		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 		CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
 
+		ShowImage(magSqr_Img->GetSrcImg(), "magSqr_Img->GetSrcImg()");
+
 		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
 	}
+	//ShowImage(avg_MagSqr_Img->GetSrcImg(), "avg_MagSqr_Img->GetSrcImg()");
 
+	//return;
 	//----
 
 	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
@@ -2996,6 +3002,7 @@ void ImageProcessor::Try26()
 		standev_Img->GetMemAccessor());
 
 	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
+	return;
 
 	//Range<int> confRange = Range<int>::New(-2, 2);
 	Range<int> confRange = Range<int>::New(
@@ -3011,21 +3018,21 @@ void ImageProcessor::Try26()
 
 	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
 
+	return;
 
 	/////-----------------------------------------------------------------------------------
 
-	//ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
+	////ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
 
-	//GlobalStuff::ShowLinePathImg();
+	////GlobalStuff::ShowLinePathImg();
 
-	return;
 
-	//	new F32ImageAccessor3C(src->CloneNew());
-	//CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
+	////	new F32ImageAccessor3C(src->CloneNew());
+	////CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
 
-	//FillImage<F32ColorVal>(acc1, color1);
-	FillImage_Stripes_H<F32ColorVal>(acc1, color1, color2, 25);
-	//FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
+	////FillImage<F32ColorVal>(acc1, color1);
+	//FillImage_Stripes_H<F32ColorVal>(acc1, color1, color2, 25);
+	////FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
 
 	//ShowImage(imgAcc0->GetSrcImg(), "imgAcc0->GetSrcImg()");
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
