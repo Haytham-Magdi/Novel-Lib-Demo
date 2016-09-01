@@ -2916,21 +2916,24 @@ void ImageProcessor::Try26()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
-	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
-	////ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
+	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
-	////F32ImageRef res1 = rotMgr1->GetResImg();
+	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 20);
+	//F32ImageRef res1 = rotMgr1->GetResImg();
+
+	src = rotMgr88->GetResImg();
 	
 	//GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
+	//GlobalStuff::ShowLinePathImg();
 
 
 	//src = GlobalStuff::GetLinePathImg();
 
 
-	//F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(GlobalStuff::GetLinePathImg());
-	org_Img->SwitchXY();
+	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	//org_Img->SwitchXY();
 
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 
