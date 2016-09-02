@@ -2916,6 +2916,15 @@ void ImageProcessor::Try26()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
+
+	//ImgRotationMgrRef rotMgr88_0_0 = new ImgRotationMgr(src, 0);
+	ImgRotationMgrRef rotMgr88_0_1 = new ImgRotationMgr(src, 22.5);
+	ImgRotationMgrRef rotMgr88_0_2 = new ImgRotationMgr(src, 45);
+	ImgRotationMgrRef rotMgr88_0_3 = new ImgRotationMgr(src, 67.5);
+
+
+	return;
+
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
 	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
@@ -2968,12 +2977,12 @@ void ImageProcessor::Try26()
 	/////-----------------------------------------------------------------------------------
 	
 	//Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
-	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
+	Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
 	//Window<int> avgWin = Window<int>::New(-1, 1, -3, 3);
 	//Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
 	//Window<int> avgWin = Window<int>::New(0, 0, -1, 1);
 	//Window<int> avgWin = Window<int>::New(-1, 1, -2, 2);
-	Window<int> avgWin = Window<int>::New(-1, 0, -1, 0);
+	//Window<int> avgWin = Window<int>::New(-1, 0, -1, 0);
 
 	//----
 
