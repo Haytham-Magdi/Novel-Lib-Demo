@@ -2917,11 +2917,13 @@ void ImageProcessor::Try26()
 
 
 
-	//ImgRotationMgrRef rotMgr88_0_0 = new ImgRotationMgr(src, 0);
-	ImgRotationMgrRef rotMgr88_0_1 = new ImgRotationMgr(src, 22.5);
-	ImgRotationMgrRef rotMgr88_0_2 = new ImgRotationMgr(src, 45);
-	ImgRotationMgrRef rotMgr88_0_3 = new ImgRotationMgr(src, 67.5);
+	//ImgRotationMgr_2_Ref rotMgr88_0_0 = new ImgRotationMgr_2(src, 0);
+	ImgRotationMgr_2_Ref rotMgr88_0_1 = new ImgRotationMgr_2(src, 22.5);
+	ImgRotationMgr_2_Ref rotMgr88_0_2 = new ImgRotationMgr_2(src, 45);
+	ImgRotationMgr_2_Ref rotMgr88_0_3 = new ImgRotationMgr_2(src, 67.5);
 
+	GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
+	GlobalStuff::ShowLinePathImg();
 
 	return;
 
