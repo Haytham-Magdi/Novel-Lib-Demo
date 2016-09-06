@@ -285,8 +285,14 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 		////CString sFile = "clrpic1.jpg";
 		////CString sFile = "White-All.png";
 
-		CString sFile = "patternReflection2.png";
-		//CString sFile = "patternReflection2_2.jpg";
+		//CString sFile = "patternReflection2.png";
+		CString sFile = "patternReflection2_2.jpg";
+
+		//CString sFile = "Image_0005_d0.png";
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2).png";
+
+		
+
 
 		CString path = sFolder + "\\" + sFile;
 
