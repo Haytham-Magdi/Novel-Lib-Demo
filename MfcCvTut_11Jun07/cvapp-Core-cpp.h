@@ -2917,20 +2917,21 @@ void ImageProcessor::Try26()
 
 
 	//ImgRotationMgr_2_Ref rotMgr88_0_0 = new ImgRotationMgr_2(src, 0);
-	ImgRotationMgr_2_Ref rotMgr88_0_1 = new ImgRotationMgr_2(src, 22.5);
-	ImgRotationMgr_2_Ref rotMgr88_0_2 = new ImgRotationMgr_2(src, 45);
-	ImgRotationMgr_2_Ref rotMgr88_0_3 = new ImgRotationMgr_2(src, 67.5);
+	//ImgRotationMgr_2_Ref rotMgr88_0_1 = new ImgRotationMgr_2(src, 22.5);
+	//ImgRotationMgr_2_Ref rotMgr88_0_2 = new ImgRotationMgr_2(src, 45);
+	//ImgRotationMgr_2_Ref rotMgr88_0_3 = new ImgRotationMgr_2(src, 67.5);
 
-	GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
-	GlobalStuff::ShowLinePathImg();
+	////GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
+	//GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
+	//GlobalStuff::ShowLinePathImg();
 
-	return;
+	//return;
 
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
-	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 20);
+	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 45);
+	ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 0);
+	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 70);
+	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 89);
+	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 20);
 	//F32ImageRef res1 = rotMgr1->GetResImg();
 
 	src = rotMgr88->GetResImg();
@@ -3057,7 +3058,7 @@ void ImageProcessor::Try26()
 	Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 4);
 	//Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 8);
 
-	ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
+	ImgRotationMgr_2_Ref rot33 = rotColl1->GetRotAt(0);
 	ImageItrMgrRef imgItr33 = rot33->GetImageItrMgr();
 	ImageLineItrProvider & imgLineItrPorv33 = imgItr33->GetItrProvAt(1);
 	FixedVector< ImageLineItr > & lineItrArr33 = imgLineItrPorv33.GetLineItrArr();
@@ -3080,8 +3081,8 @@ void ImageProcessor::Try26()
 	//ShowImage(rotColl1->GetRotAt(6)->GetResImg(), "Rot1_6");
 	//ShowImage(rotColl1->GetRotAt(7)->GetResImg(), "Rot1_7");
 
-	//ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
-	ImgRotationMgrRef rotMgr1 = rotColl1->GetRotAt(1);
+	//ImgRotationMgr_2_Ref rotMgr1 = new ImgRotationMgr(src, 45);
+	ImgRotationMgr_2_Ref rotMgr1 = rotColl1->GetRotAt(1);
 
 	F32ImageRef res1 = rotMgr1->GetResImg();
 
