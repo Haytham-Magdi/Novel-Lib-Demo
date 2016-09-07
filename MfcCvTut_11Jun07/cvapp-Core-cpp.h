@@ -2916,7 +2916,6 @@ void ImageProcessor::Try26()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-
 	//ImgRotationMgr_2_Ref rotMgr88_0_0 = new ImgRotationMgr_2(src, 0);
 	ImgRotationMgr_2_Ref rotMgr88_0_1 = new ImgRotationMgr_2(src, 22.5);
 	ImgRotationMgr_2_Ref rotMgr88_0_2 = new ImgRotationMgr_2(src, 45);

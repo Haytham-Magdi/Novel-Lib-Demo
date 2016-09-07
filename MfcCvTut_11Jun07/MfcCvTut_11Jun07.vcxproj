@@ -172,6 +172,9 @@
   <ItemGroup>
     <ResourceCompile Include="MfcCvTut_11Jun07.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="file2.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
