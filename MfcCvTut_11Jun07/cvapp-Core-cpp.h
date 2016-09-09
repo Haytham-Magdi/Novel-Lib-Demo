@@ -2935,7 +2935,7 @@ void ImageProcessor::Try26()
 	//F32ImageRef res1 = rotMgr1->GetResImg();
 
 	src = rotMgr88->GetResImg();
-	
+
 	//GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
 	//GlobalStuff::ShowLinePathImg();
 
@@ -2977,7 +2977,20 @@ void ImageProcessor::Try26()
 	////ShowImage(imgMag->GetSrcImg(), "imgMag->GetSrcImg()");
 
 	/////-----------------------------------------------------------------------------------
-	
+
+
+	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+
+	F32ImageAccessor1C_Ref avgStandev_H_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	Cala_AvgStandevImage_H(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor(),
+		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
+
+	ShowImage(avgStandev_H_Img->GetSrcImg(), "avgStandev_H_Img->GetSrcImg()");
+	return;
+
+
+
 	//Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
 	Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
 	//Window<int> avgWin = Window<int>::New(-1, 1, -3, 3);
@@ -2998,22 +3011,17 @@ void ImageProcessor::Try26()
 	//----
 
 	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	{
-		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
 
-		//ShowImage(magSqr_Img->GetSrcImg(), "magSqr_Img->GetSrcImg()");
-		//return;
 
-		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
-	}
+
 	//ShowImage(avg_MagSqr_Img->GetSrcImg(), "avg_MagSqr_Img->GetSrcImg()");
 
 	//return;
 	//----
 
 	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), 
+	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
 		standev_Img->GetMemAccessor());
 
 	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
@@ -3024,7 +3032,7 @@ void ImageProcessor::Try26()
 		-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
 
 	F32ImageAccessor1C_Ref conflict_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), 
+	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
 		conflict_Img->GetMemAccessor(), confRange);
 
 	//SaveImage(conflict_Img->GetSrcImg(), "E:\\result_V.jpg");
@@ -3051,7 +3059,7 @@ void ImageProcessor::Try26()
 
 	//ShowImage(imgAcc0->GetSrcImg(), "imgAcc0->GetSrcImg()");
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
-	
+
 
 	return;
 
