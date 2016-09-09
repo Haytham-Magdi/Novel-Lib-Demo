@@ -292,9 +292,11 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "Image_0005_d0_2.png";
 		
 		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2).png";
-		CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
 
-		
+		//CString sFile = "paint_1.png";
+		CString sFile = "paint_filled_1.png";
+
 
 
 		CString path = sFolder + "\\" + sFile;
