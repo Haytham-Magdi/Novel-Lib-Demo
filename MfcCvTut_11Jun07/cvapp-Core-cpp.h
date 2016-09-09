@@ -2928,6 +2928,7 @@ void ImageProcessor::Try26()
 	//return;
 
 	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 45);
+	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 55);
 	ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 0);
 	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 70);
 	//ImgRotationMgr_2_Ref rotMgr88 = new ImgRotationMgr_2(src, 89);
@@ -2984,7 +2985,8 @@ void ImageProcessor::Try26()
 
 	F32ImageAccessor1C_Ref avgStandev_H_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	Cala_AvgStandevImage_H(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor(),
-		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
+		//avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
+		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-1, 1));
 
 	ShowImage(avgStandev_H_Img->GetSrcImg(), "avgStandev_H_Img->GetSrcImg()");
 	return;
