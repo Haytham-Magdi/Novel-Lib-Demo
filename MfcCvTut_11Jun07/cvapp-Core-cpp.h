@@ -4,6 +4,8 @@
 #include <Lib\Hcv\SignalOneDim.h>
 #include "GlobalStuff.h"
 
+#include <Lib\Hcv\TempImageAccessor.h>
+
 
 //#include <Lib\Hcv\CircleContourOfPix.h>
 
@@ -2964,9 +2966,9 @@ void ImageProcessor::Try26_1()
 //	This is the TRUE Try26()
 void ImageProcessor::Try26()
 {
-	Try26_1();
+	//Try26_1();
 
-	return;
+	//return;
 
 	const int nRadius = GlobalStuff::AprSize1D;
 	//const int nRadius = 3;
@@ -3003,7 +3005,7 @@ void ImageProcessor::Try26()
 
 
 	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-	//org_Img->SwitchXY();
+	org_Img->SwitchXY();
 
 	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
 
@@ -3043,11 +3045,11 @@ void ImageProcessor::Try26()
 
 	F32ImageAccessor1C_Ref avgStandev_H_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	Cala_AvgStandevImage_H(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor(),
-		//avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
-		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-1, 1));
+		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
+		//avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-1, 1));
 
-	ShowImage(avgStandev_H_Img->GetSrcImg(), "avgStandev_H_Img->GetSrcImg()");
-	return;
+	//ShowImage(avgStandev_H_Img->GetSrcImg(), "avgStandev_H_Img->GetSrcImg()");
+	//return;
 
 
 
@@ -3063,7 +3065,7 @@ void ImageProcessor::Try26()
 
 	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
 	AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-	ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
 
 	//F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 	//CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
@@ -3084,14 +3086,16 @@ void ImageProcessor::Try26()
 	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
 		standev_Img->GetMemAccessor());
 
-	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
+	//ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
 	//return;
 
 	//Range<int> confRange = Range<int>::New(-2, 2);
 	Range<int> confRange = Range<int>::New(
 		-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
 
-	F32ImageAccessor1C_Ref conflict_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+	TempImageAccessor_REF(ConflictInfo) conflict_Img = new TempImageAccessor<ConflictInfo>(
+		org_Img->GetMemAccessor()->GetOffsetCalc());
+
 	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
 		conflict_Img->GetMemAccessor(), confRange);
 
@@ -3099,7 +3103,52 @@ void ImageProcessor::Try26()
 	//SaveImage(conflict_Img->GetSrcImg(), "result_V.jpg");
 	//SaveImage(conflict_Img->GetSrcImg(), "result_H.jpg");
 
-	ShowImage(conflict_Img->GetSrcImg(), "conflict_Img->GetSrcImg()");
+	{
+		MemAccessor_2D_REF(ConflictInfo) confAcc = conflict_Img->GetMemAccessor();
+		F32ImageRef confDsp_Img = F32Image::Create(cvSize(confAcc->GetIndexSize_X_Org(), confAcc->GetIndexSize_Y_Org()), 3);
+
+		confDsp_Img->SetAll(0);
+
+		const int nSize_1D = confAcc->GetIndexSize_X() * confAcc->GetIndexSize_Y();
+
+		F32ColorVal * destPtr = (F32ColorVal *)confDsp_Img->GetDataPtr();
+		ConflictInfo * srcPtr = confAcc->GetDataPtr();
+
+		float angle_Old = -1;
+		for (int i = 0; i < nSize_1D; i++)
+		{
+			ConflictInfo & rSrc = srcPtr[i];
+			F32ColorVal & rDest = destPtr[i];
+
+			//Hcpl_ASSERT(-1 != rSrc.Dir);
+
+			if (rSrc.Exists)
+			{
+				F32ColorVal & rDest_Side_1 = destPtr[rSrc.Offset_Side_1];
+				F32ColorVal & rDest_Side_2 = destPtr[rSrc.Offset_Side_2];
+
+				rDest.val0 = 0;
+				rDest.val1 = 0;
+				rDest.val2 = 255;
+
+				rDest_Side_1.val0 = 0;
+				rDest_Side_1.val1 = 255;
+				rDest_Side_1.val2 = 0;
+
+				rDest_Side_2.val0 = 0;
+				rDest_Side_2.val1 = 255;
+				rDest_Side_2.val2 = 0;
+			}
+			//else
+			//{
+			//	rDest.val0 = 0;
+			//	rDest.val1 = 0;
+			//	rDest.val2 = 0;
+			//}
+		}
+
+		ShowImage(confDsp_Img, "confDsp_Img->GetSrcImg()");
+	}
 
 	return;
 
