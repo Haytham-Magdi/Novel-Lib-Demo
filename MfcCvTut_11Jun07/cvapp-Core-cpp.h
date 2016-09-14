@@ -2962,10 +2962,117 @@ void ImageProcessor::Try26_1()
 
 }
 
+void ImageProcessor::Try26_2()
+{
+	F32ImageAccessor1C_Ref magImg;
+	{
+		F32ImageRef src = GlobalStuff::GetLinePathImg();
+		F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+
+		magImg = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+
+		F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+		CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+
+		Window<int> avgWin_0 = Window<int>::New(-1, 1, -1, 1);
+
+		AvgImage(magImg_0->GetMemAccessor(), magImg->GetMemAccessor(), avgWin_0);
+	}
+
+
+	ShowImage(magImg->GetSrcImg(), "magImg->GetSrcImg()");
+
+	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
+	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
+	Window<int> avgWin = Window<int>::New(-1, 1, -1, 1);
+
+	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
+
+	F32ImageAccessor1C_Ref avg_Img = magImg->CloneAccAndImage();
+	AvgImage(magImg->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+
+	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+
+	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(magImg->GetOffsetCalc());
+	CalcMagSqrImage(magImg->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+
+	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(magImg->GetOffsetCalc());
+	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+
+	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(magImg->GetOffsetCalc());
+	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
+		standev_Img->GetMemAccessor());
+
+	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
+
+////////////////////////////////////////////--------------------------
+	
+	Window<int> avgWin_2 = Window<int>::New(-2, 2, -2, 2);
+
+	F32ImageAccessor1C_Ref avg_Standev_Img = standev_Img->CloneAccAndImage();
+	AvgImage(standev_Img->GetMemAccessor(), avg_Standev_Img->GetMemAccessor(), avgWin_2);
+
+	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+
+	F32ImageAccessor1C_Ref magSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+	CalcMagSqrImage(standev_Img->GetMemAccessor(), magSqr_Standev_Img->GetMemAccessor());
+
+	F32ImageAccessor1C_Ref avg_MagSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+	AvgImage(magSqr_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(), avgWin_2);
+
+	F32ImageAccessor1C_Ref standev_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+	CalcStandevImage(avg_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(),
+		standev_Standev_Img->GetMemAccessor());
+	
+	ShowImage(standev_Standev_Img->GetSrcImg(), "standev_Standev_Img->GetSrcImg()");
+
+	////////////////////////////////////////////--------------------------
+
+	{
+		F32ImageAccessor1C_Ref edge_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+
+		const int nSize_1D = standev_Img->GetMemAccessor()->GetIndexSize_X_Org() * standev_Img->GetMemAccessor()->GetIndexSize_Y_Org();
+
+		float * edge_Ptr = edge_Img->GetMemAccessor()->GetDataPtr();
+		float * standev_Ptr = standev_Img->GetMemAccessor()->GetDataPtr();
+		float * standev_Standev_Ptr = standev_Standev_Img->GetMemAccessor()->GetDataPtr();
+		float * avg_Standev_Ptr = avg_Standev_Img->GetMemAccessor()->GetDataPtr();
+
+		for (int i = 0; i < nSize_1D; i++)
+		{
+			float & rEdge = edge_Ptr[i];
+			float & rStandev = standev_Ptr[i];
+			float & rStandev_Standev = standev_Standev_Ptr[i];
+			float & rAvg_Standev = avg_Standev_Ptr[i];
+
+			//if (rStandev >(rStandev_Standev * 0.666f))
+			//if (rStandev >(rAvg_Standev * 0.666f) && rStandev > 20)
+			if (rStandev >(rAvg_Standev * 0.44f) && rStandev > 20)
+			{
+				rEdge = 255;
+			}
+			else
+			{
+				rEdge = 0;
+			}
+		}
+
+		ShowImage(edge_Img->GetSrcImg(), "edge_Img->GetSrcImg()");
+	}
+
+
+
+
+
+}
 
 //	This is the TRUE Try26()
 void ImageProcessor::Try26()
 {
+	//Try26_2();
+
+	//return;
+
 	Try26_1();
 
 	return;
