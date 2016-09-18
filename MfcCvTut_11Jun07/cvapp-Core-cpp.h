@@ -3230,7 +3230,9 @@ void ImageProcessor::Try26_4()
 	//VectorVal<float, 4> vv1;
 
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
-	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	//F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+	//ImageAccessor_REF(float, VectorVal<float, 3>, 3) org_Img = new F32ImageAccessor3C(src);
+	F32VectorValImageAcc_3C_Ref org_Img = new F32VectorValImageAcc_3C(src);
 
 	//F32ImageAccessor1C_Ref mag_Img;
 	////F32ImageAccessor3C_Ref mag_Img;
@@ -3259,7 +3261,8 @@ void ImageProcessor::Try26_4()
 
 
 	F32ImageAccessor1C_Ref standev_Wide_Img;
-	F32ImageAccessor3C_Ref avg_Wide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+	//F32ImageAccessor3C_Ref avg_Wide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+	F32VectorValImageAcc_3C_Ref avg_Wide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
 	{
 		standev_Wide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 
