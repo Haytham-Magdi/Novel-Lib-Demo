@@ -3259,19 +3259,35 @@ void ImageProcessor::Try26_4()
 	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
 	//ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
 
-
-	F32ImageAccessor1C_Ref standev_Wide_Img;
-	//F32ImageAccessor3C_Ref avg_Wide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	F32VectorValImageAcc_3C_Ref avg_Wide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
+	
+	F32ImageAccessor1C_Ref standev_InrWide_Img;
+	
+	//F32ImageAccessor3C_Ref avg_InrWide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+	F32VectorValImageAcc_3C_Ref avg_InrWide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
 	{
-		standev_Wide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+		standev_InrWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 
-		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_Wide_Img->GetMemAccessor(), standev_Wide_Img->GetMemAccessor(),
-			Window<int>::New(-10, 10, -10, 10));
+		const int nInrRad = 10;
+		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_InrWide_Img->GetMemAccessor(), standev_InrWide_Img->GetMemAccessor(),
+			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
 	}
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_Wide_Img->GetSrcImg(), "standev_Wide_Img->GetSrcImg()");
+
+	//F32ImageAccessor3C_Ref avg_InrWide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+	F32VectorValImageAcc_3C_Ref avg_InrWide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
+	{
+		standev_InrWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+
+		const int nInrRad = 10;
+		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_InrWide_Img->GetMemAccessor(), standev_InrWide_Img->GetMemAccessor(),
+			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
+	}
+
+
+
+
+	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+	ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
 
 }
 
