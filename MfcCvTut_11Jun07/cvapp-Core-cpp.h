@@ -3272,10 +3272,20 @@ void ImageProcessor::Try26_4()
 			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
 	}
 
-	F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
-	{
-		const int nSize_1D = avg_InrWide_Img->GetSize_1D();
-	}
+	//F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+	//{
+	//	const int nSize_1D = avg_InrWide_Img->GetSize_1D();
+
+	//	//F32VectorVal<4> * dest_Ptr = (F32VectorVal<4> *)avgPStandev_InrWide_Img->GetDataPtr();
+	//	//F32VectorVal<3> * src_Avg_Ptr = (F32VectorVal<3> *)avg_InrWide_Img->GetDataPtr();
+	//	//float * src_Standev_Ptr = standev_InrWide_Img->GetDataPtr();
+
+	//	for (int i = 0; i < nSize_1D; i++)
+	//	{
+	//		//*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
+	//		//dest_Ptr[i]->Vals[4] = src_Standev_Ptr[i];
+	//	}
+	//}
 
 
 	F32ImageAccessor1C_Ref standev_OutWide_Img;
