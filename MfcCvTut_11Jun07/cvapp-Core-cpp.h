@@ -3314,7 +3314,7 @@ void ImageProcessor::Try26_4()
 void ImageProcessor::Try26()
 {
 	Try26_4();
-	//return;
+	return;
 
 	//Try26_3();
 	//return;
@@ -3323,7 +3323,7 @@ void ImageProcessor::Try26()
 	//return;
 
 	Try26_1();
-	return;
+	//return;
 
 	const int nRadius = GlobalStuff::AprSize1D;
 	//const int nRadius = 3;
