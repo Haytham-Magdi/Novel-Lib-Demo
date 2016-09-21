@@ -3267,31 +3267,32 @@ void ImageProcessor::Try26_4()
 	{
 		standev_InrWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 
-		const int nInrRad = 10;
+		const int nInrRad = 5;
 		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_InrWide_Img->GetMemAccessor(), standev_InrWide_Img->GetMemAccessor(),
 			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
 	}
+	ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
 
-	//F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
-	//{
-	//	const int nSize_1D = avg_InrWide_Img->GetSize_1D();
+	F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+	{
+		const int nSize_1D = avg_InrWide_Img->GetSize_1D();
 
-	//	//F32VectorVal<4> * dest_Ptr = (F32VectorVal<4> *)avgPStandev_InrWide_Img->GetDataPtr();
-	//	//F32VectorVal<3> * src_Avg_Ptr = (F32VectorVal<3> *)avg_InrWide_Img->GetDataPtr();
-	//	//float * src_Standev_Ptr = standev_InrWide_Img->GetDataPtr();
+		F32VectorVal<4> * dest_Ptr = (F32VectorVal<4> *)avgPStandev_InrWide_Img->GetDataPtr();
+		F32VectorVal<3> * src_Avg_Ptr = (F32VectorVal<3> *)avg_InrWide_Img->GetDataPtr();
+		float * src_Standev_Ptr = standev_InrWide_Img->GetDataPtr();
 
-	//	for (int i = 0; i < nSize_1D; i++)
-	//	{
-	//		//*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
-	//		//dest_Ptr[i]->Vals[4] = src_Standev_Ptr[i];
-	//	}
-	//}
+		for (int i = 0; i < nSize_1D; i++)
+		{
+			*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
+			dest_Ptr[i].Vals[3] = src_Standev_Ptr[i];
+		}
+	}
 
 
 	F32ImageAccessor1C_Ref standev_OutWide_Img;
-	F32VectorValImageAcc_4C_Ref avg_OutWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
 	{
-		standev_OutWide_Img = new F32ImageAccessor1C(avgPStandev_InrWide_Img->GetOffsetCalc());
+		F32VectorValImageAcc_4C_Ref avg_OutWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+		standev_OutWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
 
 		const int nOutRad = 10;
 		Calc_Avg_And_Standev_Image(avgPStandev_InrWide_Img->GetMemAccessor(), avg_OutWide_Img->GetMemAccessor(), standev_OutWide_Img->GetMemAccessor(),
@@ -3299,11 +3300,12 @@ void ImageProcessor::Try26_4()
 	}
 
 
+	////GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+	//ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
 
-
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
+	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_OutWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+	ShowImage(standev_OutWide_Img->GetSrcImg(), "standev_OutWide_Img->GetSrcImg()");
 
 }
 
@@ -3312,7 +3314,7 @@ void ImageProcessor::Try26_4()
 void ImageProcessor::Try26()
 {
 	Try26_4();
-	return;
+	//return;
 
 	//Try26_3();
 	//return;
@@ -3320,8 +3322,8 @@ void ImageProcessor::Try26()
 	//Try26_2();
 	//return;
 
-	//Try26_1();
-	//return;
+	Try26_1();
+	return;
 
 	const int nRadius = GlobalStuff::AprSize1D;
 	//const int nRadius = 3;
