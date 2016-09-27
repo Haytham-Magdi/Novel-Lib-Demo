@@ -288,6 +288,9 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "patternReflection2.png";
 		//CString sFile = "patternReflection2_2.jpg";
 
+		//CString sFile = "patternReflection1_2.jpg";
+
+
 		//CString sFile = "Image_0005_d0.png";
 		//CString sFile = "Image_0005_d0_2.png";
 		
