@@ -3225,6 +3225,24 @@ void ImageProcessor::Try26_3()
 
 }
 
+void ImageProcessor::Try26_5()
+{
+	F32ImageRef src = GlobalStuff::GetLinePathImg();
+
+	ImgRotationMgr_3_Ref rotMgr88_0_0 = new ImgRotationMgr_3(src, 0);
+	ImgRotationMgr_3_Ref rotMgr88_0_1 = new ImgRotationMgr_3(src, 22.5);
+	ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
+	ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
+
+	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
+	GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
+	GlobalStuff::ShowLinePathImg();
+
+	return;
+
+
+}
+
 void ImageProcessor::Try26_4()
 {
 	//VectorVal<float, 4> vv1;
@@ -3360,6 +3378,9 @@ void ImageProcessor::Try26_4()
 //	This is the TRUE Try26()
 void ImageProcessor::Try26()
 {
+	Try26_5();
+	return;
+
 	//Try26_4();
 	//return;
 
@@ -3369,8 +3390,8 @@ void ImageProcessor::Try26()
 	//Try26_2();
 	//return;
 
-	Try26_1();
-	return;
+	//Try26_1();
+	//return;
 
 	const int nRadius = GlobalStuff::AprSize1D;
 	//const int nRadius = 3;
