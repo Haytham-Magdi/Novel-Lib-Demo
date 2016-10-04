@@ -3236,6 +3236,18 @@ void ImageProcessor::Try26_5()
 
 	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src, 45);
 
+	ImgSizeRotationRef rotMgr = rotMgr88_0_2;
+
+
+	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+
+	//rot_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1, rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
+
+	
+
+
+
 
 	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
 	GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
