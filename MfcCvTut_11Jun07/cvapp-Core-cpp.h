@@ -3229,10 +3229,13 @@ void ImageProcessor::Try26_5()
 {
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
-	ImgRotationMgr_3_Ref rotMgr88_0_0 = new ImgRotationMgr_3(src, 0);
-	ImgRotationMgr_3_Ref rotMgr88_0_1 = new ImgRotationMgr_3(src, 22.5);
-	ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
-	ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
+	//ImgRotationMgr_3_Ref rotMgr88_0_0 = new ImgRotationMgr_3(src, 0);
+	//ImgRotationMgr_3_Ref rotMgr88_0_1 = new ImgRotationMgr_3(src, 22.5);
+	//ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
+	//ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
+
+	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src, 45);
+
 
 	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
 	GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
