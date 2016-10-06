@@ -3242,15 +3242,20 @@ void ImageProcessor::Try26_5()
 	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
 
 	//rot_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1, rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
+	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1, 
+		rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
 
-	
+		
+	//rotMgr->RotateImage(org_Img->GetMemAccessor(), rot_Img->GetMemAccessor());
+	rotMgr->RotateImage(rot_Img->GetDataPtr(), rot_Img->GetSrcImgSize(),
+		(F32ColorVal *)src->GetDataPtr(), src->GetSize());
 
 
 
 
 	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
-	GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
+	//GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
+	GlobalStuff::SetLinePathImg(rot_Img->GetSrcImg());
 	GlobalStuff::ShowLinePathImg();
 
 	return;
