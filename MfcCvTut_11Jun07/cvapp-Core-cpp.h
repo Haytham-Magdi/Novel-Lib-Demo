@@ -3234,7 +3234,7 @@ void ImageProcessor::Try26_5()
 	//ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
 	//ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
 
-	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src, 45);
+	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src->GetSize(), 45);
 
 	ImgSizeRotationRef rotMgr = rotMgr88_0_2;
 
@@ -3242,10 +3242,20 @@ void ImageProcessor::Try26_5()
 	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
 
 	//rot_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1, 
+	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1,
 		rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
 
-		
+	{
+		F32ColorVal color1;
+		color1.AssignVal(50, 50, 200);
+
+		F32ColorVal color2;
+		color2.AssignVal(250, 50, 50);
+
+		//FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
+		FillImage_Stripes_H(org_Img->GetMemAccessor(), color1, color2, 25);
+	}
+
 	//rotMgr->RotateImage(org_Img->GetMemAccessor(), rot_Img->GetMemAccessor());
 	rotMgr->RotateImage(rot_Img->GetDataPtr(), rot_Img->GetSrcImgSize(),
 		(F32ColorVal *)src->GetDataPtr(), src->GetSize());
