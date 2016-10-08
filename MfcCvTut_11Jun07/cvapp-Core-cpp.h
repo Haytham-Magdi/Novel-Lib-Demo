@@ -6,7 +6,7 @@
 
 #include <Lib\Hcv\TempImageAccessor.h>
 #include <Lib\Hcv\VectorVal.h>
-
+#include <Lib\Hcv\ImgSizeRotationColl.h>
 
 //#include <Lib\Hcv\CircleContourOfPix.h>
 
@@ -2916,7 +2916,7 @@ void ImageProcessor::Try26_1()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-	Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 4);
+	ImgSizeRotationCollRef rotColl1 = new  ImgSizeRotationColl(src->GetSize(), 4);
 	//Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 8);
 
 	//ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
@@ -2928,7 +2928,7 @@ void ImageProcessor::Try26_1()
 
 	//return;
 
-	Ns_Saica::AngleDirMgrCollRef angleDirColl = new Ns_Saica::AngleDirMgrColl(rotColl1);
+	Ns_Saica::AngleDirMgrCollRef angleDirColl = new Ns_Saica::AngleDirMgrColl(src, rotColl1);
 	//Ns_Saica::ImgAngleDirMgrRef 
 	//imagean
 
@@ -2943,9 +2943,9 @@ void ImageProcessor::Try26_1()
 	//ShowImage(rotColl1->GetRotAt(7)->GetResImg(), "Rot1_7");
 
 	//ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
-	ImgRotationMgrRef rotMgr1 = rotColl1->GetRotAt(1);
+	//ImgRotationMgrRef rotMgr1 = rotColl1->GetRotAt(1);
 
-	F32ImageRef res1 = rotMgr1->GetResImg();
+	//F32ImageRef res1 = rotMgr1->GetResImg();
 
 	//CircDiff2Ref cd1 = new CircDiff2( src, nRadius );
 
