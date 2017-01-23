@@ -2917,7 +2917,7 @@ void ImageProcessor::Try26_1()
 
 
 	ImgSizeRotationCollRef rotColl1 = new  ImgSizeRotationColl(src->GetSize(), 4);
-	//Ns_Saica::RotationMgrCollRef rotColl1 = new  Ns_Saica::RotationMgrColl(src, 8);
+	//Ns_Binarization::RotationMgrCollRef rotColl1 = new  Ns_Binarization::RotationMgrColl(src, 8);
 
 	//ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
 	//ImageItrMgrRef imgItr33 = rot33->GetImageItrMgr();
@@ -2928,8 +2928,8 @@ void ImageProcessor::Try26_1()
 
 	//return;
 
-	Ns_Saica::AngleDirMgrCollRef angleDirColl = new Ns_Saica::AngleDirMgrColl(src, rotColl1);
-	//Ns_Saica::ImgAngleDirMgrRef 
+	Ns_Binarization::AngleDirMgrCollRef angleDirColl = new Ns_Binarization::AngleDirMgrColl(src, rotColl1);
+	//Ns_Binarization::ImgAngleDirMgrRef 
 	//imagean
 
 	//ShowImage(rotColl1->GetRotAt(0)->GetResImg(), "Rot1_0");
