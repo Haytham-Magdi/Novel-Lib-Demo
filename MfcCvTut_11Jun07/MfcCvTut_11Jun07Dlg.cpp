@@ -274,7 +274,8 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 	{
 		CString sFolder =
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
-			"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
+			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
+		"E:\\HthmWork\\Computer-Vision\\Images";
 
 		////CString sFile = "h4_3C_3_Dn.jpg";
 		////CString sFile = "h4_3C_3_Dn_By2.jpg";
@@ -295,11 +296,15 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "Image_0005_d0_2.png";
 		
 		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2).png";
-		CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
 
 		//CString sFile = "paint_1.png";
 		//CString sFile = "paint_filled_1.png";
 
+		//CString sFile = "bin_images_1.jpg";
+		CString sFile = "bin_images_2.jpg";
+		//CString sFile = "bin_images_3.jpg";
+		//CString sFile = "Fig-3-1-Binarization-using-Otsu's-method-2-smooth-operation-3-second-binarization.png";
 
 
 		CString path = sFolder + "\\" + sFile;

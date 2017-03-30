@@ -74,7 +74,7 @@
 
 //#define Hcpl_DEBUG
 
-#include <Lib\Cpp\Common\commonLib.h>
+//#include <Lib\Cpp\Common\commonLib.h>
 #include <Lib\Cpp\Common\commonLib.h>
 #include <Lib\Cpp\MfcEx\mfcExLib.h>
 #include <Lib\Cpp\Math\mathLib.h>
