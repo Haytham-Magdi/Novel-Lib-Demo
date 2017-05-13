@@ -211,7 +211,7 @@ BOOL CMfcCvTut_11Jun07Dlg::OnInitDialog()
 	edtScanDir1D.SetWindowTextA("4");
 
 
-	Hcv::IOMgr::SetCore(this);
+	Ncv::IOMgr::SetCore(this);
 
 	this->InitIOValues();
 
@@ -925,7 +925,7 @@ void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
 
 	if (CV_EVENT_RBUTTONUP == a_event)
 	{
-		Hcv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
+		Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
 
 		if (NULL == rs1)
 			return;
@@ -975,7 +975,7 @@ void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
 
 		if (pDlg->ValueExists("x2"))
 		{
-			Hcv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
+			Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
 
 			if (NULL == rs1)
 				return;
@@ -983,7 +983,7 @@ void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
 			rs1->ShowEdgeOfConflict();
 
 			/*
-						Hcv::S16ImageRef img1 = rs1->GenSegmentedImage(false);
+						Ncv::S16ImageRef img1 = rs1->GenSegmentedImage(false);
 
 						img1 = img1->Clone();
 
@@ -1738,8 +1738,8 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 							CString(sAprSize) +
 							CString("\\Segms\\");
 
-						//Hcv::FilePathMgr fpm1( GlobalStuff::m_imgFilePath.GetBuffer() );
-						Hcv::FilePathMgr fpm1(sPath_1.GetBuffer());
+						//Ncv::FilePathMgr fpm1( GlobalStuff::m_imgFilePath.GetBuffer() );
+						Ncv::FilePathMgr fpm1(sPath_1.GetBuffer());
 
 						Hcpl::FixedVector< char > fileTitle_Arr;
 

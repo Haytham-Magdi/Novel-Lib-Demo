@@ -11,10 +11,10 @@
 //#include <Lib\Novel\Ncv\CircleContourOfPix.h>
 
 using namespace Hcpl;
-using namespace Hcv;
-using namespace Hcv::Image_Operations;
-using namespace Hcv::ImageAccessorOperations;
-//using namespace Hcv::Ns;
+using namespace Ncv;
+using namespace Ncv::Image_Operations;
+using namespace Ncv::ImageAccessorOperations;
+//using namespace Ncv::Ns;
 
 //using namespace Hcpl::MfcEx;
 
@@ -8312,7 +8312,7 @@ void ImageProcessor::Create()
 
 void InitLibs(void)
 {
-	Hcv::InitLib();
+	Ncv::InitLib();
 
 
 }

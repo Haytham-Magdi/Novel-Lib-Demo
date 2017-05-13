@@ -3,10 +3,10 @@
 
 
 
-Hcv::F32ImageRef GlobalStuff::OrgImg = NULL;
+Ncv::F32ImageRef GlobalStuff::OrgImg = NULL;
 
-//std::vector < Hcv::F32ImageRef >  GlobalStuff::m_linePathImgVect;
-Hcpl::FixedVector  < Hcv::F32ImageRef >  GlobalStuff::m_linePathImgVect( 300 );
+//std::vector < Ncv::F32ImageRef >  GlobalStuff::m_linePathImgVect;
+Hcpl::FixedVector  < Ncv::F32ImageRef >  GlobalStuff::m_linePathImgVect( 300 );
 
 
 int GlobalStuff::m_linePathImgIndex = -1;
@@ -64,10 +64,10 @@ ImageProcessor * ImageProcessor::s_pProc = NULL;
 void (* Hcpl::FixedVectorDebug::pFunc_Update)() = NULL;   
 
 
-Hcv::IRegionSegmentor20Ref GlobalStuff::m_RgnSgm;
+Ncv::IRegionSegmentor20Ref GlobalStuff::m_RgnSgm;
 
-Hcv::F32Point GlobalStuff::m_point0;
-Hcv::F32Point GlobalStuff::m_point1;
+Ncv::F32Point GlobalStuff::m_point0;
+Ncv::F32Point GlobalStuff::m_point1;
 
 
 GlobalStuff::GlobalStuff(void)

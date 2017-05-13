@@ -12,7 +12,7 @@
 //
 
 // CMfcCvTut_11Jun07Dlg dialog
-class CMfcCvTut_11Jun07Dlg : public CDialog, public Hcv::IOMgr::IIOMgrCore
+class CMfcCvTut_11Jun07Dlg : public CDialog, public Ncv::IOMgr::IIOMgrCore
 {
 // Construction
 public:

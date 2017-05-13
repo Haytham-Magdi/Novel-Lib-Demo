@@ -21,7 +21,7 @@ public:
 	~GlobalStuff(void);
 
 
-	static Hcv::F32ImageRef OrgImg;
+	static Ncv::F32ImageRef OrgImg;
 
 
 	static void ResetLinePathImg()
@@ -32,8 +32,8 @@ public:
 		SetLinePathImg( OrgImg );		
 	}
 
-	static void ShowLinePathImg( Hcv::F32ImageRef a_dspImg = NULL )
-	//static void ShowLinePathImg( Hcv::F32ImageRef a_dspImg )
+	static void ShowLinePathImg( Ncv::F32ImageRef a_dspImg = NULL )
+	//static void ShowLinePathImg( Ncv::F32ImageRef a_dspImg )
 	{
 		if( NULL == a_dspImg )
 			a_dspImg = GlobalStuff::GetLinePathImg();
@@ -43,12 +43,12 @@ public:
 
 
 
-	static Hcv::F32ImageRef GetLinePathImg( )
+	static Ncv::F32ImageRef GetLinePathImg( )
 	{
 		return m_linePathImgVect[ m_linePathImgIndex ];
 	}
 
-	static void SetLinePathImg( Hcv::F32ImageRef a_src )
+	static void SetLinePathImg( Ncv::F32ImageRef a_src )
 	{
 		m_linePathImgIndex++;
 		m_linePathImgVect.SetSize( m_linePathImgIndex + 1 );
@@ -80,32 +80,32 @@ public:
 	}
 
 
-	static Hcv::IRegionSegmentor20Ref GetRegionSegmentor( )
+	static Ncv::IRegionSegmentor20Ref GetRegionSegmentor( )
 	{
 		return m_RgnSgm;
 	}
 
-	static void SetRegionSegmentor( Hcv::IRegionSegmentor20Ref a_src )
+	static void SetRegionSegmentor( Ncv::IRegionSegmentor20Ref a_src )
 	{
 		m_RgnSgm = a_src;
 	}
 
-	static Hcv::F32Point GetPoint0( )
+	static Ncv::F32Point GetPoint0( )
 	{
 		return m_point0;
 	}
 
-	static Hcv::F32Point GetPoint1( )
+	static Ncv::F32Point GetPoint1( )
 	{
 		return m_point1;
 	}
 
-	static void SetPoint0( Hcv::F32Point & a_pnt )
+	static void SetPoint0( Ncv::F32Point & a_pnt )
 	{
 		m_point0 = a_pnt;
 	}
 
-	static void SetPoint1( Hcv::F32Point & a_pnt )
+	static void SetPoint1( Ncv::F32Point & a_pnt )
 	{
 		m_point1 = a_pnt;
 	}
@@ -126,16 +126,16 @@ public:
 
 protected:
 
-	//static Hcv::F32ImageRef LinePathImg;
+	//static Ncv::F32ImageRef LinePathImg;
 	
-	//static std::vector < Hcv::F32ImageRef > m_linePathImgVect;
-	static Hcpl::FixedVector < Hcv::F32ImageRef > m_linePathImgVect;
+	//static std::vector < Ncv::F32ImageRef > m_linePathImgVect;
+	static Hcpl::FixedVector < Ncv::F32ImageRef > m_linePathImgVect;
 
 	static int m_linePathImgIndex;
 
-	static Hcv::F32Point m_point0;
-	static Hcv::F32Point m_point1;
+	static Ncv::F32Point m_point0;
+	static Ncv::F32Point m_point1;
 
-	static Hcv::IRegionSegmentor20Ref m_RgnSgm;
+	static Ncv::IRegionSegmentor20Ref m_RgnSgm;
 
 };

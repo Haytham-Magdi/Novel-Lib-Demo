@@ -37,7 +37,7 @@ class ImageProcessor {
 
  
 
-	Hcv::U8ImageRef img;
+	Ncv::U8ImageRef img;
 
  
 
@@ -100,7 +100,7 @@ class ImageProcessor {
     
 		//auto v1 = cvvLoadImage(filename);
 
-		img = new Hcv::U8Image(
+		img = new Ncv::U8Image(
 		  cvvLoadImage( filename )); // load image
 
 		GlobalStuff::m_imgFilePath = filename;
@@ -111,14 +111,14 @@ class ImageProcessor {
 
 		  {
 
-				Hcv::F32ImageRef src = GenF32FromS16Image(
+				Ncv::F32ImageRef src = GenF32FromS16Image(
 					GenS16FromU8Image(img));
-				Hcv::F32ImageRef res = src;
+				Ncv::F32ImageRef res = src;
 
 				if( false )
 				{
-					Hcv::F32ColorVal * srcBuf = 
-						(Hcv::F32ColorVal *)src->GetPixAt( 0, 0 );
+					Ncv::F32ColorVal * srcBuf = 
+						(Ncv::F32ColorVal *)src->GetPixAt( 0, 0 );
 
 					CvSize srcSiz = src->GetSize();
 
@@ -126,7 +126,7 @@ class ImageProcessor {
 
 					for( int i=0; i < nSrcSiz1D; i++ )
 					{
-						Hcv::F32ColorVal & rColor = srcBuf[ i ];
+						Ncv::F32ColorVal & rColor = srcBuf[ i ];
 
 						if( rColor.val0 > 30 )
 							i = i;
