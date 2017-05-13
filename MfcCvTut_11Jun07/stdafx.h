@@ -74,11 +74,11 @@
 
 //#define Hcpl_DEBUG
 
-//#include <Lib\Cpp\Common\commonLib.h>
-#include <Lib\Cpp\Common\commonLib.h>
-#include <Lib\Cpp\MfcEx\mfcExLib.h>
-#include <Lib\Cpp\Math\mathLib.h>
-#include <Lib\Hcv\HcvLib.h>
+//#include <Lib\Novel\Ncpp\Common\commonLib.h>
+#include <Lib\Novel\Ncpp\Common\commonLib.h>
+#include <Lib\Novel\Ncpp\MfcEx\mfcExLib.h>
+#include <Lib\Novel\Ncpp\Math\mathLib.h>
+#include <Lib\Novel\Ncv\HcvLib.h>
 
 #include "cvapp.h"
 

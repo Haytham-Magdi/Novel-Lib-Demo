@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include <Lib\Cpp\Common\commonLib.cpp>
-#include <Lib\Cpp\Math\mathLib.cpp>
-#include <Lib\Hcv\HcvLib.cpp>
+#include <Lib\Novel\Ncpp\Common\commonLib.cpp>
+#include <Lib\Novel\Ncpp\Math\mathLib.cpp>
+#include <Lib\Novel\Ncv\HcvLib.cpp>
 
 //#include "lib.c"
 

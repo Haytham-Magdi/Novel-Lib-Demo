@@ -68,6 +68,15 @@
     <ClInclude Include="WinVer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GlobalStuff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cvapp-Core-cpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cvapp-Core.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MfcCvTut_11Jun07.ico">

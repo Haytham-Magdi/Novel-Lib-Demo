@@ -1,16 +1,16 @@
 #pragma once
 
 
-#include <Lib\Cpp\Common\commonLib.h>
-#include <Lib\Cpp\Math\mathLib.h>
-#include <Lib\Hcv\CvIncludes.h>
-#include <Lib\Hcv\Types.h>
-#include <Lib\Hcv\error.h>
+#include <Lib\Novel\Ncpp\Common\commonLib.h>
+#include <Lib\Novel\Ncpp\Math\mathLib.h>
+#include <Lib\Novel\Ncv\CvIncludes.h>
+#include <Lib\Novel\Ncv\Types.h>
+#include <Lib\Novel\Ncv\error.h>
 #include <vector>
-#include <Lib\Hcv\Channel.h>
-#include <Lib\Hcv\Image.h>
+#include <Lib\Novel\Ncv\Channel.h>
+#include <Lib\Novel\Ncv\Image.h>
 
-#include <Lib\Hcv\RegionSegmentor20.h>
+#include <Lib\Novel\Ncv\RegionSegmentor20.h>
 
 
 

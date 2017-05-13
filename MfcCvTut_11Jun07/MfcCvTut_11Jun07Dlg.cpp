@@ -6,11 +6,11 @@
 #include "MfcCvTut_11Jun07Dlg.h"
 #include "cvapp.h"
 
-#include <Lib\Hcv\funcs1.h>
+#include <Lib\Novel\Ncv\funcs1.h>
 
-#include <Lib\Cpp\Common\FixedVector.h>
+#include <Lib\Novel\Ncpp\Common\FixedVector.h>
 
-#include <Lib\Cpp\Common\FilePathMgr.h>
+#include <Lib\Novel\Ncpp\Common\FilePathMgr.h>
 
 
 
