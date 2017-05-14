@@ -10,13 +10,13 @@
 
 //#include <Lib\Novel\Ncv\CircleContourOfPix.h>
 
-using namespace Hcpl;
+using namespace Ncpp;
 using namespace Ncv;
 using namespace Ncv::Image_Operations;
 using namespace Ncv::ImageAccessorOperations;
 //using namespace Ncv::Ns;
 
-//using namespace Hcpl::MfcEx;
+//using namespace Ncpp::MfcEx;
 
 
 class Base;
@@ -108,8 +108,8 @@ void Try1()
 	//PtrRef<int> pInt = new int;	
 	//PtrRef<float> pFloat = new float;
 
-	//Hcpl::KillObj(pInt);
-	//Hcpl::KillObj(pFloat);
+	//Ncpp::KillObj(pInt);
+	//Ncpp::KillObj(pFloat);
 
 }
 
@@ -351,7 +351,7 @@ void ImageProcessor::CircPntOfLinePathImg3(int a_x, int a_y)
 			const int nPI = idx2D.Calc(a_x, a_y);
 
 			S32ImageRef dirImg = igm1.GetGradDirImg();
-			Hcpl::Int32 * dirBuf = dirImg->GetPixAt(0, 0);
+			Ncpp::Int32 * dirBuf = dirImg->GetPixAt(0, 0);
 
 			const int nDir = dirBuf[nPI];
 
@@ -2815,8 +2815,8 @@ void ImageProcessor::TryRS20()
 
 		GlobalStuff::SetRegionSegmentor(NULL);
 
-		//Hcpl::FixedVectorDebug::CycleNum++;
-		Hcpl::FixedVectorDebug::IncCycleNum();
+		//Ncpp::FixedVectorDebug::CycleNum++;
+		Ncpp::FixedVectorDebug::IncCycleNum();
 
 
 		//IRegionSegmentor20Ref rs2 = new RegionSegmentor20(avgImg2, weightImgS16, nThrVal, avgImg0);	
@@ -3338,7 +3338,7 @@ void ImageProcessor::Try26_4()
 		for (int i = 0; i < nSize_1D; i++)
 		{
 			*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
-			//Hcpl_ASSERT(src_Standev_Ptr[i] > 0.0 && src_Standev_Ptr[i] < 3000.0f);
+			//Ncpp_ASSERT(src_Standev_Ptr[i] > 0.0 && src_Standev_Ptr[i] < 3000.0f);
 			dest_Ptr[i].Vals[3] = src_Standev_Ptr[i];
 		}
 
@@ -3573,7 +3573,7 @@ void ImageProcessor::Try26()
 			ConflictInfo & rSrc = srcPtr[i];
 			F32ColorVal & rDest = destPtr[i];
 
-			//Hcpl_ASSERT(-1 != rSrc.Dir);
+			//Ncpp_ASSERT(-1 != rSrc.Dir);
 
 			if (rSrc.Exists)
 			{
@@ -4466,7 +4466,7 @@ void ImageProcessor::Try20()
 
 					float val = confImg_Buf[k];
 
-					Hcpl_ASSERT(nIdx_Dst < nImg_2_Siz1D);
+					Ncpp_ASSERT(nIdx_Dst < nImg_2_Siz1D);
 
 					float & rDst = img_2_Buf[nIdx_Dst];
 

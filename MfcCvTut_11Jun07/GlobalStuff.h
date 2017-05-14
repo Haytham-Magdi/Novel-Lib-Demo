@@ -129,7 +129,7 @@ protected:
 	//static Ncv::F32ImageRef LinePathImg;
 	
 	//static std::vector < Ncv::F32ImageRef > m_linePathImgVect;
-	static Hcpl::FixedVector < Ncv::F32ImageRef > m_linePathImgVect;
+	static Ncpp::FixedVector < Ncv::F32ImageRef > m_linePathImgVect;
 
 	static int m_linePathImgIndex;
 

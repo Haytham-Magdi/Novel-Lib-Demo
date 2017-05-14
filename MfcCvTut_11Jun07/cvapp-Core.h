@@ -56,8 +56,8 @@ class ImageProcessor {
 
 		s_pProc = this;
 
-		//Hcpl::FixedVectorDebug::pFunc_Update = this->Update_FixedVectorDebug;
-		Hcpl::FixedVectorDebug::pFunc_Update = ImageProcessor::S_Update_FixedVectorDebug;
+		//Ncpp::FixedVectorDebug::pFunc_Update = this->Update_FixedVectorDebug;
+		Ncpp::FixedVectorDebug::pFunc_Update = ImageProcessor::S_Update_FixedVectorDebug;
 	}
 
 
@@ -73,7 +73,7 @@ class ImageProcessor {
 		int nOldVal = m_fixedVectorDebug_AllocSizeTot;
 
 		m_fixedVectorDebug_AllocSizeTot =
-			Hcpl::FixedVectorDebug::AllocSizeTot;
+			Ncpp::FixedVectorDebug::AllocSizeTot;
 
 		if( m_fixedVectorDebug_AllocSizeTot - nOldVal > 50000000 )
 			m_fixedVectorDebug_AllocSizeTot = m_fixedVectorDebug_AllocSizeTot;

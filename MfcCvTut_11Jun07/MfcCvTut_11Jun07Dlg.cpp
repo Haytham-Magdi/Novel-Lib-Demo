@@ -1653,7 +1653,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 {
 	// TODO: Add your control notification handler code here
 
-	//Hcpl::FixedVector< int > aprSiz_Arr;
+	//Ncpp::FixedVector< int > aprSiz_Arr;
 
 	//aprSiz_Arr.PushBack( 11 );
 	//aprSiz_Arr.PushBack( 17 );
@@ -1692,7 +1692,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 		GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
 	}
 
-		Hcpl::FixedVector< CString > dirPath_Arr(50);
+		Ncpp::FixedVector< CString > dirPath_Arr(50);
 
 
 		dirPath_Arr.PushBack(
@@ -1706,7 +1706,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 			);
 
 
-		Hcpl::FixedVector< CString > filePath_Arr(500);
+		Ncpp::FixedVector< CString > filePath_Arr(500);
 
 		for (int i = 0; i < dirPath_Arr.GetSize(); i++)
 		{
@@ -1741,7 +1741,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 						//Ncv::FilePathMgr fpm1( GlobalStuff::m_imgFilePath.GetBuffer() );
 						Ncv::FilePathMgr fpm1(sPath_1.GetBuffer());
 
-						Hcpl::FixedVector< char > fileTitle_Arr;
+						Ncpp::FixedVector< char > fileTitle_Arr;
 
 						fpm1.GetFileTitle(fileTitle_Arr);
 
@@ -1772,20 +1772,20 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 
 
 
-		int nOld_AllocCnt = Hcpl::FixedVectorDebug::AllocCnt;
+		int nOld_AllocCnt = Ncpp::FixedVectorDebug::AllocCnt;
 
-		int nOld_AllocCnt_2 = Hcpl::FixedVectorDebug::AllocCnt_2;
+		int nOld_AllocCnt_2 = Ncpp::FixedVectorDebug::AllocCnt_2;
 
-		int nOld_AllocSizeTot = Hcpl::FixedVectorDebug::AllocSizeTot;
+		int nOld_AllocSizeTot = Ncpp::FixedVectorDebug::AllocSizeTot;
 
-		int nOld_FixedVectorID = Hcpl::FixedVectorDebug::FixedVectorID++;
+		int nOld_FixedVectorID = Ncpp::FixedVectorDebug::FixedVectorID++;
 
 		for (int i = 0; i < filePath_Arr.GetSize(); i++)
 		{
 			//CString sFilePath = sPathTrain + "\\" +
 			//"2092.jpg";
 
-			//Hcpl::FixedVectorDebug::Reset_ID_Arr();
+			//Ncpp::FixedVectorDebug::Reset_ID_Arr();
 
 
 			CString sFilePath = filePath_Arr[i];
@@ -1795,32 +1795,32 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
 
 			proc = new ImageProcessor(sFilePath);
 
-			//Hcpl::FixedVectorDebug::CycleNum++;
+			//Ncpp::FixedVectorDebug::CycleNum++;
 
 			proc->TryRS20();
 
-			int a = Hcpl::FixedVectorDebug::AllocCnt;
+			int a = Ncpp::FixedVectorDebug::AllocCnt;
 
-			int aa = Hcpl::FixedVectorDebug::AllocCnt_2;
+			int aa = Ncpp::FixedVectorDebug::AllocCnt_2;
 
 
-			int a2 = Hcpl::FixedVectorDebug::AllocSizeTot;
+			int a2 = Ncpp::FixedVectorDebug::AllocSizeTot;
 
-			int a3 = Hcpl::FixedVectorDebug::FixedVectorID++;
+			int a3 = Ncpp::FixedVectorDebug::FixedVectorID++;
 
 			int nActCnt = 0;
 
 			int nDeactCnt = 0;
 
 			for (int i = 0;
-				i < Hcpl::FixedVectorDebug::FixedVectorID_Arr_Size; i++)
-				//i < Hcpl::FixedVectorDebug::MaxID_Activated; i++ )
+				i < Ncpp::FixedVectorDebug::FixedVectorID_Arr_Size; i++)
+				//i < Ncpp::FixedVectorDebug::MaxID_Activated; i++ )
 			{
 				//if( i >= nOld_FixedVectorID )
-				if (Hcpl::FixedVectorDebug::FixedVectorID_Cycle_Arr[i] >=
-					Hcpl::FixedVectorDebug::CycleNum)
+				if (Ncpp::FixedVectorDebug::FixedVectorID_Cycle_Arr[i] >=
+					Ncpp::FixedVectorDebug::CycleNum)
 				{
-					if (-1 != Hcpl::FixedVectorDebug::FixedVectorID_Arr[i])
+					if (-1 != Ncpp::FixedVectorDebug::FixedVectorID_Arr[i])
 					{
 						nActCnt++;
 

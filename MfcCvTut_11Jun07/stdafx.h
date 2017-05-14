@@ -72,7 +72,7 @@
 #endif
 #endif
 
-//#define Hcpl_DEBUG
+//#define Ncpp_DEBUG
 
 //#include <Lib\Novel\Ncpp\Common\commonLib.h>
 #include <Lib\Novel\Ncpp\Common\commonLib.h>
