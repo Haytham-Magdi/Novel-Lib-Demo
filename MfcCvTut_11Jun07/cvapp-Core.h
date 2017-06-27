@@ -27,7 +27,7 @@
 #include "GlobalStuff.h"
 
 
-#include <Lib\Novel\Ncv\Image.h>
+#include <Lib\Novel\Ncv\OpenCV\Image.h>
 
 
 void InitLibs(void);

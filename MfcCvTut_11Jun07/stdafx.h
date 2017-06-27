@@ -76,9 +76,9 @@
 
 //#include <Lib\Novel\Ncpp\Common\commonLib.h>
 #include <Lib\Novel\Ncpp\Common\commonLib.h>
-#include <Lib\Novel\Ncpp\MfcEx\mfcExLib.h>
+//#include <Lib\Novel\Ncpp\MfcEx\mfcExLib.h>
 #include <Lib\Novel\Ncpp\Math\mathLib.h>
-#include <Lib\Novel\Ncv\HcvLib.h>
+#include <Lib\Novel\Ncv\NcvLib.h>
 
 #include "cvapp.h"
 
