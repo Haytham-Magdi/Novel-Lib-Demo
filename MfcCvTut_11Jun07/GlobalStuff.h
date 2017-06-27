@@ -80,16 +80,6 @@ public:
 	}
 
 
-	static Ncv::IRegionSegmentor20Ref GetRegionSegmentor( )
-	{
-		return m_RgnSgm;
-	}
-
-	static void SetRegionSegmentor( Ncv::IRegionSegmentor20Ref a_src )
-	{
-		m_RgnSgm = a_src;
-	}
-
 	static Ncv::F32Point GetPoint0( )
 	{
 		return m_point0;
@@ -136,6 +126,5 @@ protected:
 	static Ncv::F32Point m_point0;
 	static Ncv::F32Point m_point1;
 
-	static Ncv::IRegionSegmentor20Ref m_RgnSgm;
 
 };
