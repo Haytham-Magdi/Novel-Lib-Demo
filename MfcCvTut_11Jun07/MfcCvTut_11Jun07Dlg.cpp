@@ -6,7 +6,7 @@
 #include "MfcCvTut_11Jun07Dlg.h"
 #include "cvapp.h"
 
-#include <Lib\Novel\Ncv\funcs1.h>
+#include <Lib\Novel\Ncv\OpenCV\funcs1.h>
 
 #include <Lib\Novel\Ncpp\Common\FixedVector.h>
 
@@ -746,7 +746,7 @@ void CMfcCvTut_11Jun07Dlg::InitIOValues()
 	//cvSetMouseCallback( "Original Image", LinePath_Mouse_Callback, (void*) this );
 	cvSetMouseCallback("LinePathImg", LinePath_Mouse_Callback, (void*) this);
 
-	cvSetMouseCallback("RgnSgmImg", RgnSgmImg_Mouse_Callback, (void*) this);
+	//cvSetMouseCallback("RgnSgmImg", RgnSgmImg_Mouse_Callback, (void*) this);
 
 
 }
@@ -916,107 +916,107 @@ void CMfcCvTut_11Jun07Dlg::LinePath_Mouse_Callback(
 
 
 
-void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
-	int a_event, int a_x, int a_y, int a_flags, void* a_param)
-{
-	CMfcCvTut_11Jun07Dlg * pDlg = (CMfcCvTut_11Jun07Dlg *)a_param;
-
-	static char buff[100];
-
-	if (CV_EVENT_RBUTTONUP == a_event)
-	{
-		Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
-
-		if (NULL == rs1)
-			return;
-
-		//rs1->ShowValleyPath( a_x, a_y );
-		rs1->ShowSrcPath(a_x, a_y);
-
-
-		return;
-	}
-
-	if (CV_EVENT_LBUTTONUP == a_event)
-	{
-		if (pDlg->ValueExists("x2"))
-		{
-			pDlg->DoClearIo();
-		}
-
-		pDlg->m_nMouseLBCnt++;
-
-
-		sprintf(buff, "x%d", pDlg->m_nMouseLBCnt);
-
-		//this->m_listKeys.AddString("x1");
-		pDlg->m_listKeys.AddString(buff);
-
-		sprintf(buff, "%d", a_x);
-
-		//this->m_listValues.AddString("68");
-		//this->m_listValues.AddString("127");
-		pDlg->m_listValues.AddString(buff);
-
-
-
-
-		sprintf(buff, "y%d", pDlg->m_nMouseLBCnt);
-
-		//this->m_listKeys.AddString("y1");
-		pDlg->m_listKeys.AddString(buff);
-
-		sprintf(buff, "%d", a_y);
-
-		//this->m_listValues.AddString("86");
-		//this->m_listValues.AddString("99");
-		pDlg->m_listValues.AddString(buff);
-
-
-		if (pDlg->ValueExists("x2"))
-		{
-			Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
-
-			if (NULL == rs1)
-				return;
-
-			rs1->ShowEdgeOfConflict();
-
-			/*
-						Ncv::S16ImageRef img1 = rs1->GenSegmentedImage(false);
-
-						img1 = img1->Clone();
-
-
-						HCV_CALL(
-
-						cvCircle (
-						img1->GetIplImagePtr(),
-						cvPoint( a_x, a_y ),
-						3,
-						//CV_RGB( a_color.val2, a_color.val1, a_color.val0 ),
-						CV_RGB( 255, 0, 0 ),
-						-1 // CV_FILL
-						) );
-
-
-
-
-						ShowImage(img1, "RgnSgmImg");
-						//proc->DrawLinePath();
-
-						*/
-		}
-
-	}
-
-
-
-
-
-
-}
-
+//void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
+//	int a_event, int a_x, int a_y, int a_flags, void* a_param)
+//{
+//	CMfcCvTut_11Jun07Dlg * pDlg = (CMfcCvTut_11Jun07Dlg *)a_param;
+//
+//	static char buff[100];
+//
+//	if (CV_EVENT_RBUTTONUP == a_event)
+//	{
+//		Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
+//
+//		if (NULL == rs1)
+//			return;
+//
+//		//rs1->ShowValleyPath( a_x, a_y );
+//		rs1->ShowSrcPath(a_x, a_y);
+//
+//
+//		return;
+//	}
+//
+//	if (CV_EVENT_LBUTTONUP == a_event)
+//	{
+//		if (pDlg->ValueExists("x2"))
+//		{
+//			pDlg->DoClearIo();
+//		}
+//
+//		pDlg->m_nMouseLBCnt++;
+//
+//
+//		sprintf(buff, "x%d", pDlg->m_nMouseLBCnt);
+//
+//		//this->m_listKeys.AddString("x1");
+//		pDlg->m_listKeys.AddString(buff);
+//
+//		sprintf(buff, "%d", a_x);
+//
+//		//this->m_listValues.AddString("68");
+//		//this->m_listValues.AddString("127");
+//		pDlg->m_listValues.AddString(buff);
+//
+//
+//
+//
+//		sprintf(buff, "y%d", pDlg->m_nMouseLBCnt);
+//
+//		//this->m_listKeys.AddString("y1");
+//		pDlg->m_listKeys.AddString(buff);
+//
+//		sprintf(buff, "%d", a_y);
+//
+//		//this->m_listValues.AddString("86");
+//		//this->m_listValues.AddString("99");
+//		pDlg->m_listValues.AddString(buff);
+//
+//
+//		if (pDlg->ValueExists("x2"))
+//		{
+//			Ncv::IRegionSegmentor20Ref rs1 = GlobalStuff::GetRegionSegmentor();
+//
+//			if (NULL == rs1)
+//				return;
+//
+//			rs1->ShowEdgeOfConflict();
+//
+//			/*
+//						Ncv::S16ImageRef img1 = rs1->GenSegmentedImage(false);
+//
+//						img1 = img1->Clone();
+//
+//
+//						HCV_CALL(
+//
+//						cvCircle (
+//						img1->GetIplImagePtr(),
+//						cvPoint( a_x, a_y ),
+//						3,
+//						//CV_RGB( a_color.val2, a_color.val1, a_color.val0 ),
+//						CV_RGB( 255, 0, 0 ),
+//						-1 // CV_FILL
+//						) );
+//
+//
+//
+//
+//						ShowImage(img1, "RgnSgmImg");
+//						//proc->DrawLinePath();
+//
+//						*/
+//		}
+//
+//	}
+//
+//
+//
+//
+//
+//
+//}
+//
 
 
 

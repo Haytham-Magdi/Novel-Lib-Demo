@@ -1,7 +1,7 @@
 //#include <vector.h>
 
 #include "cvapp.h"
-#include <Lib\Novel\Ncv\SignalOneDim.h>
+//#include <Lib\Novel\Ncv\SignalOneDim.h>
 #include "GlobalStuff.h"
 
 #include <Lib\Novel\Ncv\TempImageAccessor.h>
