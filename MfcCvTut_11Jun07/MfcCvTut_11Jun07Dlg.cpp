@@ -478,57 +478,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedTry7Btn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedClustersBtn()
-{
-	if (proc != 0)
-	{
-		// process and display
 
-		proc->Clusters();
-
-		//proc->display();
-
-	}
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry8Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try8();
-
-		//proc->display();
-
-	}
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry9Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try9();
-
-		//proc->display();
-
-	}
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry10Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try10();
-
-		//proc->display();
-
-	}
-}
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgBtn()
 {

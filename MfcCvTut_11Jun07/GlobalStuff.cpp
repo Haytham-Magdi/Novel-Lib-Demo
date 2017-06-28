@@ -64,7 +64,6 @@ ImageProcessor * ImageProcessor::s_pProc = NULL;
 void (* Ncpp::FixedVectorDebug::pFunc_Update)() = NULL;   
 
 
-Ncv::IRegionSegmentor20Ref GlobalStuff::m_RgnSgm;
 
 Ncv::F32Point GlobalStuff::m_point0;
 Ncv::F32Point GlobalStuff::m_point1;

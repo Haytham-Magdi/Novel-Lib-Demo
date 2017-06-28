@@ -166,48 +166,21 @@ class ImageProcessor {
  
 
     void display() {
-
- 
-
       cvvNamedWindow( "Resulting Image", 1 );  
-
       cvvShowImage( "Resulting Image", img->GetIplImagePtr() );  
-
     }
 
  
 
     void execute();
     void Sobel();
-    void Try1();
-    void Try2();
-    void Try3();
-    void Try4();
-    void Try5();
-    void Try6();
-    void Try7();	
-    void Clusters();	
-    void Try8();	
-    void Try9();	
-    void Try10();	
-    void FastAvg();	
+
+	void FastAvg();	
     void MaxMinEdge();	
-    void Try11();	
-    void Try12();	
-    void Try13();	
-    void Try14();	
-    void Try15();	
-    void EdgeDir2();		
+
+	void EdgeDir2();		
     void EdgeDir();	
-    void Try16();	
-    void Try17();	
-    void Try18();	
-    void Try19();		
-    void Try20();	
-    void Try22();	
-    void Try23();	
-    void Try24();	
-    void Try25();	
+
 	void Try26_0();
 	void Try26();
 	void Try26_1();
@@ -215,12 +188,9 @@ class ImageProcessor {
 	void Try26_3();
 	void Try26_4();
 	void Try26_5();
-    void TryRS20();	
     void Undo();	
     void Redo();	
 	void DrawLinePath();
-	void CircPntOfLinePathImg( int a_x, int a_y );
-	void CircPntOfLinePathImg2( int a_x, int a_y );
 
 	void ClipLinePathImg();
 	void AvgColorsOfLinePathImg();
