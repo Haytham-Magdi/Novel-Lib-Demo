@@ -829,43 +829,6 @@ void CMfcCvTut_11Jun07Dlg::LinePath_Mouse_Callback(
 	}
 
 
-	if (CV_EVENT_RBUTTONUP == a_event)
-	{
-
-		pDlg->m_nMouseLBCnt++;
-
-
-		sprintf(buff, "x%d", pDlg->m_nMouseLBCnt);
-
-		//this->m_listKeys.AddString("x1");
-		pDlg->m_listKeys.AddString(buff);
-
-		sprintf(buff, "%d", a_x);
-
-		//this->m_listValues.AddString("68");
-		//this->m_listValues.AddString("127");
-		pDlg->m_listValues.AddString(buff);
-
-
-
-
-		sprintf(buff, "y%d", pDlg->m_nMouseLBCnt);
-
-		//this->m_listKeys.AddString("y1");
-		pDlg->m_listKeys.AddString(buff);
-
-		sprintf(buff, "%d", a_y);
-
-		//this->m_listValues.AddString("86");
-		//this->m_listValues.AddString("99");
-		pDlg->m_listValues.AddString(buff);
-
-
-
-		//proc->CircPntOfLinePathImg( a_x, a_y );
-		//proc->CircPntOfLinePathImg2( a_x, a_y );		
-		proc->CircPntOfLinePathImg3(a_x, a_y);
-	}
 
 	if (CV_EVENT_LBUTTONUP == a_event)
 	{

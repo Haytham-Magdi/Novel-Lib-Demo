@@ -221,7 +221,6 @@ class ImageProcessor {
 	void DrawLinePath();
 	void CircPntOfLinePathImg( int a_x, int a_y );
 	void CircPntOfLinePathImg2( int a_x, int a_y );
-	void CircPntOfLinePathImg3( int a_x, int a_y );
 
 	void ClipLinePathImg();
 	void AvgColorsOfLinePathImg();
