@@ -58,47 +58,8 @@ public:
 public:
 	afx_msg void OnBnClickedCreateBtn();
 public:
-	afx_msg void OnBnClickedSobelBtn();
-public:
-	afx_msg void OnBnClickedTry1Btn();
-public:
-	afx_msg void OnBnClickedTry2Btn();
-public:
-	afx_msg void OnBnClickedTry3Btn();
-public:
-	afx_msg void OnBnClickedTry4Btn();
-public:
-	afx_msg void OnBnClickedTry5Btn();
-public:
-	afx_msg void OnBnClickedTry6Btn();
-public:
-	afx_msg void OnBnClickedTry7Btn();
-public:
-	afx_msg void OnBnClickedClustersBtn();
-public:
-	afx_msg void OnBnClickedTry8Btn();
-public:
-	afx_msg void OnBnClickedTry9Btn();
-public:
-	afx_msg void OnBnClickedTry10Btn();
-public:
 	afx_msg void OnBnClickedFastAvgBtn();
 public:
-	afx_msg void OnBnClickedMaxMinEdgeBtn();
-public:
-	afx_msg void OnBnClickedTry11Btn();
-public:
-	afx_msg void OnBnClickedTry12Btn();
-	afx_msg void OnBnClickedTry13Btn();
-	afx_msg void OnBnClickedTry14Btn();
-	afx_msg void OnBnClickedSobelMaxBtn();
-	afx_msg void OnBnClickedTry15Btn();
-	afx_msg void OnBnClickedEdgeDirBtn();
-	afx_msg void OnBnClickedTry16Btn();
-	afx_msg void OnBnClickedEdgeDir2Btn();
-	afx_msg void OnBnClickedTry17Btn();
-	afx_msg void OnBnClickedTry18Btn();
-	afx_msg void OnBnClickedTry19Btn();
 	afx_msg void OnLbnSelchangeList2();
 protected:
 	CListBox m_listKeys;
@@ -117,7 +78,6 @@ public:
 	afx_msg void OnBnClickedSaveToFileBtn();
 	CEdit edtSaveToFile;
 	afx_msg void OnBnClickedClipBtn();
-	afx_msg void OnBnClickedTry20Btn();
 	CEdit edtThreshold;
 	afx_msg void OnBnClickedThresholdBtn();
 	afx_msg void OnBnClickedUndoBtn();
@@ -130,15 +90,10 @@ public:
 	afx_msg void OnBnClickedMedianBtn();
 	afx_msg void OnBnClickedEqualizeHistBtn();
 	CEdit edtAprSize1D;
-	afx_msg void OnBnClickedTryrs20Btn();
 	afx_msg void OnBnClickedGrayBtn();
 	afx_msg void OnBnClickedMgradBtn();
 	afx_msg void OnBnClickedMultByBtn();
 	afx_msg void OnBnClickedMgrad1s2Btn();
-	afx_msg void OnBnClickedTry22Btn();
-	afx_msg void OnBnClickedTry23Btn();
-	afx_msg void OnBnClickedTry24Btn();
-	afx_msg void OnBnClickedTry25Btn();
 	afx_msg void OnBnClickedTry26Btn_0();
 	afx_msg void OnBnClickedTry26Btn();
 	CEdit edtScanDir1D;
