@@ -97,6 +97,5 @@ public:
 	afx_msg void OnBnClickedTry26Btn_0();
 	afx_msg void OnBnClickedTry26Btn();
 	CEdit edtScanDir1D;
-	afx_msg void OnBnClickedCbisBerkExecute();
 	afx_msg void OnBnClickedFastAvgColorsBtn();
 };

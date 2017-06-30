@@ -78,7 +78,7 @@ void Try1()
 
 		PixelTypeInfo * ptiS8 = GetPixTInfo((char)0);*/
 
-	int nDId = HCV_DEPTH_ID(Uint8);
+	int nDId = NCV_DEPTH_ID(Uint8);
 
 	int a = 0;
 
@@ -213,15 +213,6 @@ void ImageProcessor::MorphG1S2LinePathImg(int a_nAprSiz)
 }
 
 
-void ImageProcessor::MorphGradLinePathImg(int a_nAprSiz)
-{
-	//GlobalStuff::SetLinePathImg( GenMorphGradImg( 
-	GlobalStuff::SetLinePathImg(CircDiff::GenResult(
-		GlobalStuff::GetLinePathImg(), a_nAprSiz));
-
-	ShowImage(GlobalStuff::GetLinePathImg(), "LinePathImg");
-}
-
 
 void ImageProcessor::MultByNumLinePathImg(float a_num)
 {
@@ -323,203 +314,203 @@ void ImageProcessor::DrawLinePath()
 	//LinePathRef lp = new LinePath( x1, y1, x2, y1 );
 	LinePathRef lp = new LinePathInt(x1, y1, x2, y2);
 
-	//ImageLineViewerRef ilv1 = new ImageLineViewer( img1, lp ); 
-	ImageLineViewer2Ref ilv1 = new ImageLineViewer2(img1, lp);
-	//ImageLineViewer3Ref ilv1 = new ImageLineViewer3( img1, lp ); 
+	////ImageLineViewerRef ilv1 = new ImageLineViewer( img1, lp ); 
+	//ImageLineViewer2Ref ilv1 = new ImageLineViewer2(img1, lp);
+	////ImageLineViewer3Ref ilv1 = new ImageLineViewer3( img1, lp ); 
 
 	//ConflictScannerRef ilv1 = new ConflictScanner( img1 ); 
 	//ilv1->ProcessLine( lp ); 
 
-	/*
-	{
-	F32ColorVal color1 = { 0, 180, 0 };
+	//
+	//{
+	//F32ColorVal color1 = { 0, 180, 0 };
 
 
-	{
-	F32ColorVal * pix1 =
-	(F32ColorVal *)img1Dsp->GetPixAt( x1, y1 );
+	//{
+	//F32ColorVal * pix1 =
+	//(F32ColorVal *)img1Dsp->GetPixAt( x1, y1 );
 
-	*pix1 = color1;
-	}
+	//*pix1 = color1;
+	//}
 
-	{
-	F32ColorVal * pix88 =
-	(F32ColorVal *)img1Dsp->GetPixAt( x2, y2 );
+	//{
+	//F32ColorVal * pix88 =
+	//(F32ColorVal *)img1Dsp->GetPixAt( x2, y2 );
 
-	*pix88 = color1;
-	}
+	//*pix88 = color1;
+	//}
 
 
-	Filter1DPosAccum fpa1;
+	//Filter1DPosAccum fpa1;
 
 
-	IIterator_REF( F32Point ) iter1 = lp;
+	//IIterator_REF( F32Point ) iter1 = lp;
 
-	LinearColorFilter1DRef cf1 = new LinearColorFilter1D(
-	LinearAvgFilter1D::Create( GlobalStuff::AprSize1D ) );
+	//LinearColorFilter1DRef cf1 = new LinearColorFilter1D(
+	//LinearAvgFilter1D::Create( GlobalStuff::AprSize1D ) );
 
-	//const int nShiftCf1 = cf1->GetShift();
-	//const int nShiftCf1 = 0;
+	////const int nShiftCf1 = cf1->GetShift();
+	////const int nShiftCf1 = 0;
 
-	fpa1.Add( cf1->GetLength() - 1, cf1->GetShift() );
+	//fpa1.Add( cf1->GetLength() - 1, cf1->GetShift() );
 
-	//		Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder( 300, nShiftCf1 );
-	//		Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder( 300, nShiftCf1 );
-	//		Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder( 300, nShiftCf1 );
+	////		Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder( 300, nShiftCf1 );
+	////		Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder( 300, nShiftCf1 );
+	////		Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder( 300, nShiftCf1 );
 
-	Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
-	Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
-	Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
+	//Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
+	//Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
+	//Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
 
 
 
-	LinearColorFilter1DRef cf2 = new LinearColorFilter1D(
-	LinearDiffFilter1D::Create( cf1->GetLength() ) );
+	//LinearColorFilter1DRef cf2 = new LinearColorFilter1D(
+	//LinearDiffFilter1D::Create( cf1->GetLength() ) );
 
-	//const int nShiftCf2 = nShiftCf1 + cf2->GetShift();
-	fpa1.Add( cf2->GetLength() - 1, cf2->GetShift() );
+	////const int nShiftCf2 = nShiftCf1 + cf2->GetShift();
+	//fpa1.Add( cf2->GetLength() - 1, cf2->GetShift() );
 
 
-	IFilter1DRef flt1 = LinearAvgFilter1D::Create( 15 );
+	//IFilter1DRef flt1 = LinearAvgFilter1D::Create( 15 );
 
-	Signal1DBuilderRef sbDif1_2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() + flt1->GetShift() );
+	//Signal1DBuilderRef sbDif1_2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() + flt1->GetShift() );
 
 
 
-	//Signal1DBuilderRef sbDif = new Signal1DBuilder(300, nShiftCf2 );
-	Signal1DBuilderRef sbDif = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
+	////Signal1DBuilderRef sbDif = new Signal1DBuilder(300, nShiftCf2 );
+	//Signal1DBuilderRef sbDif = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
 
 
 
 
 
-	LinearColorFilter1DRef cf3 = new LinearColorFilter1D(
-	LinearDiffFilter1D::Create( cf2->GetLength() ) );
+	//LinearColorFilter1DRef cf3 = new LinearColorFilter1D(
+	//LinearDiffFilter1D::Create( cf2->GetLength() ) );
 
-	//const int nShiftCf3 = nShiftCf2 + cf3->GetShift();
-	fpa1.Add( cf3->GetLength() - 1, cf3->GetShift() );
+	////const int nShiftCf3 = nShiftCf2 + cf3->GetShift();
+	//fpa1.Add( cf3->GetLength() - 1, cf3->GetShift() );
 
 
 
-	//Signal1DBuilderRef sbDif2 = new Signal1DBuilder(300, nShiftCf3 );
+	////Signal1DBuilderRef sbDif2 = new Signal1DBuilder(300, nShiftCf3 );
 
-	Signal1DBuilderRef sbDif2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
+	//Signal1DBuilderRef sbDif2 = new Signal1DBuilder( 300, fpa1.GetAnchPos() );
 
 
-	//int cnt = 0;
+	////int cnt = 0;
 
-	F32ColorVal * pix2 = NULL;
+	//F32ColorVal * pix2 = NULL;
 
-	F32ColorVal drv1;
+	//F32ColorVal drv1;
 
-	F32ColorVal pix21;
-	F32ColorVal pix22;
+	//F32ColorVal pix21;
+	//F32ColorVal pix22;
 
-	float maxVal = 0;
+	//float maxVal = 0;
 
-	do
-	{
-	//F32Point cp = lp->GetCurrent();
-	F32Point cp = iter1->GetCurrent();
+	//do
+	//{
+	////F32Point cp = lp->GetCurrent();
+	//F32Point cp = iter1->GetCurrent();
 
 
-	pix2 = (F32ColorVal *)img1->GetPixAt( (int)cp.x, (int)cp.y );
+	//pix2 = (F32ColorVal *)img1->GetPixAt( (int)cp.x, (int)cp.y );
 
-	pix21 = *pix2;
+	//pix21 = *pix2;
 
 
-	{
-	F32ColorVal * pix88 =
-	(F32ColorVal *)img1Dsp->GetPixAt( (int)cp.x, (int)cp.y );
+	//{
+	//F32ColorVal * pix88 =
+	//(F32ColorVal *)img1Dsp->GetPixAt( (int)cp.x, (int)cp.y );
 
 
-	*pix88 = color1;
-	}
+	//*pix88 = color1;
+	//}
 
 
-	cf1->InputVal( pix21 );
+	//cf1->InputVal( pix21 );
 
-	if( cf1->HasOutput() )
-	{
-	//pix21 = cf1->CalcOutput();
-	cf1->CalcOutput();
-	pix21 = cf1->GetLastOutput();
+	//if( cf1->HasOutput() )
+	//{
+	////pix21 = cf1->CalcOutput();
+	//cf1->CalcOutput();
+	//pix21 = cf1->GetLastOutput();
 
-	cf2->InputVal( pix21 );
+	//cf2->InputVal( pix21 );
 
-	sigBuilder0->AddValue( pix21.val0 );
-	sigBuilder1->AddValue( pix21.val1 );
-	sigBuilder2->AddValue( pix21.val2 );
+	//sigBuilder0->AddValue( pix21.val0 );
+	//sigBuilder1->AddValue( pix21.val1 );
+	//sigBuilder2->AddValue( pix21.val2 );
 
-	if( cf2->HasOutput() )
-	{
-	cf2->CalcOutput();
-	pix22 = cf2->GetLastOutput();
+	//if( cf2->HasOutput() )
+	//{
+	//cf2->CalcOutput();
+	//pix22 = cf2->GetLastOutput();
 
-	{
-	const float drv1Val = pix22.CalcMag();
+	//{
+	//const float drv1Val = pix22.CalcMag();
 
-	if( drv1Val > maxVal )
-	maxVal = drv1Val;
+	//if( drv1Val > maxVal )
+	//maxVal = drv1Val;
 
-	sbDif->AddValue( 0.5 * drv1Val );
-	//sbDif->AddValue( drv1Val );
+	//sbDif->AddValue( 0.5 * drv1Val );
+	////sbDif->AddValue( drv1Val );
 
-	flt1->InputVal( drv1Val );
+	//flt1->InputVal( drv1Val );
 
-	if( flt1->HasOutput() )
-	{
-	flt1->CalcOutput();
+	//if( flt1->HasOutput() )
+	//{
+	//flt1->CalcOutput();
 
-	sbDif1_2->AddValue( 0.5 * flt1->GetLastOutput() );
-	//sbDif1_2->AddValue( flt1->GetLastOutput() );
-	}
+	//sbDif1_2->AddValue( 0.5 * flt1->GetLastOutput() );
+	////sbDif1_2->AddValue( flt1->GetLastOutput() );
+	//}
 
-	}
+	//}
 
-	cf3->InputVal( pix22 );
+	//cf3->InputVal( pix22 );
 
-	if( cf3->HasOutput() )
-	{
-	cf3->CalcOutput();
-	F32ColorVal pix23 = cf3->GetLastOutput();
+	//if( cf3->HasOutput() )
+	//{
+	//cf3->CalcOutput();
+	//F32ColorVal pix23 = cf3->GetLastOutput();
 
-	const float drv2Val = pix23.CalcMag();
+	//const float drv2Val = pix23.CalcMag();
 
-	sbDif2->AddValue( 0.5 * drv2Val );
-	//sbDif2->AddValue( drv2Val );
-	}
+	//sbDif2->AddValue( 0.5 * drv2Val );
+	////sbDif2->AddValue( drv2Val );
+	//}
 
-	}
-	}
+	//}
+	//}
 
 
-	//}while(lp->MoveNext());
-	}while(iter1->MoveNext());
+	////}while(lp->MoveNext());
+	//}while(iter1->MoveNext());
 
-	Signal1DViewerRef sv1 = new Signal1DViewer();
+	//Signal1DViewerRef sv1 = new Signal1DViewer();
 
-	sv1->AddSignal( sigBuilder0->GetResult(), u8ColorVal(200, 0, 0) );
-	sv1->AddSignal( sigBuilder1->GetResult(), u8ColorVal(0, 180, 0) );
-	sv1->AddSignal( sigBuilder2->GetResult(), u8ColorVal(0, 0, 255) );
+	//sv1->AddSignal( sigBuilder0->GetResult(), u8ColorVal(200, 0, 0) );
+	//sv1->AddSignal( sigBuilder1->GetResult(), u8ColorVal(0, 180, 0) );
+	//sv1->AddSignal( sigBuilder2->GetResult(), u8ColorVal(0, 0, 255) );
 
-	//sv1->AddSignal( sigBuilder0->GetResult(), u8ColorVal(255, 255, 255) );
-	//sv1->AddSignal( sigBuilder1->GetResult(), u8ColorVal(255, 255, 255) );
-	//sv1->AddSignal( sigBuilder2->GetResult(), u8ColorVal(255, 255, 255) );
+	////sv1->AddSignal( sigBuilder0->GetResult(), u8ColorVal(255, 255, 255) );
+	////sv1->AddSignal( sigBuilder1->GetResult(), u8ColorVal(255, 255, 255) );
+	////sv1->AddSignal( sigBuilder2->GetResult(), u8ColorVal(255, 255, 255) );
 
-	sv1->AddSignal( sbDif->GetResult(), u8ColorVal(255, 255, 255) );
-	sv1->AddSignal( sbDif2->GetResult(), u8ColorVal(160, 0, 160) );
+	//sv1->AddSignal( sbDif->GetResult(), u8ColorVal(255, 255, 255) );
+	//sv1->AddSignal( sbDif2->GetResult(), u8ColorVal(160, 0, 160) );
 
-	sv1->AddSignal( sbDif1_2->GetResult(), u8ColorVal(0, 128, 255) );
+	//sv1->AddSignal( sbDif1_2->GetResult(), u8ColorVal(0, 128, 255) );
 
 
-	ShowImage( sv1->GenDisplayImage(), "Signals" );
+	//ShowImage( sv1->GenDisplayImage(), "Signals" );
 
 
-	}
-	*/
+	//}
+	//
 
-	ShowImage(ilv1->GetSignalDspImg(), "Signals");
+	//ShowImage(ilv1->GetSignalDspImg(), "Signals");
 
 
 
@@ -527,7 +518,7 @@ void ImageProcessor::DrawLinePath()
 
 	//ShowImage(img1Dsp, "LinePathImg");
 
-	ShowImage(ilv1->GetResultImg(), "LinePathImg");
+	//ShowImage(ilv1->GetResultImg(), "LinePathImg");
 }
 
 
@@ -1111,391 +1102,8 @@ void ImageProcessor::Try26()
 	//return;
 
 	Try26_1();
-	return;
-
-	const int nRadius = GlobalStuff::AprSize1D;
-	//const int nRadius = 3;
-
-	F32ImageRef src = GlobalStuff::GetLinePathImg();
-
-
-	//ImgRotationMgrRef rotMgr88_0_0 = new ImgRotationMgr(src, 0);
-	//ImgRotationMgrRef rotMgr88_0_1 = new ImgRotationMgr(src, 22.5);
-	//ImgRotationMgrRef rotMgr88_0_2 = new ImgRotationMgr(src, 45);
-	//ImgRotationMgrRef rotMgr88_0_3 = new ImgRotationMgr(src, 67.5);
-
-	////GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
-	//GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
-	//GlobalStuff::ShowLinePathImg();
-
-	//return;
-
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 45);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 55);
-	ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 0);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 70);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 89);
-	//ImgRotationMgrRef rotMgr88 = new ImgRotationMgr(src, 20);
-	//F32ImageRef res1 = rotMgr1->GetResImg();
-
-	src = rotMgr88->GetResImg();
-
-	//GlobalStuff::SetLinePathImg(rotMgr88->GetResImg());
-	//GlobalStuff::ShowLinePathImg();
-
-
-	//src = GlobalStuff::GetLinePathImg();
-
-
-	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-	org_Img->SwitchXY();
-
-	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
-
-	//MemAccessor_2D_REF(F32ColorVal) acc1 = org_Img->GetMemAccessor()->Clone();
-	////acc1->SetRange_Relative_Y(100, 200);
-	////acc1->SwitchXY();
-	//acc1->SetRange_Relative_X(50, 150);
-	////acc1->SetRange_Relative_X(50, 53);
-
-	//F32ColorVal color1;
-	//color1.AssignVal(50, 50, 200);
-
-	//F32ColorVal color2;
-	//color2.AssignVal(250, 50, 50);
-
-	////F32ImageAccessor3C_Ref imgAcc0 = new F32ImageAccessor3C(src->CloneNew());
-	//F32ImageAccessor3C_Ref imgAcc0 = org_Img->CloneAccAndImage();
-	//CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
-
-	////F32ImageAccessor3C_Ref imgAcc2 = GenFillImage_Stripes_H(org_Img, color1, color2, 25);
-	////ShowImage(imgAcc2->GetSrcImg(), "imgAcc2->GetSrcImg()");
-
-	////F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccAndImage();
-
-	////F32ImageAccessor3C_Ref imgAcc3 = org_Img->CloneAccessorOnly();
-	////DivideImageByNum(imgAcc3->GetMemAccessor(), 2);
-
-	////F32ImageAccessor1C_Ref imgMag = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	////CalcMagImage(imgAcc3->GetMemAccessor(), imgMag->GetMemAccessor());
-	////ShowImage(imgMag->GetSrcImg(), "imgMag->GetSrcImg()");
-
-	/////-----------------------------------------------------------------------------------
-
-
-	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcMagSqrImage(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
-
-	F32ImageAccessor1C_Ref avgStandev_H_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	Cala_AvgStandevImage_H(org_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor(),
-		avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-2, 2));
-	//avgStandev_H_Img->GetMemAccessor(), Range<int>::New(-2, 2), Range<int>::New(-1, 1));
-
-	//ShowImage(avgStandev_H_Img->GetSrcImg(), "avgStandev_H_Img->GetSrcImg()");
-	//return;
-
-
-
-	//Window<int> avgWin = Window<int>::New(-3, 3, -7, 7);
-	Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
-	//Window<int> avgWin = Window<int>::New(-1, 1, -3, 3);
-	//Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
-	//Window<int> avgWin = Window<int>::New(0, 0, -1, 1);
-	//Window<int> avgWin = Window<int>::New(-1, 1, -2, 2);
-	//Window<int> avgWin = Window<int>::New(-1, 0, -1, 0);
-
-	//----
-
-	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
-	AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
-
-	//F32ImageAccessor1C_Ref magSqr_Avg_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	//CalcMagSqrImage(avg_Img->GetMemAccessor(), magSqr_Avg_Img->GetMemAccessor());
-
-	//----
-
-	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
-
-
-
-	//ShowImage(avg_MagSqr_Img->GetSrcImg(), "avg_MagSqr_Img->GetSrcImg()");
-
-	//return;
-	//----
-
-	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
-		standev_Img->GetMemAccessor());
-
-	//ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
-	//return;
-
-	//Range<int> confRange = Range<int>::New(-2, 2);
-	Range<int> confRange = Range<int>::New(
-		-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
-
-	TempImageAccessor_REF(ConflictInfo) conflict_Img = new TempImageAccessor<ConflictInfo>(
-		org_Img->GetMemAccessor()->GetOffsetCalc());
-
-	CalcConflictImage_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
-		conflict_Img->GetMemAccessor(), confRange);
-
-	//SaveImage(conflict_Img->GetSrcImg(), "E:\\result_V.jpg");
-	//SaveImage(conflict_Img->GetSrcImg(), "result_V.jpg");
-	//SaveImage(conflict_Img->GetSrcImg(), "result_H.jpg");
-
-	{
-		MemAccessor_2D_REF(ConflictInfo) confAcc = conflict_Img->GetMemAccessor();
-		F32ImageRef confDsp_Img = F32Image::Create(cvSize(confAcc->GetIndexSize_X_Org(), confAcc->GetIndexSize_Y_Org()), 3);
-
-		confDsp_Img->SetAll(0);
-
-		const int nSize_1D = confAcc->GetIndexSize_X() * confAcc->GetIndexSize_Y();
-
-		F32ColorVal * destPtr = (F32ColorVal *)confDsp_Img->GetDataPtr();
-		ConflictInfo * srcPtr = confAcc->GetDataPtr();
-
-		float angle_Old = -1;
-		for (int i = 0; i < nSize_1D; i++)
-		{
-			ConflictInfo & rSrc = srcPtr[i];
-			F32ColorVal & rDest = destPtr[i];
-
-			//Ncpp_ASSERT(-1 != rSrc.Dir);
-
-			if (rSrc.Exists)
-			{
-				F32ColorVal & rDest_Side_1 = destPtr[rSrc.Offset_Side_1];
-				F32ColorVal & rDest_Side_2 = destPtr[rSrc.Offset_Side_2];
-
-				rDest.val0 = 0;
-				rDest.val1 = 0;
-				rDest.val2 = 255;
-
-				rDest_Side_1.val0 = 0;
-				rDest_Side_1.val1 = 255;
-				rDest_Side_1.val2 = 0;
-
-				rDest_Side_2.val0 = 0;
-				rDest_Side_2.val1 = 255;
-				rDest_Side_2.val2 = 0;
-			}
-			//else
-			//{
-			//	rDest.val0 = 0;
-			//	rDest.val1 = 0;
-			//	rDest.val2 = 0;
-			//}
-		}
-
-		ShowImage(confDsp_Img, "confDsp_Img->GetSrcImg()");
-	}
-
-	return;
-
-	/////-----------------------------------------------------------------------------------
-
-	////ShowImage(imgAcc3->GetSrcImg(), "imgAcc3->GetSrcImg()");
-
-	////GlobalStuff::ShowLinePathImg();
-
-
-	////	new F32ImageAccessor3C(src->CloneNew());
-	////CopyImage(imgAcc0->GetMemAccessor(), org_Img->GetMemAccessor());
-
-	////FillImage<F32ColorVal>(acc1, color1);
-	//FillImage_Stripes_H<F32ColorVal>(acc1, color1, color2, 25);
-	////FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
-
-	//ShowImage(imgAcc0->GetSrcImg(), "imgAcc0->GetSrcImg()");
-	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
-
-
-	return;
-
 }
 
-
-void ImageProcessor::EdgeDir2()
-{
-	F32ImageRef src = GenF32FromU8Image(img);
-	F32ImageRef res = src;
-
-	//res = res->Clone();
-
-	U8ImageRef dsp;
-
-
-
-	F32ImageRef ed2 = F32Image::Create(
-		src->GetSize(), 4);
-
-	//ed2 = GenCvSmoothedImg( ed2, 5);
-
-
-
-
-
-	ShowImage(src, "src");
-
-	F32ImageRef avg_Img = GenCvSmoothedImg(res, 5);
-	//S16ImageRef avg_Img = res;
-
-	ShowImage(avg_Img, "avg_Img");
-
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
-	//avg_Img = GenS16FromF32Image( avgImgF32 );
-
-	res = avg_Img;
-
-	F32ImageRef gradImg = GenMorphGradImg(res, 1);
-
-	//S16ImageRef weightImgS16 = GenWeightImg5( gradImg, nAprSizG1 * 3 );
-	S16ImageRef weightImgS16 = GenWeightImg5(gradImg, 2);
-
-	//S16ImageRef weightImgS16 = GenWeightImg4( gradImg, 3 );
-
-
-	SobelBuilderRef sobelBuilder = new SobelBuilder(res, 3);
-
-	float scale = 1000;
-	int avgSiz = 7;
-
-	F32ImageRef gradImgF32X =
-		GenMagImgF32(sobelBuilder->GenImageX(1));
-	{
-		//gradImgF32X =  GenMultByNumImg( gradImgF32X, scale);
-		//gradImgF32X = GenCvSmoothedImg( gradImgF32X, avgSiz);
-	}
-
-	F32ImageRef gradImgF32Y =
-		GenMagImgF32(sobelBuilder->GenImageY(1));
-	{
-		//gradImgF32Y =  GenMultByNumImg( gradImgF32Y, scale);
-		//gradImgF32Y = GenCvSmoothedImg( gradImgF32Y, avgSiz);
-	}
-
-	NormalizeEdgeDirImages(gradImgF32X, gradImgF32Y);
-	//NormalizeEdgeDirImages( gradImgF32X, gradImgF32Y, 500 );
-
-	S16ImageRef gradImgX = GenS16FromF32Image(gradImgF32X);
-
-	ShowImage(gradImgX, "gradImgX");
-
-	S16ImageRef gradImgY = GenS16FromF32Image(gradImgF32Y);
-
-	ShowImage(gradImgY, "gradImgY");
-
-	//NormalizeEdgeDirImages( gradImgX, gradImgY );
-
-	S16ImageRef res16 = GenColorEdgeDirImg(
-		gradImgX, gradImgY, weightImgS16);
-	//gradImgX, gradImgY, NULL);
-
-	//res = GenCvSmoothedImg( res, 27);
-
-	ShowImage(res16, "ColorEdgeDirImg");
-}
-
-
-void ImageProcessor::EdgeDir()
-{
-	F32ImageRef src = GenF32FromU8Image(img);
-	F32ImageRef res = src;
-
-	U8ImageRef dsp;
-
-
-	ShowImage(src, "src");
-
-	F32ImageRef avg_Img = GenCvSmoothedImg(res, 5);
-	//S16ImageRef avg_Img = res;
-
-	ShowImage(avg_Img, "avg_Img");
-
-	//F32ImageRef avgImgF32 = GenF32FromS16Image( avg_Img );
-	//avg_Img = GenS16FromF32Image( avgImgF32 );
-
-	res = avg_Img;
-
-	F32ImageRef gradImg = GenMorphGradImg(res, 1);
-
-	//S16ImageRef weightImgS16 = GenWeightImg5( gradImg, nAprSizG1 * 3 );
-	S16ImageRef weightImgS16 = GenWeightImg5(gradImg, 2);
-
-	//S16ImageRef weightImgS16 = GenWeightImg4( gradImg, 3 );
-
-
-	SobelBuilderRef sobelBuilder = new SobelBuilder(res, 3);
-
-	float scale = 1000;
-	int avgSiz = 7;
-
-	F32ImageRef gradImgF32X =
-		GenMagImgF32(sobelBuilder->GenImageX(1));
-	{
-		gradImgF32X = GenMultByNumImg(gradImgF32X, scale);
-		gradImgF32X = GenCvSmoothedImg(gradImgF32X, avgSiz);
-	}
-
-	F32ImageRef gradImgF32Y =
-		GenMagImgF32(sobelBuilder->GenImageY(1));
-	{
-		gradImgF32Y = GenMultByNumImg(gradImgF32Y, scale);
-		gradImgF32Y = GenCvSmoothedImg(gradImgF32Y, avgSiz);
-	}
-
-	NormalizeEdgeDirImages(gradImgF32X, gradImgF32Y);
-	//NormalizeEdgeDirImages( gradImgF32X, gradImgF32Y, 500 );
-
-	S16ImageRef gradImgX = GenS16FromF32Image(gradImgF32X);
-
-	ShowImage(gradImgX, "gradImgX");
-
-	S16ImageRef gradImgY = GenS16FromF32Image(gradImgF32Y);
-
-	ShowImage(gradImgY, "gradImgY");
-
-	//NormalizeEdgeDirImages( gradImgX, gradImgY );
-
-	S16ImageRef res16 = GenColorEdgeDirImg(
-		gradImgX, gradImgY, weightImgS16);
-	//gradImgX, gradImgY, NULL);
-
-	//res = GenCvSmoothedImg( res, 27);
-
-	ShowImage(res16, "ColorEdgeDirImg");
-}
-
-
-void ImageProcessor::SobelMax()
-{
-	S16ImageRef src = GenS16FromU8Image(img);
-	S16ImageRef res = src;
-
-	double dMin, dMax;
-
-	//HCV_CALL( cvMinMaxLoc( res->GetIplImagePtr(), &dMin, &dMax) );
-
-	//res = GenThresholdImg(res, 128);
-
-
-	SobelBuilderRef sobelBuilder = new SobelBuilder(
-		GenF32FromS16Image(res), 3);
-
-
-	//S16ImageRef gradImg = GenS16FromF32Image(
-	F32ImageRef gradImg = (
-		GenMagImgF32(sobelBuilder->GenImageX(1)));
-
-
-
-	HCV_CALL(cvMinMaxLoc(gradImg->GetIplImagePtr(), &dMin, &dMax));
-
-
-}
 
 
 

@@ -106,7 +106,6 @@ BEGIN_MESSAGE_MAP(CMfcCvTut_11Jun07Dlg, CDialog)
 	ON_BN_CLICKED(IDC_SIZE_DOWN_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedSizeDownBtn)
 	ON_BN_CLICKED(IDC_SAVE_TO_FILE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedSaveToFileBtn)
 	ON_BN_CLICKED(IDC_CLIP_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedClipBtn)
-	ON_BN_CLICKED(IDC_TRY20_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry20Btn)
 	ON_BN_CLICKED(IDC_THRESHOLD_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedThresholdBtn)
 	ON_BN_CLICKED(IDC_UNDO_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedUndoBtn)
 	ON_BN_CLICKED(IDC_REDO_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedRedoBtn)
@@ -114,17 +113,11 @@ BEGIN_MESSAGE_MAP(CMfcCvTut_11Jun07Dlg, CDialog)
 	ON_BN_CLICKED(IDC_ERODE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedErodeBtn)
 	ON_BN_CLICKED(IDC_MEDIAN_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMedianBtn)
 	ON_BN_CLICKED(IDC_EQUALIZE_HIST_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn)
-	ON_BN_CLICKED(IDC_TRYRS20_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTryrs20Btn)
 	ON_BN_CLICKED(IDC_GRAY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn)
 	ON_BN_CLICKED(IDC_MGRAD_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMgradBtn)
 	ON_BN_CLICKED(IDC_MULT_BY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn)
 	ON_BN_CLICKED(IDC_MGRAD_1S2_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMgrad1s2Btn)
-	ON_BN_CLICKED(IDC_TRY22_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry22Btn)
-	ON_BN_CLICKED(IDC_TRY23_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry23Btn)
-	ON_BN_CLICKED(IDC_TRY24_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry24Btn)
-	ON_BN_CLICKED(IDC_TRY25_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry25Btn)
 	ON_BN_CLICKED(IDC_TRY26_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn)
-	ON_BN_CLICKED(IDC_CBIS_BERK_EXECUTE, &CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute)
 	ON_BN_CLICKED(IDC_FAST_AVG_COLORS_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgColorsBtn)
 END_MESSAGE_MAP()
 
@@ -349,46 +342,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCreateBtn()
 	proc->display();
 
 }
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry5Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try5();
-
-		//proc->display();
-
-	}
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry6Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try6();
-
-		//proc->display();
-
-	}
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry7Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->Try7();
-
-		//proc->display();
-
-	}
-}
-
 
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgBtn()
@@ -840,33 +793,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedClipBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry20Btn()
-{
-	// TODO: Add your control notification handler code here
-
-	//if (proc != 0) 
-	{
-		// process and display
-
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-
-		proc->Try20();
-
-		//proc->display();
-
-	}
-
-}
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedThresholdBtn()
 {
@@ -1022,29 +948,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTryrs20Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-		proc->TryRS20();
-
-		//proc->display();
-
-	}
-}
-
 void CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn()
 {
 	// TODO: Add your control notification handler code here
@@ -1131,118 +1034,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedMgrad1s2Btn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry22Btn()
-{
-	// TODO: Add your control notification handler code here
-
-	if (proc != 0)
-	{
-		// process and display
-
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-
-		proc->Try22();
-
-		//proc->display();
-
-	}
-
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry23Btn()
-{
-	// TODO: Add your control notification handler code here
-
-	if (proc != 0)
-	{
-		// process and display
-
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-
-		proc->Try23();
-
-		//proc->display();
-
-	}
-
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry24Btn()
-{
-	// TODO: Add your control notification handler code here
-
-	if (proc != 0)
-	{
-		// process and display
-
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-
-		proc->Try24();
-
-		//proc->display();
-
-	}
-
-}
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry25Btn()
-{
-	// TODO: Add your control notification handler code here
-
-	if (proc != 0)
-	{
-		// process and display
-
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-
-		proc->Try25();
-
-		//proc->display();
-
-	}
-
-}
-
 void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn_0()
 {
 	// TODO: Add your control notification handler code here
@@ -1303,213 +1094,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn()
 
 }
 
-
-void CMfcCvTut_11Jun07Dlg::OnBnClickedCbisBerkExecute()
-{
-	// TODO: Add your control notification handler code here
-
-	//Ncpp::FixedVector< int > aprSiz_Arr;
-
-	//aprSiz_Arr.PushBack( 11 );
-	//aprSiz_Arr.PushBack( 17 );
-	//aprSiz_Arr.PushBack( 23 );
-	//aprSiz_Arr.PushBack( 29 );
-	//aprSiz_Arr.PushBack( 35 );
-	//aprSiz_Arr.PushBack( 41 );
-	//aprSiz_Arr.PushBack( 47 );
-	//aprSiz_Arr.PushBack( 53 );
-	//aprSiz_Arr.PushBack( 59 );
-	//aprSiz_Arr.PushBack( 65 );
-
-	int aprSiz_Arr[] =
-	{ 11, 17, 23, 29, 35, 41, 47, 53, 59, 65 };
-
-	int nofAprSizes = sizeof(aprSiz_Arr) / sizeof(int);
-
-	for (int k = 0; k < nofAprSizes; k++)
-	{
-		{
-			char sTmp[100];
-
-			sprintf(sTmp, "%d", aprSiz_Arr[k]);
-
-			this->edtAprSize1D.SetWindowTextA(sTmp);
-		}
-
-
-		{
-		CString sTmp;
-
-		this->edtAprSize1D.GetWindowTextA(sTmp);
-
-		CString sTmp2 = sTmp.Trim();
-
-		GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-	}
-
-		Ncpp::FixedVector< CString > dirPath_Arr(50);
-
-
-		dirPath_Arr.PushBack(
-			//CString sPathTrain = 
-			"D:\\HthmWork_D\\Berkeley-Image-DataSet\\BSDS-300\\Final-Extracted\\BSDS300-images\\BSDS300\\images\\train"
-			);
-
-		dirPath_Arr.PushBack(
-			//CString sPathTest = 
-			"D:\\HthmWork_D\\Berkeley-Image-DataSet\\BSDS-300\\Final-Extracted\\BSDS300-images\\BSDS300\\images\\test"
-			);
-
-
-		Ncpp::FixedVector< CString > filePath_Arr(500);
-
-		for (int i = 0; i < dirPath_Arr.GetSize(); i++)
-		{
-			CString sDirPath = dirPath_Arr[i];
-
-			CFileFind hFile;
-			BOOL bFound = hFile.FindFile(sDirPath + _T("\\*.*"));
-
-			while (bFound)
-			{
-				bFound = hFile.FindNextFile();
-
-				CString sPath_1 = hFile.GetFilePath();
-
-				if ((!hFile.IsDots()) && (!hFile.IsDirectory()))
-				{
-
-					///////
-
-
-					{
-						char sAprSize[100];
-						sprintf(sAprSize, "%d", (int)GlobalStuff::AprSize1D);
-
-						CString sFilePath =
-
-							//"E:\\HthmWork\\Lib\\BSDS_300_2\\CBIS\\CBIS_" +
-							"E:\\HthmWork\\Lib\\BSDS_300_2\\CBIS\\AprSiz" +
-							CString(sAprSize) +
-							CString("\\Segms\\");
-
-						//Ncv::FilePathMgr fpm1( GlobalStuff::m_imgFilePath.GetBuffer() );
-						Ncv::FilePathMgr fpm1(sPath_1.GetBuffer());
-
-						Ncpp::FixedVector< char > fileTitle_Arr;
-
-						fpm1.GetFileTitle(fileTitle_Arr);
-
-						sFilePath +=
-							CString(fileTitle_Arr.GetHeadPtr()) + ".seg2";
-
-						CFileFind hFile_2;
-
-						BOOL bFound_2 = hFile_2.FindFile(sFilePath);
-
-						if (bFound_2)
-						{
-							continue;
-						}
-						else
-						{
-							filePath_Arr.PushBack(sPath_1);
-						}
-					}
-
-
-
-					/////////
-
-				}
-			}
-		}
-
-
-
-		int nOld_AllocCnt = Ncpp::FixedVectorDebug::AllocCnt;
-
-		int nOld_AllocCnt_2 = Ncpp::FixedVectorDebug::AllocCnt_2;
-
-		int nOld_AllocSizeTot = Ncpp::FixedVectorDebug::AllocSizeTot;
-
-		int nOld_FixedVectorID = Ncpp::FixedVectorDebug::FixedVectorID++;
-
-		for (int i = 0; i < filePath_Arr.GetSize(); i++)
-		{
-			//CString sFilePath = sPathTrain + "\\" +
-			//"2092.jpg";
-
-			//Ncpp::FixedVectorDebug::Reset_ID_Arr();
-
-
-			CString sFilePath = filePath_Arr[i];
-
-			if (proc != 0)
-				delete proc;
-
-			proc = new ImageProcessor(sFilePath);
-
-			//Ncpp::FixedVectorDebug::CycleNum++;
-
-			proc->TryRS20();
-
-			int a = Ncpp::FixedVectorDebug::AllocCnt;
-
-			int aa = Ncpp::FixedVectorDebug::AllocCnt_2;
-
-
-			int a2 = Ncpp::FixedVectorDebug::AllocSizeTot;
-
-			int a3 = Ncpp::FixedVectorDebug::FixedVectorID++;
-
-			int nActCnt = 0;
-
-			int nDeactCnt = 0;
-
-			for (int i = 0;
-				i < Ncpp::FixedVectorDebug::FixedVectorID_Arr_Size; i++)
-				//i < Ncpp::FixedVectorDebug::MaxID_Activated; i++ )
-			{
-				//if( i >= nOld_FixedVectorID )
-				if (Ncpp::FixedVectorDebug::FixedVectorID_Cycle_Arr[i] >=
-					Ncpp::FixedVectorDebug::CycleNum)
-				{
-					if (-1 != Ncpp::FixedVectorDebug::FixedVectorID_Arr[i])
-					{
-						nActCnt++;
-
-						i = i;
-					}
-					else
-					{
-						nDeactCnt++;
-
-						i = i;
-					}
-				}
-			}
-
-
-			nOld_AllocCnt = a;
-
-			nOld_AllocCnt_2 = aa;
-
-			nOld_AllocSizeTot = a2;
-
-			nOld_FixedVectorID = a3;
-
-
-		}
-
-
-
-		//CBIS_Berkeley_Execute
-
-	}
-
-
-}
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgColorsBtn()
 {

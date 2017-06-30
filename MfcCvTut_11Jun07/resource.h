@@ -10,9 +10,7 @@
 #define IDC_OPEN_IMAGE_BTN              1000
 #define IDC_PROCESS_IMAGE_BTN           1001
 #define IDC_CREATE_BTN                  1002
-#define IDC_SOBEL_BTN                   1003
 #define IDC_FAST_AVG_BTN                1015
-#define IDC_CBIS_BERK_EXECUTE           1027
 #define IDC_LIST_KEYS                   1030
 #define IDC_LIST2_VALUES                1031
 #define IDC_TRY_MOUSE_BTN               1032
