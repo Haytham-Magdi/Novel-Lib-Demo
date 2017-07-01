@@ -91,11 +91,8 @@ public:
 	afx_msg void OnBnClickedEqualizeHistBtn();
 	CEdit edtAprSize1D;
 	afx_msg void OnBnClickedGrayBtn();
-	afx_msg void OnBnClickedMgradBtn();
 	afx_msg void OnBnClickedMultByBtn();
-	afx_msg void OnBnClickedMgrad1s2Btn();
 	afx_msg void OnBnClickedTry26Btn_0();
 	afx_msg void OnBnClickedTry26Btn();
 	CEdit edtScanDir1D;
-	afx_msg void OnBnClickedFastAvgColorsBtn();
 };

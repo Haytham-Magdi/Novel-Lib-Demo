@@ -204,14 +204,6 @@ void ImageProcessor::MedianLinePathImg(int a_nAprSiz)
 }
 
 
-void ImageProcessor::MorphG1S2LinePathImg(int a_nAprSiz)
-{
-	GlobalStuff::SetLinePathImg(GenMorphG1S2Img(
-		GlobalStuff::GetLinePathImg(), a_nAprSiz));
-
-	ShowImage(GlobalStuff::GetLinePathImg(), "LinePathImg");
-}
-
 
 
 void ImageProcessor::MultByNumLinePathImg(float a_num)
@@ -544,23 +536,23 @@ void ImageProcessor::ClipLinePathImg()
 }
 
 
-void ImageProcessor::AvgColorsOfLinePathImg()
-{
-	F32Point p1, p2;
-
-	p1.x = IOMgr::ReadInt("x1");
-	p1.y = IOMgr::ReadInt("y1");
-	p2.x = IOMgr::ReadInt("x2");
-	p2.y = IOMgr::ReadInt("y2");
-
-	F32ImageRef avgColorImg = GenAvgColorsImg(
-		GlobalStuff::GetLinePathImg(), p1, p2);
-
-	//GlobalStuff::SetLinePathImg(  );
-
-
-	ShowImage(avgColorImg, "avgColorImg");
-}
+//void ImageProcessor::AvgColorsOfLinePathImg()
+//{
+//	F32Point p1, p2;
+//
+//	p1.x = IOMgr::ReadInt("x1");
+//	p1.y = IOMgr::ReadInt("y1");
+//	p2.x = IOMgr::ReadInt("x2");
+//	p2.y = IOMgr::ReadInt("y2");
+//
+//	F32ImageRef avgColorImg = GenAvgColorsImg(
+//		GlobalStuff::GetLinePathImg(), p1, p2);
+//
+//	//GlobalStuff::SetLinePathImg(  );
+//
+//
+//	ShowImage(avgColorImg, "avgColorImg");
+//}
 
 
 

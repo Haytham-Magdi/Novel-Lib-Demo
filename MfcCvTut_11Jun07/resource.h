@@ -39,13 +39,10 @@
 #define IDC_EQUALIZE_HIST_BTN           1056
 #define IDC_TXT_BX_APR_SIZE_1D          1057
 #define IDC_GRAY_BTN                    1059
-#define IDC_MGRAD_BTN                   1060
 #define IDC_MULT_BY_BTN                 1063
-#define IDC_MGRAD_1S2_BTN               1064
 #define IDC_TRY26_BTN                   1067
 #define IDC_TXT_BX_DIR_1D               1068
 #define IDC_FAST_AVG_BTN2               1069
-#define IDC_FAST_AVG_COLORS_BTN         1069
 
 // Next default values for new objects
 // 

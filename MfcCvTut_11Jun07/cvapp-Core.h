@@ -193,11 +193,11 @@ class ImageProcessor {
 	void DrawLinePath();
 
 	void ClipLinePathImg();
-	void AvgColorsOfLinePathImg();
+	//void AvgColorsOfLinePathImg();
 	void AvgLinePathImg(int a_nAprSiz);
 	void FastAvgLinePathImg(int a_nAprSiz);
-	void MorphGradLinePathImg(int a_nAprSiz);
-	void MorphG1S2LinePathImg(int a_nAprSiz);
+	//void MorphGradLinePathImg(int a_nAprSiz);
+	//void MorphG1S2LinePathImg(int a_nAprSiz);
 	void MultByNumLinePathImg(float a_num);
 	void MedianLinePathImg(int a_nAprSiz);
 	void DilateLinePathImg(int a_nAprSiz);

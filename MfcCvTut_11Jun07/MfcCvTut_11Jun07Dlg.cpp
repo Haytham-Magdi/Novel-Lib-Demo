@@ -114,11 +114,8 @@ BEGIN_MESSAGE_MAP(CMfcCvTut_11Jun07Dlg, CDialog)
 	ON_BN_CLICKED(IDC_MEDIAN_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMedianBtn)
 	ON_BN_CLICKED(IDC_EQUALIZE_HIST_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn)
 	ON_BN_CLICKED(IDC_GRAY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn)
-	ON_BN_CLICKED(IDC_MGRAD_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMgradBtn)
 	ON_BN_CLICKED(IDC_MULT_BY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn)
-	ON_BN_CLICKED(IDC_MGRAD_1S2_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMgrad1s2Btn)
 	ON_BN_CLICKED(IDC_TRY26_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn)
-	ON_BN_CLICKED(IDC_FAST_AVG_COLORS_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgColorsBtn)
 END_MESSAGE_MAP()
 
 
@@ -963,28 +960,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedMgradBtn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-		proc->MorphGradLinePathImg(GlobalStuff::AprSize1D);
-
-		//proc->display();
-
-	}
-}
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn()
 {
@@ -1011,28 +986,6 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedMgrad1s2Btn()
-{
-	if (proc != 0)
-	{
-		// process and display
-
-		{
-			CString sTmp;
-
-			this->edtAprSize1D.GetWindowTextA(sTmp);
-
-			CString sTmp2 = sTmp.Trim();
-
-			GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
-		}
-
-		proc->MorphG1S2LinePathImg(GlobalStuff::AprSize1D);
-
-		//proc->display();
-
-	}
-}
 
 void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn_0()
 {
@@ -1095,17 +1048,3 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn()
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgColorsBtn()
-{
-	// TODO: Add your control notification handler code here
-
-	if (proc != 0)
-	{
-		// process and display
-
-		proc->AvgColorsOfLinePathImg();
-
-		//proc->display();
-
-	}
-}
