@@ -111,8 +111,14 @@ class ImageProcessor {
 
 		  {
 
-				Ncv::F32ImageRef src = GenF32FromS16Image(
-					GenS16FromU8Image(img));
+			  //Ncv::F32ImageRef src = GenF32FromS16Image(
+				 // GenS16FromU8Image(img));
+
+
+				Ncv::S16ImageRef src16 = GenS16FromU8Image(img);
+				
+				Ncv::F32ImageRef src = GenF32FromS16Image(src16);
+
 				Ncv::F32ImageRef res = src;
 
 				if( false )
