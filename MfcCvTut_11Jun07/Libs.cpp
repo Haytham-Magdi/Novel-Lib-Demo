@@ -1,8 +1,8 @@
 #include "stdafx.h"
 
-#include <Lib\Novel\Ncpp\Common\commonLib.cpp>
-#include <Lib\Novel\Ncpp\Math\mathLib.cpp>
-#include <Lib\Novel\Ncv\NcvLib.cpp>
+#include <Novel-Lib\Ncpp\Common\commonLib.cpp>
+#include <Novel-Lib\Ncpp\Math\mathLib.cpp>
+#include <Novel-Lib\Ncv\NcvLib.cpp>
 
 //#include "lib.c"
 
