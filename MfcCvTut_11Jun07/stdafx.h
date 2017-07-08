@@ -74,11 +74,11 @@
 
 //#define Ncpp_DEBUG
 
-//#include <Novel-Lib\Ncpp\Common\commonLib.h>
-#include <Novel-Lib\Ncpp\Common\commonLib.h>
-//#include <Novel-Lib\Ncpp\MfcEx\mfcExLib.h>
-#include <Novel-Lib\Ncpp\Math\mathLib.h>
-#include <Novel-Lib\Ncv\NcvLib.h>
+//#include <NovelCVLib\Ncpp\Common\commonLib.h>
+#include <NovelCVLib\Ncpp\Common\commonLib.h>
+//#include <NovelCVLib\Ncpp\MfcEx\mfcExLib.h>
+#include <NovelCVLib\Ncpp\Math\mathLib.h>
+#include <NovelCVLib\Ncv\NcvLib.h>
 
 #include "cvapp.h"
 

@@ -1,14 +1,14 @@
 //#include <vector.h>
 
 #include "cvapp.h"
-//#include <Novel-Lib\Ncv\SignalOneDim.h>
+//#include <NovelCVLib\Ncv\SignalOneDim.h>
 #include "GlobalStuff.h"
 
-#include <Novel-Lib\Ncv\TempImageAccessor.h>
-#include <Novel-Lib\Ncv\VectorVal.h>
-#include <Novel-Lib\Ncv\ImgSizeRotationColl.h>
+#include <NovelCVLib\Ncv\TempImageAccessor.h>
+#include <NovelCVLib\Ncv\VectorVal.h>
+#include <NovelCVLib\Ncv\ImgSizeRotationColl.h>
 
-//#include <Novel-Lib\Ncv\CircleContourOfPix.h>
+//#include <NovelCVLib\Ncv\CircleContourOfPix.h>
 
 using namespace Ncpp;
 using namespace Ncv;
