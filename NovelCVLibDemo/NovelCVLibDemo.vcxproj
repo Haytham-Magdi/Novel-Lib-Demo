@@ -28,7 +28,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CD8A9FC6-1A90-4975-899D-5770459C2835}</ProjectGuid>
-    <RootNamespace>MfcCvTut_11Jun07</RootNamespace>
+    <RootNamespace>NovelCVLibDemo</RootNamespace>
     <Keyword>MFCProj</Keyword>
     <ProjectName>NovelCVLibDemo</ProjectName>
   </PropertyGroup>
@@ -253,8 +253,8 @@
     <ClCompile Include="GlobalStuff.cpp" />
     <ClCompile Include="Libs.cpp" />
     <ClCompile Include="Libs_Old.cpp" />
-    <ClCompile Include="MfcCvTut_11Jun07.cpp" />
-    <ClCompile Include="MfcCvTut_11Jun07Dlg.cpp" />
+    <ClCompile Include="NovelCVLibDemo.cpp" />
+    <ClCompile Include="NovelCVLibDemoDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -269,8 +269,8 @@
     <ClInclude Include="Dlgs.h" />
     <ClInclude Include="GlobalStuff.h" />
     <ClInclude Include="LIB.H" />
-    <ClInclude Include="MfcCvTut_11Jun07.h" />
-    <ClInclude Include="MfcCvTut_11Jun07Dlg.h" />
+    <ClInclude Include="NovelCVLibDemo.h" />
+    <ClInclude Include="NovelCVLibDemoDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="winres.h" />
@@ -280,15 +280,15 @@
   <ItemGroup>
     <None Include="CommCtrl.rh" />
     <None Include="Dde.rh" />
-    <None Include="res\MfcCvTut_11Jun07.ico" />
-    <None Include="res\MfcCvTut_11Jun07.rc2" />
+    <None Include="res\NovelCVLibDemo.ico" />
+    <None Include="res\NovelCVLibDemo.rc2" />
     <None Include="file1.txt" />
     <None Include="ReadMe.txt" />
     <None Include="WinNT.rh" />
     <None Include="WinUser.rh" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MfcCvTut_11Jun07.rc" />
+    <ResourceCompile Include="NovelCVLibDemo.rc" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="file2.txt" />
@@ -298,7 +298,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="MfcCvTut_11Jun07.rc" />
+      <UserProperties RESOURCE_FILE="NovelCVLibDemo.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -8,7 +8,7 @@ using namespace System::Data;
 using namespace System::Drawing;
 
 
-namespace MfcCvTut_11Jun07 {
+namespace NovelCVLibDemo {
 
 	/// <summary>
 	/// Summary for file1

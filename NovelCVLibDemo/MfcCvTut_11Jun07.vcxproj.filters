@@ -24,10 +24,10 @@
     <ClCompile Include="Libs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MfcCvTut_11Jun07.cpp">
+    <ClCompile Include="NovelCVLibDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MfcCvTut_11Jun07Dlg.cpp">
+    <ClCompile Include="NovelCVLibDemoDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
@@ -44,10 +44,10 @@
     <ClInclude Include="LIB.H">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MfcCvTut_11Jun07.h">
+    <ClInclude Include="NovelCVLibDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MfcCvTut_11Jun07Dlg.h">
+    <ClInclude Include="NovelCVLibDemoDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -79,10 +79,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MfcCvTut_11Jun07.ico">
+    <None Include="res\NovelCVLibDemo.ico">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\MfcCvTut_11Jun07.rc2">
+    <None Include="res\NovelCVLibDemo.rc2">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="file1.txt" />
@@ -93,7 +93,7 @@
     <None Include="WinNT.rh" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MfcCvTut_11Jun07.rc">
+    <ResourceCompile Include="NovelCVLibDemo.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

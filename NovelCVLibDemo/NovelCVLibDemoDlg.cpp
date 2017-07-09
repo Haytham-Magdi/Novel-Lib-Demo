@@ -1,9 +1,9 @@
-// MfcCvTut_11Jun07Dlg.cpp : implementation file
+// NovelCVLibDemoDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
-#include "MfcCvTut_11Jun07.h"
-#include "MfcCvTut_11Jun07Dlg.h"
+#include "NovelCVLibDemo.h"
+#include "NovelCVLibDemoDlg.h"
 #include "cvapp.h"
 
 #include <NovelCVLib\Ncv\OpenCV\funcs1.h>
@@ -53,18 +53,18 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CMfcCvTut_11Jun07Dlg dialog
+// CNovelCVLibDemoDlg dialog
 
 
 
 
-CMfcCvTut_11Jun07Dlg::CMfcCvTut_11Jun07Dlg(CWnd* pParent /*=NULL*/)
-: CDialog(CMfcCvTut_11Jun07Dlg::IDD, pParent)
+CNovelCVLibDemoDlg::CNovelCVLibDemoDlg(CWnd* pParent /*=NULL*/)
+: CDialog(CNovelCVLibDemoDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CMfcCvTut_11Jun07Dlg::DoDataExchange(CDataExchange* pDX)
+void CNovelCVLibDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST_KEYS, m_listKeys);
@@ -85,43 +85,43 @@ void CMfcCvTut_11Jun07Dlg::DoDataExchange(CDataExchange* pDX)
 
 
 
-BEGIN_MESSAGE_MAP(CMfcCvTut_11Jun07Dlg, CDialog)
+BEGIN_MESSAGE_MAP(CNovelCVLibDemoDlg, CDialog)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	//}}AFX_MSG_MAP
-	ON_BN_CLICKED(IDC_OPEN_IMAGE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn)
-	ON_BN_CLICKED(IDC_PROCESS_IMAGE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedProcessImageBtn)
-	ON_BN_CLICKED(IDC_CREATE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedCreateBtn)
+	ON_BN_CLICKED(IDC_OPEN_IMAGE_BTN, &CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn)
+	ON_BN_CLICKED(IDC_PROCESS_IMAGE_BTN, &CNovelCVLibDemoDlg::OnBnClickedProcessImageBtn)
+	ON_BN_CLICKED(IDC_CREATE_BTN, &CNovelCVLibDemoDlg::OnBnClickedCreateBtn)
 
-	ON_BN_CLICKED(IDC_FAST_AVG_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgBtn)
+	ON_BN_CLICKED(IDC_FAST_AVG_BTN, &CNovelCVLibDemoDlg::OnBnClickedFastAvgBtn)
 
-	//	ON_LBN_SELCHANGE(IDC_LIST2, &CMfcCvTut_11Jun07Dlg::OnLbnSelchangeList2)
-	ON_BN_CLICKED(IDC_TRY_MOUSE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTryMouseBtn)
-	ON_BN_CLICKED(IDC_CLEAR_IO, &CMfcCvTut_11Jun07Dlg::OnBnClickedClearIo)
-	ON_BN_CLICKED(IDC_DRAW_LINE_PATH, &CMfcCvTut_11Jun07Dlg::OnBnClickedDrawLinePath)
-	ON_BN_CLICKED(IDC_AVG_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedAvgBtn)
-	ON_BN_CLICKED(IDC_RESET_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedResetBtn)
-	ON_BN_CLICKED(IDC_SIZE_UP_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedSizeUpBtn)
-	ON_BN_CLICKED(IDC_SIZE_DOWN_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedSizeDownBtn)
-	ON_BN_CLICKED(IDC_SAVE_TO_FILE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedSaveToFileBtn)
-	ON_BN_CLICKED(IDC_CLIP_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedClipBtn)
-	ON_BN_CLICKED(IDC_THRESHOLD_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedThresholdBtn)
-	ON_BN_CLICKED(IDC_UNDO_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedUndoBtn)
-	ON_BN_CLICKED(IDC_REDO_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedRedoBtn)
-	ON_BN_CLICKED(IDC_DILATE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedDilateBtn)
-	ON_BN_CLICKED(IDC_ERODE_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedErodeBtn)
-	ON_BN_CLICKED(IDC_MEDIAN_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMedianBtn)
-	ON_BN_CLICKED(IDC_EQUALIZE_HIST_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn)
-	ON_BN_CLICKED(IDC_GRAY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn)
-	ON_BN_CLICKED(IDC_MULT_BY_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn)
-	ON_BN_CLICKED(IDC_TRY26_BTN, &CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn)
+	//	ON_LBN_SELCHANGE(IDC_LIST2, &CNovelCVLibDemoDlg::OnLbnSelchangeList2)
+	ON_BN_CLICKED(IDC_TRY_MOUSE_BTN, &CNovelCVLibDemoDlg::OnBnClickedTryMouseBtn)
+	ON_BN_CLICKED(IDC_CLEAR_IO, &CNovelCVLibDemoDlg::OnBnClickedClearIo)
+	ON_BN_CLICKED(IDC_DRAW_LINE_PATH, &CNovelCVLibDemoDlg::OnBnClickedDrawLinePath)
+	ON_BN_CLICKED(IDC_AVG_BTN, &CNovelCVLibDemoDlg::OnBnClickedAvgBtn)
+	ON_BN_CLICKED(IDC_RESET_BTN, &CNovelCVLibDemoDlg::OnBnClickedResetBtn)
+	ON_BN_CLICKED(IDC_SIZE_UP_BTN, &CNovelCVLibDemoDlg::OnBnClickedSizeUpBtn)
+	ON_BN_CLICKED(IDC_SIZE_DOWN_BTN, &CNovelCVLibDemoDlg::OnBnClickedSizeDownBtn)
+	ON_BN_CLICKED(IDC_SAVE_TO_FILE_BTN, &CNovelCVLibDemoDlg::OnBnClickedSaveToFileBtn)
+	ON_BN_CLICKED(IDC_CLIP_BTN, &CNovelCVLibDemoDlg::OnBnClickedClipBtn)
+	ON_BN_CLICKED(IDC_THRESHOLD_BTN, &CNovelCVLibDemoDlg::OnBnClickedThresholdBtn)
+	ON_BN_CLICKED(IDC_UNDO_BTN, &CNovelCVLibDemoDlg::OnBnClickedUndoBtn)
+	ON_BN_CLICKED(IDC_REDO_BTN, &CNovelCVLibDemoDlg::OnBnClickedRedoBtn)
+	ON_BN_CLICKED(IDC_DILATE_BTN, &CNovelCVLibDemoDlg::OnBnClickedDilateBtn)
+	ON_BN_CLICKED(IDC_ERODE_BTN, &CNovelCVLibDemoDlg::OnBnClickedErodeBtn)
+	ON_BN_CLICKED(IDC_MEDIAN_BTN, &CNovelCVLibDemoDlg::OnBnClickedMedianBtn)
+	ON_BN_CLICKED(IDC_EQUALIZE_HIST_BTN, &CNovelCVLibDemoDlg::OnBnClickedEqualizeHistBtn)
+	ON_BN_CLICKED(IDC_GRAY_BTN, &CNovelCVLibDemoDlg::OnBnClickedGrayBtn)
+	ON_BN_CLICKED(IDC_MULT_BY_BTN, &CNovelCVLibDemoDlg::OnBnClickedMultByBtn)
+	ON_BN_CLICKED(IDC_TRY26_BTN, &CNovelCVLibDemoDlg::OnBnClickedTry26Btn)
 END_MESSAGE_MAP()
 
 
-// CMfcCvTut_11Jun07Dlg message handlers
+// CNovelCVLibDemoDlg message handlers
 
-BOOL CMfcCvTut_11Jun07Dlg::OnInitDialog()
+BOOL CNovelCVLibDemoDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
@@ -185,7 +185,7 @@ BOOL CMfcCvTut_11Jun07Dlg::OnInitDialog()
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CMfcCvTut_11Jun07Dlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CNovelCVLibDemoDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -202,7 +202,7 @@ void CMfcCvTut_11Jun07Dlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CMfcCvTut_11Jun07Dlg::OnPaint()
+void CNovelCVLibDemoDlg::OnPaint()
 {
 	if (IsIconic())
 	{
@@ -229,13 +229,13 @@ void CMfcCvTut_11Jun07Dlg::OnPaint()
 
 // The system calls this function to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CMfcCvTut_11Jun07Dlg::OnQueryDragIcon()
+HCURSOR CNovelCVLibDemoDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
+void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 {
 	//if (false)
 	{
@@ -309,7 +309,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedOpenImageBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedProcessImageBtn()
+void CNovelCVLibDemoDlg::OnBnClickedProcessImageBtn()
 {
 	if (proc != 0)
 	{
@@ -323,7 +323,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedProcessImageBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedCreateBtn()
+void CNovelCVLibDemoDlg::OnBnClickedCreateBtn()
 {
 	//if (proc != 0) 
 
@@ -341,7 +341,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedCreateBtn()
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgBtn()
+void CNovelCVLibDemoDlg::OnBnClickedFastAvgBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -367,14 +367,14 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedFastAvgBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnLbnSelchangeList2()
+void CNovelCVLibDemoDlg::OnLbnSelchangeList2()
 {
 	// TODO: Add your control notification handler code here
 }
 
 
 
-void CMfcCvTut_11Jun07Dlg::InitIOValues()
+void CNovelCVLibDemoDlg::InitIOValues()
 {
 	m_nMouseLBCnt = 0;
 
@@ -395,7 +395,7 @@ void CMfcCvTut_11Jun07Dlg::InitIOValues()
 
 
 
-void CMfcCvTut_11Jun07Dlg::ReadString(char * a_sKey, char * a_buff)
+void CNovelCVLibDemoDlg::ReadString(char * a_sKey, char * a_buff)
 {
 	strcpy(a_buff, "Test");
 
@@ -418,7 +418,7 @@ void CMfcCvTut_11Jun07Dlg::ReadString(char * a_sKey, char * a_buff)
 }
 
 
-bool CMfcCvTut_11Jun07Dlg::ValueExists(char * a_sKey)
+bool CNovelCVLibDemoDlg::ValueExists(char * a_sKey)
 {
 	static char tmpBuf[100];
 
@@ -436,11 +436,11 @@ bool CMfcCvTut_11Jun07Dlg::ValueExists(char * a_sKey)
 }
 
 
-void CMfcCvTut_11Jun07Dlg::LinePath_Mouse_Callback(
+void CNovelCVLibDemoDlg::LinePath_Mouse_Callback(
 	int a_event, int a_x, int a_y, int a_flags, void* a_param)
 {
 
-	CMfcCvTut_11Jun07Dlg * pDlg = (CMfcCvTut_11Jun07Dlg *)a_param;
+	CNovelCVLibDemoDlg * pDlg = (CNovelCVLibDemoDlg *)a_param;
 
 
 	static char buff[100];
@@ -521,10 +521,10 @@ void CMfcCvTut_11Jun07Dlg::LinePath_Mouse_Callback(
 
 
 
-//void CMfcCvTut_11Jun07Dlg::RgnSgmImg_Mouse_Callback(
+//void CNovelCVLibDemoDlg::RgnSgmImg_Mouse_Callback(
 //	int a_event, int a_x, int a_y, int a_flags, void* a_param)
 //{
-//	CMfcCvTut_11Jun07Dlg * pDlg = (CMfcCvTut_11Jun07Dlg *)a_param;
+//	CNovelCVLibDemoDlg * pDlg = (CNovelCVLibDemoDlg *)a_param;
 //
 //	static char buff[100];
 //
@@ -631,17 +631,17 @@ void CMfcCvTut_11Jun07Dlg::LinePath_Mouse_Callback(
 
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTryMouseBtn()
+void CNovelCVLibDemoDlg::OnBnClickedTryMouseBtn()
 {
 	//cvSetMouseCallback( "avgImg", LinePath_Mouse_Callback, (void*) this );
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedClearIo()
+void CNovelCVLibDemoDlg::OnBnClickedClearIo()
 {
 	DoClearIo();
 }
 
-void CMfcCvTut_11Jun07Dlg::DoClearIo()
+void CNovelCVLibDemoDlg::DoClearIo()
 {
 	while (m_listKeys.GetCount() > 0)
 		m_listKeys.DeleteString(0);
@@ -652,7 +652,7 @@ void CMfcCvTut_11Jun07Dlg::DoClearIo()
 	this->m_nMouseLBCnt = 0;
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedDrawLinePath()
+void CNovelCVLibDemoDlg::OnBnClickedDrawLinePath()
 {
 	if (proc != 0)
 	{
@@ -665,7 +665,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedDrawLinePath()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedAvgBtn()
+void CNovelCVLibDemoDlg::OnBnClickedAvgBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -692,7 +692,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedAvgBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedResetBtn()
+void CNovelCVLibDemoDlg::OnBnClickedResetBtn()
 {
 
 	if (proc != 0)
@@ -706,7 +706,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedResetBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedSizeUpBtn()
+void CNovelCVLibDemoDlg::OnBnClickedSizeUpBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -731,7 +731,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedSizeUpBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedSizeDownBtn()
+void CNovelCVLibDemoDlg::OnBnClickedSizeDownBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -756,7 +756,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedSizeDownBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedSaveToFileBtn()
+void CNovelCVLibDemoDlg::OnBnClickedSaveToFileBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -775,7 +775,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedSaveToFileBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedClipBtn()
+void CNovelCVLibDemoDlg::OnBnClickedClipBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -791,7 +791,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedClipBtn()
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedThresholdBtn()
+void CNovelCVLibDemoDlg::OnBnClickedThresholdBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -818,7 +818,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedThresholdBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedUndoBtn()
+void CNovelCVLibDemoDlg::OnBnClickedUndoBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -834,7 +834,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedUndoBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedRedoBtn()
+void CNovelCVLibDemoDlg::OnBnClickedRedoBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -850,7 +850,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedRedoBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedDilateBtn()
+void CNovelCVLibDemoDlg::OnBnClickedDilateBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -877,7 +877,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedDilateBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedErodeBtn()
+void CNovelCVLibDemoDlg::OnBnClickedErodeBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -904,7 +904,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedErodeBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedMedianBtn()
+void CNovelCVLibDemoDlg::OnBnClickedMedianBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -931,7 +931,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedMedianBtn()
 
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn()
+void CNovelCVLibDemoDlg::OnBnClickedEqualizeHistBtn()
 {
 
 	if (proc != 0)
@@ -945,7 +945,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedEqualizeHistBtn()
 	}
 }
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn()
+void CNovelCVLibDemoDlg::OnBnClickedGrayBtn()
 {
 	// TODO: Add your control notification handler code here
 
@@ -961,7 +961,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedGrayBtn()
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn()
+void CNovelCVLibDemoDlg::OnBnClickedMultByBtn()
 {
 	if (proc != 0)
 	{
@@ -987,7 +987,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedMultByBtn()
 }
 
 
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn_0()
+void CNovelCVLibDemoDlg::OnBnClickedTry26Btn_0()
 {
 	// TODO: Add your control notification handler code here
 
@@ -1018,7 +1018,7 @@ void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn_0()
 
 
 //	This is the TRUE OnBnClickedTry26Btn()
-void CMfcCvTut_11Jun07Dlg::OnBnClickedTry26Btn()
+void CNovelCVLibDemoDlg::OnBnClickedTry26Btn()
 {
 	// TODO: Add your control notification handler code here
 

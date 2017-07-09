@@ -1,4 +1,4 @@
-// MfcCvTut_11Jun07Dlg.h : header file
+// NovelCVLibDemoDlg.h : header file
 //
 
 #pragma once
@@ -11,12 +11,12 @@
 // mouse events.
 //
 
-// CMfcCvTut_11Jun07Dlg dialog
-class CMfcCvTut_11Jun07Dlg : public CDialog, public Ncv::IOMgr::IIOMgrCore
+// CNovelCVLibDemoDlg dialog
+class CNovelCVLibDemoDlg : public CDialog, public Ncv::IOMgr::IIOMgrCore
 {
 // Construction
 public:
-	CMfcCvTut_11Jun07Dlg(CWnd* pParent = NULL);	// standard constructor
+	CNovelCVLibDemoDlg(CWnd* pParent = NULL);	// standard constructor
 
 	virtual void ReadString( char * a_sKey, char * a_buff);
 	virtual bool ValueExists( char * a_sKey );

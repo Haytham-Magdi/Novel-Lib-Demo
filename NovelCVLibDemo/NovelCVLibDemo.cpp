@@ -1,39 +1,39 @@
-// MfcCvTut_11Jun07.cpp : Defines the class behaviors for the application.
+// NovelCVLibDemo.cpp : Defines the class behaviors for the application.
 //
 
 #include "stdafx.h"
-#include "MfcCvTut_11Jun07.h"
-#include "MfcCvTut_11Jun07Dlg.h"
+#include "NovelCVLibDemo.h"
+#include "NovelCVLibDemoDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CMfcCvTut_11Jun07App
+// CNovelCVLibDemoApp
 
-BEGIN_MESSAGE_MAP(CMfcCvTut_11Jun07App, CWinApp)
+BEGIN_MESSAGE_MAP(CNovelCVLibDemoApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
 
-// CMfcCvTut_11Jun07App construction
+// CNovelCVLibDemoApp construction
 
-CMfcCvTut_11Jun07App::CMfcCvTut_11Jun07App()
+CNovelCVLibDemoApp::CNovelCVLibDemoApp()
 {
 	// TODO: add construction code here,
 	// Place all significant initialization in InitInstance
 }
 
 
-// The one and only CMfcCvTut_11Jun07App object
+// The one and only CNovelCVLibDemoApp object
 
-CMfcCvTut_11Jun07App theApp;
+CNovelCVLibDemoApp theApp;
 
 
-// CMfcCvTut_11Jun07App initialization
+// CNovelCVLibDemoApp initialization
 
-BOOL CMfcCvTut_11Jun07App::InitInstance()
+BOOL CNovelCVLibDemoApp::InitInstance()
 {
 	// InitCommonControlsEx() is required on Windows XP if an application
 	// manifest specifies use of ComCtl32.dll version 6 or later to enable
@@ -60,7 +60,7 @@ BOOL CMfcCvTut_11Jun07App::InitInstance()
 
 	InitLibs();
 
-	CMfcCvTut_11Jun07Dlg dlg;
+	CNovelCVLibDemoDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

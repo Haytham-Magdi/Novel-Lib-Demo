@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="MfcCvTut_11Jun07"
+	Name="NovelCVLibDemo"
 	ProjectGUID="{CD8A9FC6-1A90-4975-899D-5770459C2835}"
-	RootNamespace="MfcCvTut_11Jun07"
+	RootNamespace="NovelCVLibDemo"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="131072"
 	>
@@ -212,11 +212,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MfcCvTut_11Jun07.cpp"
+				RelativePath=".\NovelCVLibDemo.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\MfcCvTut_11Jun07Dlg.cpp"
+				RelativePath=".\NovelCVLibDemoDlg.cpp"
 				>
 			</File>
 			<File
@@ -246,11 +246,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath="..\..\..\Hcv\MfcCvTut_11Jun07_Src\cvapp-Core-cpp.h"
+				RelativePath="..\..\..\Hcv\NovelCVLibDemo_Src\cvapp-Core-cpp.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\Hcv\MfcCvTut_11Jun07_Src\cvapp-Core.h"
+				RelativePath="..\..\..\Hcv\NovelCVLibDemo_Src\cvapp-Core.h"
 				>
 			</File>
 			<File
@@ -262,11 +262,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\MfcCvTut_11Jun07.h"
+				RelativePath=".\NovelCVLibDemo.h"
 				>
 			</File>
 			<File
-				RelativePath=".\MfcCvTut_11Jun07Dlg.h"
+				RelativePath=".\NovelCVLibDemoDlg.h"
 				>
 			</File>
 			<File
@@ -284,15 +284,15 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\res\MfcCvTut_11Jun07.ico"
+				RelativePath=".\res\NovelCVLibDemo.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\MfcCvTut_11Jun07.rc"
+				RelativePath=".\NovelCVLibDemo.rc"
 				>
 			</File>
 			<File
-				RelativePath=".\res\MfcCvTut_11Jun07.rc2"
+				RelativePath=".\res\NovelCVLibDemo.rc2"
 				>
 			</File>
 		</Filter>
@@ -308,7 +308,7 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="MfcCvTut_11Jun07.rc"
+			Value="NovelCVLibDemo.rc"
 		/>
 	</Globals>
 </VisualStudioProject>
