@@ -30,6 +30,7 @@
     <ProjectGuid>{CD8A9FC6-1A90-4975-899D-5770459C2835}</ProjectGuid>
     <RootNamespace>MfcCvTut_11Jun07</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <ProjectName>NovelCVLibDemo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
