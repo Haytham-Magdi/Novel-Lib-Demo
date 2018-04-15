@@ -74,8 +74,8 @@
 
 //#define Ncpp_DEBUG
 
-//#include <NovelCVLib\Ncpp\Common\commonLib.h>
-#include <NovelCVLib\Ncpp\Common\commonLib.h>
+//#include <NovelCVLib\Ncpp\Common\commonLib_Misc.h>
+#include <NovelCVLib\Ncpp\Common\commonLib_Misc.h>
 //#include <NovelCVLib\Ncpp\MfcEx\mfcExLib.h>
 #include <NovelCVLib\Ncpp\Math\mathLib.h>
 #include <NovelCVLib\Ncv\NcvLib.h>

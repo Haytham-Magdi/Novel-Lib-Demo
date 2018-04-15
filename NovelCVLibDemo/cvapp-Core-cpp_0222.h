@@ -4,7 +4,7 @@
 //#include <NovelCVLib\Ncv\SignalOneDim.h>
 #include "GlobalStuff.h"
 
-//#include <NovelCVLib\Ncv\TempImageAccessor.h>
+#include <NovelCVLib\Ncv\TempImageAccessor.h>
 #include <NovelCVLib\Ncv\VectorVal.h>
 #include <NovelCVLib\Ncv\ImgSizeRotationColl.h>
 
@@ -12,7 +12,7 @@
 
 using namespace Ncpp;
 using namespace Ncv;
-using namespace Ncv::ImageOperations2;
+using namespace Ncv::Image_Operations;
 using namespace Ncv::ImageAccessorOperations;
 //using namespace Ncv::Ns;
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-#include <NovelCVLib\Ncpp\Common\commonLib.cpp>
+#include <NovelCVLib\Ncpp\Common\commonLib_Misc.cpp>
 #include <NovelCVLib\Ncpp\Math\mathLib.cpp>
 #include <NovelCVLib\Ncv\NcvLib.cpp>
 

@@ -27,7 +27,7 @@
 #include "GlobalStuff.h"
 
 
-#include <NovelCVLib\Ncv\OpenCV\Image.h>
+#include <NovelCVLib\OpenCV\Image.h>
 
 
 void InitLibs(void);
@@ -50,22 +50,23 @@ class ImageProcessor {
 		Init_FixedVectorDebug();
 	}
 
+	static void S_Update_FixedVectorDebug()
+	{
+		s_pProc->Update_FixedVectorDebug();
+	}
+	static ImageProcessor * s_pProc;
+
+
 	void Init_FixedVectorDebug()
 	{
 		m_fixedVectorDebug_AllocSizeTot = 0;
 
 		s_pProc = this;
 
-		//Ncpp::FixedVectorDebug::pFunc_Update = this->Update_FixedVectorDebug;
+		////Ncpp::FixedVectorDebug::pFunc_Update = this->Update_FixedVectorDebug;
 		Ncpp::FixedVectorDebug::pFunc_Update = ImageProcessor::S_Update_FixedVectorDebug;
 	}
 
-
-	static void S_Update_FixedVectorDebug()
-	{
-		s_pProc->Update_FixedVectorDebug();
-	}
-	static ImageProcessor * s_pProc;
 
 
 	void Update_FixedVectorDebug()

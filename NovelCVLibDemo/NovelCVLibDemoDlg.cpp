@@ -6,7 +6,7 @@
 #include "NovelCVLibDemoDlg.h"
 #include "cvapp.h"
 
-#include <NovelCVLib\Ncv\OpenCV\funcs1.h>
+#include <NovelCVLib\OpenCV\funcs1.h>
 
 #include <NovelCVLib\Ncpp\Common\FixedVector.h>
 
@@ -273,6 +273,7 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "bin_images_3.jpg";
 		//CString sFile = "Fig-3-1-Binarization-using-Otsu's-method-2-smooth-operation-3-second-binarization.png";
 
+		//CString sFile = "Hydrangeas.jpg";
 
 		CString path = sFolder + "\\" + sFile;
 
