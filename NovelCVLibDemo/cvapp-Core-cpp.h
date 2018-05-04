@@ -4,16 +4,30 @@
 //#include <NovelCVLib\Ncv\SignalOneDim.h>
 #include "GlobalStuff.h"
 
-//#include <NovelCVLib\Ncv\TempImageAccessor.h>
+#include <NovelCVLib\Ncv\ImageOperations2.h>
+
 #include <NovelCVLib\Ncv\VectorVal.h>
 #include <NovelCVLib\Ncv\ImgSizeRotationColl.h>
+
+#include <NovelCVLib\OpenCV\OpenCV_Util.h>
+#include <NovelCVLib\OpenCV\funcs1.h>
+#include <NovelCVLib\Ncv\IOMgr.h>
+
+#include <NovelCVLib\Ncv\signal1D.h>
+#include <NovelCVLib\Ncv\signal1DViewer.h>
+
+#include <NovelCVLib\Ncv\LinePath.h>
+#include <NovelCVLib\Ncv\LinePathInt.h>
+
+#include <NovelCVLib\Apps\Binarization2\AngleDirMgrColl.h>
+
+#include <NovelCVLib\Ncv\InitLib.h>
 
 //#include <NovelCVLib\Ncv\CircleContourOfPix.h>
 
 using namespace Ncpp;
 using namespace Ncv;
 using namespace Ncv::ImageOperations2;
-using namespace Ncv::ImageAccessorOperations;
 //using namespace Ncv::Ns;
 
 //using namespace Ncpp::MfcEx;
@@ -385,7 +399,7 @@ void ImageProcessor::Try26_1()
 	F32ImageRef src = GlobalStuff::GetLinePathImg();
 
 
-	ImgSizeRotationCollRef rotColl1 = new  ImgSizeRotationColl(src->GetSize(), 4);
+	ImgSizeRotationCollRef rotColl1 = new  ImgSizeRotationColl(size_2D(src->GetSize()), 4);
 	//Ns_Binarization::RotationMgrCollRef rotColl1 = new  Ns_Binarization::RotationMgrColl(src, 8);
 
 	//ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
@@ -432,447 +446,448 @@ void ImageProcessor::Try26_1()
 
 }
 
-void ImageProcessor::Try26_2()
-{
-	//{
-	//	F32ImageRef src = GlobalStuff::GetLinePathImg();
-	//	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-
-	//	F32ImageAccessor1C_Ref weight_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	//	float wt1 = 200;
-	//	//float wt1 = 1;
-	//	FillImage(weight_Img->GetMemAccessor(), wt1);
-	//	//ShowImage(weight_Img->GetSrcImg(), "weight_Img->GetSrcImg()");
-
-
-	//	Window<int> avgWin = Window<int>::New(-30, 30, -30, 30);
-
-	//	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
-	//	//AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-	//	AvgImage_Weighted(org_Img->GetMemAccessor(), weight_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-
-	//	ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
-
-	//	return;
-	//}
-
-	F32ImageAccessor1C_Ref mag_Img;
-	{
-		F32ImageRef src = GlobalStuff::GetLinePathImg();
-		F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-
-		mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-
-		F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
-
-		Window<int> avgWin_0 = Window<int>::New(-1, 1, -1, 1);
-
-		AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), avgWin_0);
-	}
-
-
-	ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
-
-	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
-	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
-	Window<int> avgWin = Window<int>::New(-1, 1, -1, 1);
-
-	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
-
-	F32ImageAccessor1C_Ref avg_Img = mag_Img->CloneAccAndImage();
-	AvgImage(mag_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-
-	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
-
-	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-	CalcMagSqrImage(mag_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
-
-	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
-
-	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
-		standev_Img->GetMemAccessor());
-
-	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
-
-	////////////////////////////////////////////--------------------------
-
-	Window<int> avgWin_2 = Window<int>::New(-2, 2, -2, 2);
-
-	F32ImageAccessor1C_Ref avg_Standev_Img = standev_Img->CloneAccAndImage();
-	AvgImage(standev_Img->GetMemAccessor(), avg_Standev_Img->GetMemAccessor(), avgWin_2);
-
-	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
-
-	F32ImageAccessor1C_Ref magSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	CalcMagSqrImage(standev_Img->GetMemAccessor(), magSqr_Standev_Img->GetMemAccessor());
-
-	F32ImageAccessor1C_Ref avg_MagSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	AvgImage(magSqr_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(), avgWin_2);
-
-	F32ImageAccessor1C_Ref standev_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(),
-		standev_Standev_Img->GetMemAccessor());
-
-	ShowImage(standev_Standev_Img->GetSrcImg(), "standev_Standev_Img->GetSrcImg()");
-
-	////////////////////////////////////////////--------------------------
-
-	{
-		F32ImageAccessor1C_Ref edge_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-
-		const int nSize_1D = standev_Img->GetMemAccessor()->GetNofSteps_X_Org() * standev_Img->GetMemAccessor()->GetNofSteps_Y_Org();
-
-		float * edge_Ptr = edge_Img->GetMemAccessor()->GetDataPtr();
-		float * standev_Ptr = standev_Img->GetMemAccessor()->GetDataPtr();
-		float * standev_Standev_Ptr = standev_Standev_Img->GetMemAccessor()->GetDataPtr();
-		float * avg_Standev_Ptr = avg_Standev_Img->GetMemAccessor()->GetDataPtr();
-
-		for (int i = 0; i < nSize_1D; i++)
-		{
-			float & rEdge = edge_Ptr[i];
-			float & rStandev = standev_Ptr[i];
-			float & rStandev_Standev = standev_Standev_Ptr[i];
-			float & rAvg_Standev = avg_Standev_Ptr[i];
-
-			//if (rStandev >(rStandev_Standev * 0.666f))
-			//if (rStandev >(rAvg_Standev * 0.666f) && rStandev > 20)
-			if (rStandev >(rAvg_Standev * 0.44f) && rStandev > 20)
-			{
-				rEdge = 255;
-			}
-			else
-			{
-				rEdge = 0;
-			}
-		}
-
-		ShowImage(edge_Img->GetSrcImg(), "edge_Img->GetSrcImg()");
-	}
-
-
-
-
-
-}
-
-void ImageProcessor::Try26_3()
-{
-
-	F32ImageAccessor1C_Ref mag_Img;
-	//F32ImageAccessor3C_Ref mag_Img;
-	{
-		F32ImageRef src = GlobalStuff::GetLinePathImg();
-		F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-
-		mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		//mag_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-
-		F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
-
-		//F32ImageAccessor3C_Ref magImg_0 = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-		//CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
-
-		//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 1, -1, 1));
-		//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 0, -1, 0));
-		mag_Img = magImg_0;
-	}
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
-
-
-	F32ImageAccessor1C_Ref standev_Thin_Img;
-	{
-		F32ImageAccessor1C_Ref avg_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-		standev_Thin_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-
-		Calc_Avg_And_Standev_Image(mag_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), standev_Thin_Img->GetMemAccessor(),
-			Window<int>::New(-1, 1, -1, 1));
-		//Window<int>::New(-1, 0, -1, 0));
-	}
-	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_Thin_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_Thin_Img->GetSrcImg(), "standev_Thin_Img->GetSrcImg()");
-	//return;
-
-
-	F32ImageAccessor1C_Ref standev_Wide_Img;
-	F32ImageAccessor1C_Ref avg_Wide_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-	{
-		standev_Wide_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-
-		Calc_Avg_And_Standev_Image(mag_Img->GetMemAccessor(), avg_Wide_Img->GetMemAccessor(), standev_Wide_Img->GetMemAccessor(),
-			Window<int>::New(-10, 10, -10, 10));
-	}
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_Wide_Img->GetSrcImg(), "standev_Wide_Img->GetSrcImg()");
-
-
-
-	F32ImageAccessor1C_Ref avg_Wide_Mag_Diff_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
-	{
-		const int nSize_1D = mag_Img->GetSize_1D();
-
-		float * mag_Ptr = mag_Img->GetDataPtr();
-		float * avg_Wide_Ptr = avg_Wide_Img->GetDataPtr();
-		float * avg_Wide_Mag_Diff_Ptr = avg_Wide_Mag_Diff_Img->GetDataPtr();
-
-		for (int i = 0; i < nSize_1D; i++)
-		{
-			avg_Wide_Mag_Diff_Ptr[i] = fabs(mag_Ptr[i] - avg_Wide_Ptr[i]);
-		}
-	}
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_Wide_Mag_Diff_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_Thin_Img->GetSrcImg(), "avg_Wide_Mag_Diff_Img->GetSrcImg()");
-
-
-	return;
-
-
-	////////////////////////////////////////////--------------------------
-
-	F32ImageAccessor1C_Ref standev_Img;
-
-
-
-	Window<int> avgWin_2 = Window<int>::New(-2, 2, -2, 2);
-
-	F32ImageAccessor1C_Ref avg_Standev_Img = standev_Img->CloneAccAndImage();
-	AvgImage(standev_Img->GetMemAccessor(), avg_Standev_Img->GetMemAccessor(), avgWin_2);
-
-	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
-
-	F32ImageAccessor1C_Ref magSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	CalcMagSqrImage(standev_Img->GetMemAccessor(), magSqr_Standev_Img->GetMemAccessor());
-
-	F32ImageAccessor1C_Ref avg_MagSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	AvgImage(magSqr_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(), avgWin_2);
-
-	F32ImageAccessor1C_Ref standev_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-	CalcStandevImage(avg_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(),
-		standev_Standev_Img->GetMemAccessor());
-
-	ShowImage(standev_Standev_Img->GetSrcImg(), "standev_Standev_Img->GetSrcImg()");
-
-	////////////////////////////////////////////--------------------------
-
-	{
-		F32ImageAccessor1C_Ref edge_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
-
-		const int nSize_1D = standev_Img->GetMemAccessor()->GetNofSteps_X_Org() * standev_Img->GetMemAccessor()->GetNofSteps_Y_Org();
-
-		float * edge_Ptr = edge_Img->GetMemAccessor()->GetDataPtr();
-		float * standev_Ptr = standev_Img->GetMemAccessor()->GetDataPtr();
-		float * standev_Standev_Ptr = standev_Standev_Img->GetMemAccessor()->GetDataPtr();
-		float * avg_Standev_Ptr = avg_Standev_Img->GetMemAccessor()->GetDataPtr();
-
-		for (int i = 0; i < nSize_1D; i++)
-		{
-			float & rEdge = edge_Ptr[i];
-			float & rStandev = standev_Ptr[i];
-			float & rStandev_Standev = standev_Standev_Ptr[i];
-			float & rAvg_Standev = avg_Standev_Ptr[i];
-
-			//if (rStandev >(rStandev_Standev * 0.666f))
-			//if (rStandev >(rAvg_Standev * 0.666f) && rStandev > 20)
-			if (rStandev >(rAvg_Standev * 0.44f) && rStandev > 20)
-			{
-				rEdge = 255;
-			}
-			else
-			{
-				rEdge = 0;
-			}
-		}
-
-		ShowImage(edge_Img->GetSrcImg(), "edge_Img->GetSrcImg()");
-	}
-
-
-}
-
-void ImageProcessor::Try26_5()
-{
-	F32ImageRef src = GlobalStuff::GetLinePathImg();
-
-	//ImgRotationMgr_3_Ref rotMgr88_0_0 = new ImgRotationMgr_3(src, 0);
-	//ImgRotationMgr_3_Ref rotMgr88_0_1 = new ImgRotationMgr_3(src, 22.5);
-	//ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
-	//ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
-
-	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src->GetSize(), 45);
-
-	ImgSizeRotationRef rotMgr = rotMgr88_0_2;
-
-
-	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-
-	//rot_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1,
-		rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
-
-	{
-		F32ColorVal color1;
-		color1.AssignVal(50, 50, 200);
-
-		F32ColorVal color2;
-		color2.AssignVal(250, 50, 50);
-
-		//FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
-		FillImage_Stripes_H(org_Img->GetMemAccessor(), color1, color2, 25);
-	}
-
-	//rotMgr->RotateImage(org_Img->GetMemAccessor(), rot_Img->GetMemAccessor());
-	rotMgr->RotateImage(rot_Img->GetDataPtr(), rot_Img->GetSrcImgSize(),
-		(F32ColorVal *)src->GetDataPtr(), src->GetSize());
-
-
-
-
-	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
-	//GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
-	GlobalStuff::SetLinePathImg(rot_Img->GetSrcImg());
-	GlobalStuff::ShowLinePathImg();
-
-	return;
-
-
-}
-
-void ImageProcessor::Try26_4()
-{
-	//VectorVal<float, 4> vv1;
-
-	F32ImageRef src = GlobalStuff::GetLinePathImg();
-	//F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-	//ImageAccessor_REF(float, VectorVal<float, 3>, 3) org_Img = new F32ImageAccessor3C(src);
-	F32VectorValImageAcc_3C_Ref org_Img = new F32VectorValImageAcc_3C(src);
-	org_Img->SwitchXY();
-
-	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
-
-	//F32ImageAccessor1C_Ref mag_Img;
-	////F32ImageAccessor3C_Ref mag_Img;
-	//{
-	//	F32ImageRef src = GlobalStuff::GetLinePathImg();
-	//	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
-
-	//	mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	//	//mag_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-
-	//	F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	//	CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
-
-	//	//F32ImageAccessor3C_Ref magImg_0 = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	//	//CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
-
-	//	//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 1, -1, 1));
-	//	//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 0, -1, 0));
-	//	mag_Img = magImg_0;
-	//}
-	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	//ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
-
-	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	//ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
-
-
-	F32ImageAccessor1C_Ref standev_InrWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-
-	//const int nInrRad = 5;
-	const int nInrRad = 8;
-	//F32ImageAccessor3C_Ref avg_InrWide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
-	F32VectorValImageAcc_3C_Ref avg_InrWide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
-	{
-		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_InrWide_Img->GetMemAccessor(), standev_InrWide_Img->GetMemAccessor(),
-			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
-
-		MultiplyImageByNum(standev_InrWide_Img->GetMemAccessor(), 2);
-		//AssertValues_Image(avg_InrWide_Img->GetMemAccessor());
-	}
-	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-	ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
-
-	F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
-	{
-		const int nSize_1D = avg_InrWide_Img->GetSize_1D();
-
-		F32VectorVal<4> * dest_Ptr = (F32VectorVal<4> *)avgPStandev_InrWide_Img->GetDataPtr();
-		F32VectorVal<3> * src_Avg_Ptr = (F32VectorVal<3> *)avg_InrWide_Img->GetDataPtr();
-		float * src_Standev_Ptr = standev_InrWide_Img->GetDataPtr();
-
-		for (int i = 0; i < nSize_1D; i++)
-		{
-			*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
-			//Ncpp_ASSERT(src_Standev_Ptr[i] > 0.0 && src_Standev_Ptr[i] < 3000.0f);
-			dest_Ptr[i].Vals[3] = src_Standev_Ptr[i];
-		}
-
-		//AssertValues_Image(avgPStandev_InrWide_Img->GetMemAccessor());
-	}
-
-
-	//const int nOutRad = 5;
-	const int nOutRad = 8;
-	{
-		F32ImageAccessor1C_Ref standev_OutWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		F32VectorValImageAcc_4C_Ref avg_OutWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
-
-		Calc_Avg_And_Standev_Image(avgPStandev_InrWide_Img->GetMemAccessor(), avg_OutWide_Img->GetMemAccessor(), standev_OutWide_Img->GetMemAccessor(),
-			Window<int>::New(-nOutRad, nOutRad, -nOutRad, nOutRad));
-
-		////GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-		//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-		//ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
-
-		GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_OutWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-		ShowImage(standev_OutWide_Img->GetSrcImg(), "standev_OutWide_Img->GetSrcImg()");
-	}
-
-
-	////------------
-
-	F32ImageAccessor1C_Ref conflictDiff_OutWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-	{
-		//conflictDiff_OutWide_Img->SwitchXY();
-
-		////Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
-		////Window<int> avgWin = Window<int>::New(-1, 1, -2, 2);
-		//Window<int> avgWin = Window<int>::New(-10, 10, -10, 10);
-		////Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
-		Window<int> avgWin = Window<int>::New(-nOutRad, nOutRad, -nOutRad, nOutRad);
-
-		F32VectorValImageAcc_4C_Ref avg_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
-		//avg_Img->SwitchXY();
-		AvgImage(avgPStandev_InrWide_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
-
-		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		//magSqr_Img->SwitchXY();
-		CalcMagSqrImage(avgPStandev_InrWide_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
-
-		F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
-		//avg_MagSqr_Img->SwitchXY();
-		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
-
-		Range<int> confRange = Range<int>::New(
-			//-10 - avgWin.Get_X2(), 10 - avgWin.Get_X1());
-			//-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
-			-1 - nOutRad - nInrRad, 1 + nOutRad + nInrRad);
-
-		Calc_ConflictDiff_Image_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
-			conflictDiff_OutWide_Img->GetMemAccessor(), confRange);
-
-		GlobalStuff::SetLinePathImg(GenTriChGrayImg(conflictDiff_OutWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
-		ShowImage(conflictDiff_OutWide_Img->GetSrcImg(), "conflictDiff_OutWide_Img->GetSrcImg()");
-	}
-
-
-
-}
-
+//
+//void ImageProcessor::Try26_2()
+//{
+//	//{
+//	//	F32ImageRef src = GlobalStuff::GetLinePathImg();
+//	//	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//
+//	//	F32ImageAccessor1C_Ref weight_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//	//	float wt1 = 200;
+//	//	//float wt1 = 1;
+//	//	FillImage(weight_Img->GetMemAccessor(), wt1);
+//	//	//ShowImage(weight_Img->GetSrcImg(), "weight_Img->GetSrcImg()");
+//
+//
+//	//	Window<int> avgWin = Window<int>::New(-30, 30, -30, 30);
+//
+//	//	F32ImageAccessor3C_Ref avg_Img = org_Img->CloneAccAndImage();
+//	//	//AvgImage(org_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+//	//	AvgImage_Weighted(org_Img->GetMemAccessor(), weight_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+//
+//	//	ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+//
+//	//	return;
+//	//}
+//
+//	F32ImageAccessor1C_Ref mag_Img;
+//	{
+//		F32ImageRef src = GlobalStuff::GetLinePathImg();
+//		F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//
+//		mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//
+//		F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+//
+//		Window<int> avgWin_0 = Window<int>::New(-1, 1, -1, 1);
+//
+//		AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), avgWin_0);
+//	}
+//
+//
+//	ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
+//
+//	//Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
+//	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
+//	Window<int> avgWin = Window<int>::New(-1, 1, -1, 1);
+//
+//	//Window<int> avgWin = Window<int>::New(-2, 2, -2, 2);
+//
+//	F32ImageAccessor1C_Ref avg_Img = mag_Img->CloneAccAndImage();
+//	AvgImage(mag_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+//
+//	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+//
+//	F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//	CalcMagSqrImage(mag_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+//
+//	F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//	AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+//
+//	F32ImageAccessor1C_Ref standev_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//	CalcStandevImage(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
+//		standev_Img->GetMemAccessor());
+//
+//	ShowImage(standev_Img->GetSrcImg(), "standev_Img->GetSrcImg()");
+//
+//	////////////////////////////////////////////--------------------------
+//
+//	Window<int> avgWin_2 = Window<int>::New(-2, 2, -2, 2);
+//
+//	F32ImageAccessor1C_Ref avg_Standev_Img = standev_Img->CloneAccAndImage();
+//	AvgImage(standev_Img->GetMemAccessor(), avg_Standev_Img->GetMemAccessor(), avgWin_2);
+//
+//	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+//
+//	F32ImageAccessor1C_Ref magSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	CalcMagSqrImage(standev_Img->GetMemAccessor(), magSqr_Standev_Img->GetMemAccessor());
+//
+//	F32ImageAccessor1C_Ref avg_MagSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	AvgImage(magSqr_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(), avgWin_2);
+//
+//	F32ImageAccessor1C_Ref standev_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	CalcStandevImage(avg_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(),
+//		standev_Standev_Img->GetMemAccessor());
+//
+//	ShowImage(standev_Standev_Img->GetSrcImg(), "standev_Standev_Img->GetSrcImg()");
+//
+//	////////////////////////////////////////////--------------------------
+//
+//	{
+//		F32ImageAccessor1C_Ref edge_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//
+//		const int nSize_1D = standev_Img->GetMemAccessor()->GetNofSteps_X_Org() * standev_Img->GetMemAccessor()->GetNofSteps_Y_Org();
+//
+//		float * edge_Ptr = edge_Img->GetMemAccessor()->GetDataPtr();
+//		float * standev_Ptr = standev_Img->GetMemAccessor()->GetDataPtr();
+//		float * standev_Standev_Ptr = standev_Standev_Img->GetMemAccessor()->GetDataPtr();
+//		float * avg_Standev_Ptr = avg_Standev_Img->GetMemAccessor()->GetDataPtr();
+//
+//		for (int i = 0; i < nSize_1D; i++)
+//		{
+//			float & rEdge = edge_Ptr[i];
+//			float & rStandev = standev_Ptr[i];
+//			float & rStandev_Standev = standev_Standev_Ptr[i];
+//			float & rAvg_Standev = avg_Standev_Ptr[i];
+//
+//			//if (rStandev >(rStandev_Standev * 0.666f))
+//			//if (rStandev >(rAvg_Standev * 0.666f) && rStandev > 20)
+//			if (rStandev >(rAvg_Standev * 0.44f) && rStandev > 20)
+//			{
+//				rEdge = 255;
+//			}
+//			else
+//			{
+//				rEdge = 0;
+//			}
+//		}
+//
+//		ShowImage(edge_Img->GetSrcImg(), "edge_Img->GetSrcImg()");
+//	}
+//
+//
+//
+//
+//
+//}
+//
+//void ImageProcessor::Try26_3()
+//{
+//
+//	F32ImageAccessor1C_Ref mag_Img;
+//	//F32ImageAccessor3C_Ref mag_Img;
+//	{
+//		F32ImageRef src = GlobalStuff::GetLinePathImg();
+//		F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//
+//		mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		//mag_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//
+//		F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+//
+//		//F32ImageAccessor3C_Ref magImg_0 = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//		//CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+//
+//		//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 1, -1, 1));
+//		//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 0, -1, 0));
+//		mag_Img = magImg_0;
+//	}
+//	GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
+//
+//
+//	F32ImageAccessor1C_Ref standev_Thin_Img;
+//	{
+//		F32ImageAccessor1C_Ref avg_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//		standev_Thin_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//
+//		Calc_Avg_And_Standev_Image(mag_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), standev_Thin_Img->GetMemAccessor(),
+//			Window<int>::New(-1, 1, -1, 1));
+//		//Window<int>::New(-1, 0, -1, 0));
+//	}
+//	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_Thin_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	ShowImage(standev_Thin_Img->GetSrcImg(), "standev_Thin_Img->GetSrcImg()");
+//	//return;
+//
+//
+//	F32ImageAccessor1C_Ref standev_Wide_Img;
+//	F32ImageAccessor1C_Ref avg_Wide_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//	{
+//		standev_Wide_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//
+//		Calc_Avg_And_Standev_Image(mag_Img->GetMemAccessor(), avg_Wide_Img->GetMemAccessor(), standev_Wide_Img->GetMemAccessor(),
+//			Window<int>::New(-10, 10, -10, 10));
+//	}
+//	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_Wide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	ShowImage(standev_Wide_Img->GetSrcImg(), "standev_Wide_Img->GetSrcImg()");
+//
+//
+//
+//	F32ImageAccessor1C_Ref avg_Wide_Mag_Diff_Img = new F32ImageAccessor1C(mag_Img->GetOffsetCalc());
+//	{
+//		const int nSize_1D = mag_Img->GetSize_1D();
+//
+//		float * mag_Ptr = mag_Img->GetDataPtr();
+//		float * avg_Wide_Ptr = avg_Wide_Img->GetDataPtr();
+//		float * avg_Wide_Mag_Diff_Ptr = avg_Wide_Mag_Diff_Img->GetDataPtr();
+//
+//		for (int i = 0; i < nSize_1D; i++)
+//		{
+//			avg_Wide_Mag_Diff_Ptr[i] = fabs(mag_Ptr[i] - avg_Wide_Ptr[i]);
+//		}
+//	}
+//	GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_Wide_Mag_Diff_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	ShowImage(standev_Thin_Img->GetSrcImg(), "avg_Wide_Mag_Diff_Img->GetSrcImg()");
+//
+//
+//	return;
+//
+//
+//	////////////////////////////////////////////--------------------------
+//
+//	F32ImageAccessor1C_Ref standev_Img;
+//
+//
+//
+//	Window<int> avgWin_2 = Window<int>::New(-2, 2, -2, 2);
+//
+//	F32ImageAccessor1C_Ref avg_Standev_Img = standev_Img->CloneAccAndImage();
+//	AvgImage(standev_Img->GetMemAccessor(), avg_Standev_Img->GetMemAccessor(), avgWin_2);
+//
+//	//ShowImage(avg_Img->GetSrcImg(), "avg_Img->GetSrcImg()");
+//
+//	F32ImageAccessor1C_Ref magSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	CalcMagSqrImage(standev_Img->GetMemAccessor(), magSqr_Standev_Img->GetMemAccessor());
+//
+//	F32ImageAccessor1C_Ref avg_MagSqr_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	AvgImage(magSqr_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(), avgWin_2);
+//
+//	F32ImageAccessor1C_Ref standev_Standev_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//	CalcStandevImage(avg_Standev_Img->GetMemAccessor(), avg_MagSqr_Standev_Img->GetMemAccessor(),
+//		standev_Standev_Img->GetMemAccessor());
+//
+//	ShowImage(standev_Standev_Img->GetSrcImg(), "standev_Standev_Img->GetSrcImg()");
+//
+//	////////////////////////////////////////////--------------------------
+//
+//	{
+//		F32ImageAccessor1C_Ref edge_Img = new F32ImageAccessor1C(standev_Img->GetOffsetCalc());
+//
+//		const int nSize_1D = standev_Img->GetMemAccessor()->GetNofSteps_X_Org() * standev_Img->GetMemAccessor()->GetNofSteps_Y_Org();
+//
+//		float * edge_Ptr = edge_Img->GetMemAccessor()->GetDataPtr();
+//		float * standev_Ptr = standev_Img->GetMemAccessor()->GetDataPtr();
+//		float * standev_Standev_Ptr = standev_Standev_Img->GetMemAccessor()->GetDataPtr();
+//		float * avg_Standev_Ptr = avg_Standev_Img->GetMemAccessor()->GetDataPtr();
+//
+//		for (int i = 0; i < nSize_1D; i++)
+//		{
+//			float & rEdge = edge_Ptr[i];
+//			float & rStandev = standev_Ptr[i];
+//			float & rStandev_Standev = standev_Standev_Ptr[i];
+//			float & rAvg_Standev = avg_Standev_Ptr[i];
+//
+//			//if (rStandev >(rStandev_Standev * 0.666f))
+//			//if (rStandev >(rAvg_Standev * 0.666f) && rStandev > 20)
+//			if (rStandev >(rAvg_Standev * 0.44f) && rStandev > 20)
+//			{
+//				rEdge = 255;
+//			}
+//			else
+//			{
+//				rEdge = 0;
+//			}
+//		}
+//
+//		ShowImage(edge_Img->GetSrcImg(), "edge_Img->GetSrcImg()");
+//	}
+//
+//
+//}
+//
+//void ImageProcessor::Try26_5()
+//{
+//	F32ImageRef src = GlobalStuff::GetLinePathImg();
+//
+//	//ImgRotationMgr_3_Ref rotMgr88_0_0 = new ImgRotationMgr_3(src, 0);
+//	//ImgRotationMgr_3_Ref rotMgr88_0_1 = new ImgRotationMgr_3(src, 22.5);
+//	//ImgRotationMgr_3_Ref rotMgr88_0_2 = new ImgRotationMgr_3(src, 45);
+//	//ImgRotationMgr_3_Ref rotMgr88_0_3 = new ImgRotationMgr_3(src, 67.5);
+//
+//	ImgSizeRotationRef rotMgr88_0_2 = new ImgSizeRotation(src->GetSize(), 45);
+//
+//	ImgSizeRotationRef rotMgr = rotMgr88_0_2;
+//
+//
+//	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//
+//	//rot_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//	F32ImageAccessor3C_Ref rot_Img = new F32ImageAccessor3C(new OffsetCalc_2D(1,
+//		rotMgr->GetResImgSiz().width, rotMgr->GetResImgSiz().height));
+//
+//	{
+//		F32ColorVal color1;
+//		color1.AssignVal(50, 50, 200);
+//
+//		F32ColorVal color2;
+//		color2.AssignVal(250, 50, 50);
+//
+//		//FillImage_Stripes_H<F32ColorVal>(org_Img->GetMemAccessor(), color1, color2, 25);
+//		FillImage_Stripes_H(org_Img->GetMemAccessor(), color1, color2, 25);
+//	}
+//
+//	//rotMgr->RotateImage(org_Img->GetMemAccessor(), rot_Img->GetMemAccessor());
+//	rotMgr->RotateImage(rot_Img->GetDataPtr(), rot_Img->GetSrcImgSize(),
+//		(F32ColorVal *)src->GetDataPtr(), src->GetSize());
+//
+//
+//
+//
+//	//GlobalStuff::SetLinePathImg(rotMgr88_0_1->GetResImg());
+//	//GlobalStuff::SetLinePathImg(rotMgr88_0_2->GetResImg());
+//	GlobalStuff::SetLinePathImg(rot_Img->GetSrcImg());
+//	GlobalStuff::ShowLinePathImg();
+//
+//	return;
+//
+//
+//}
+//
+//void ImageProcessor::Try26_4()
+//{
+//	//VectorVal<float, 4> vv1;
+//
+//	F32ImageRef src = GlobalStuff::GetLinePathImg();
+//	//F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//	//ImageAccessor_REF(float, VectorVal<float, 3>, 3) org_Img = new F32ImageAccessor3C(src);
+//	F32VectorValImageAcc_3C_Ref org_Img = new F32VectorValImageAcc_3C(src);
+//	org_Img->SwitchXY();
+//
+//	ShowImage(org_Img->GetSrcImg(), "org_Img->GetSrcImg()");
+//
+//	//F32ImageAccessor1C_Ref mag_Img;
+//	////F32ImageAccessor3C_Ref mag_Img;
+//	//{
+//	//	F32ImageRef src = GlobalStuff::GetLinePathImg();
+//	//	F32ImageAccessor3C_Ref org_Img = new F32ImageAccessor3C(src);
+//
+//	//	mag_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//	//	//mag_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//
+//	//	F32ImageAccessor1C_Ref magImg_0 = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//	//	CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+//
+//	//	//F32ImageAccessor3C_Ref magImg_0 = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//	//	//CalcMagImage(org_Img->GetMemAccessor(), magImg_0->GetMemAccessor());
+//
+//	//	//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 1, -1, 1));
+//	//	//AvgImage(magImg_0->GetMemAccessor(), mag_Img->GetMemAccessor(), Window<int>::New(-1, 0, -1, 0));
+//	//	mag_Img = magImg_0;
+//	//}
+//	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	//ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
+//
+//	//GlobalStuff::SetLinePathImg(GenTriChGrayImg(mag_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	//ShowImage(mag_Img->GetSrcImg(), "mag_Img->GetSrcImg()");
+//
+//
+//	F32ImageAccessor1C_Ref standev_InrWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//
+//	//const int nInrRad = 5;
+//	const int nInrRad = 8;
+//	//F32ImageAccessor3C_Ref avg_InrWide_Img = new F32ImageAccessor3C(org_Img->GetOffsetCalc());
+//	F32VectorValImageAcc_3C_Ref avg_InrWide_Img = new F32VectorValImageAcc_3C(org_Img->GetOffsetCalc());
+//	{
+//		Calc_Avg_And_Standev_Image(org_Img->GetMemAccessor(), avg_InrWide_Img->GetMemAccessor(), standev_InrWide_Img->GetMemAccessor(),
+//			Window<int>::New(-nInrRad, nInrRad, -nInrRad, nInrRad));
+//
+//		MultiplyImageByNum(standev_InrWide_Img->GetMemAccessor(), 2);
+//		//AssertValues_Image(avg_InrWide_Img->GetMemAccessor());
+//	}
+//	GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//	ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
+//
+//	F32VectorValImageAcc_4C_Ref avgPStandev_InrWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+//	{
+//		const int nSize_1D = avg_InrWide_Img->GetSize_1D();
+//
+//		F32VectorVal<4> * dest_Ptr = (F32VectorVal<4> *)avgPStandev_InrWide_Img->GetDataPtr();
+//		F32VectorVal<3> * src_Avg_Ptr = (F32VectorVal<3> *)avg_InrWide_Img->GetDataPtr();
+//		float * src_Standev_Ptr = standev_InrWide_Img->GetDataPtr();
+//
+//		for (int i = 0; i < nSize_1D; i++)
+//		{
+//			*((F32VectorVal<3> *)&dest_Ptr[i]) = *(&src_Avg_Ptr[i]);
+//			//Ncpp_ASSERT(src_Standev_Ptr[i] > 0.0 && src_Standev_Ptr[i] < 3000.0f);
+//			dest_Ptr[i].Vals[3] = src_Standev_Ptr[i];
+//		}
+//
+//		//AssertValues_Image(avgPStandev_InrWide_Img->GetMemAccessor());
+//	}
+//
+//
+//	//const int nOutRad = 5;
+//	const int nOutRad = 8;
+//	{
+//		F32ImageAccessor1C_Ref standev_OutWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		F32VectorValImageAcc_4C_Ref avg_OutWide_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+//
+//		Calc_Avg_And_Standev_Image(avgPStandev_InrWide_Img->GetMemAccessor(), avg_OutWide_Img->GetMemAccessor(), standev_OutWide_Img->GetMemAccessor(),
+//			Window<int>::New(-nOutRad, nOutRad, -nOutRad, nOutRad));
+//
+//		////GlobalStuff::SetLinePathImg(GenTriChGrayImg(avg_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//		//GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_InrWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//		//ShowImage(standev_InrWide_Img->GetSrcImg(), "standev_InrWide_Img->GetSrcImg()");
+//
+//		GlobalStuff::SetLinePathImg(GenTriChGrayImg(standev_OutWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//		ShowImage(standev_OutWide_Img->GetSrcImg(), "standev_OutWide_Img->GetSrcImg()");
+//	}
+//
+//
+//	////------------
+//
+//	F32ImageAccessor1C_Ref conflictDiff_OutWide_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//	{
+//		//conflictDiff_OutWide_Img->SwitchXY();
+//
+//		////Window<int> avgWin = Window<int>::New(-1, 1, -5, 5);
+//		////Window<int> avgWin = Window<int>::New(-1, 1, -2, 2);
+//		//Window<int> avgWin = Window<int>::New(-10, 10, -10, 10);
+//		////Window<int> avgWin = Window<int>::New(0, 0, -2, 2);
+//		Window<int> avgWin = Window<int>::New(-nOutRad, nOutRad, -nOutRad, nOutRad);
+//
+//		F32VectorValImageAcc_4C_Ref avg_Img = new F32VectorValImageAcc_4C(org_Img->GetOffsetCalc());
+//		//avg_Img->SwitchXY();
+//		AvgImage(avgPStandev_InrWide_Img->GetMemAccessor(), avg_Img->GetMemAccessor(), avgWin);
+//
+//		F32ImageAccessor1C_Ref magSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		//magSqr_Img->SwitchXY();
+//		CalcMagSqrImage(avgPStandev_InrWide_Img->GetMemAccessor(), magSqr_Img->GetMemAccessor());
+//
+//		F32ImageAccessor1C_Ref avg_MagSqr_Img = new F32ImageAccessor1C(org_Img->GetOffsetCalc());
+//		//avg_MagSqr_Img->SwitchXY();
+//		AvgImage(magSqr_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(), avgWin);
+//
+//		Range<int> confRange = Range<int>::New(
+//			//-10 - avgWin.Get_X2(), 10 - avgWin.Get_X1());
+//			//-1 - avgWin.Get_X2(), 1 - avgWin.Get_X1());
+//			-1 - nOutRad - nInrRad, 1 + nOutRad + nInrRad);
+//
+//		Calc_ConflictDiff_Image_H(avg_Img->GetMemAccessor(), avg_MagSqr_Img->GetMemAccessor(),
+//			conflictDiff_OutWide_Img->GetMemAccessor(), confRange);
+//
+//		GlobalStuff::SetLinePathImg(GenTriChGrayImg(conflictDiff_OutWide_Img->GetSrcImg())); GlobalStuff::ShowLinePathImg();
+//		ShowImage(conflictDiff_OutWide_Img->GetSrcImg(), "conflictDiff_OutWide_Img->GetSrcImg()");
+//	}
+//
+//
+//
+//}
+//
 
 //	This is the TRUE Try26()
 void ImageProcessor::Try26()

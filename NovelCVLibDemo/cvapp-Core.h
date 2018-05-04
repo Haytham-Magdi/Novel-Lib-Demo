@@ -39,7 +39,10 @@ class ImageProcessor {
 
 	Ncv::U8ImageRef img;
 
- 
+	//LONGLONG m_fixedVectorDebug_AllocSizeTot;
+	long long m_fixedVectorDebug_AllocSizeTot;
+
+
 
   public:
 
@@ -68,10 +71,10 @@ class ImageProcessor {
 	}
 
 
-
 	void Update_FixedVectorDebug()
 	{
-		int nOldVal = m_fixedVectorDebug_AllocSizeTot;
+		//LONGLONG nOldVal = m_fixedVectorDebug_AllocSizeTot;
+		long long nOldVal = m_fixedVectorDebug_AllocSizeTot;
 
 		m_fixedVectorDebug_AllocSizeTot =
 			Ncpp::FixedVectorDebug::AllocSizeTot;
@@ -92,7 +95,6 @@ class ImageProcessor {
 			m_fixedVectorDebug_AllocSizeTot = m_fixedVectorDebug_AllocSizeTot;
 	}
 
-	LONGLONG m_fixedVectorDebug_AllocSizeTot;
 
 
     ImageProcessor(CString filename, bool display=true) 
