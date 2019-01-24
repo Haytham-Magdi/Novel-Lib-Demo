@@ -19,7 +19,8 @@
 #include <NovelCVLib\Ncv\LinePath.h>
 #include <NovelCVLib\Ncv\LinePathInt.h>
 
-#include <NovelCVLib\Apps\Binarization2\AngleDirMgrColl.h>
+//#include <NovelCVLib\Apps\Binarization2\AngleDirMgrColl.h>
+#include <NovelCVLib\Apps\BloodCells\AngleDirMgrColl.h>
 
 #include <NovelCVLib\Ncv\InitLib.h>
 
@@ -270,7 +271,7 @@ void ImageProcessor::DrawLinePath()
 
 	//U8ImageRef img1Dsp = GenU8FromF32Image( img1 );
 
-	//F32ImageRef img1Dsp = img1->Clone();
+	F32ImageRef img1Dsp = img1->Clone();
 
 
 	float x1 = IOMgr::ReadInt("x1");
@@ -291,6 +292,10 @@ void ImageProcessor::DrawLinePath()
 	CvSize imgSiz = img1->GetSize();
 	IndexCalc2D idxCalc(imgSiz.width, imgSiz.height);
 
+	F32ImageArrayHolder3C_Ref dspHolder = new F32ImageArrayHolder3C(img1Dsp);
+	ActualArrayAccessor_2D<F32ColorVal> dspAcc = dspHolder->GetActualAccessor();
+
+	F32ColorVal lineColor(255, 128, 0);
 	do
 	{
 		F32Point pnt = lp->GetCurrent();
@@ -300,6 +305,9 @@ void ImageProcessor::DrawLinePath()
 		sigBuilder1->AddValue(rColor1.val1);
 		sigBuilder2->AddValue(rColor1.val2);
 
+		F32ColorVal & rDspElm = dspAcc.GetAt((int)pnt.x, (int)pnt.y);
+
+		rDspElm.AssignVal(lineColor);
 	} while (lp->MoveNext());
 
 
@@ -318,12 +326,38 @@ void ImageProcessor::DrawLinePath()
 
 
 
-	//ShowImage(img1Dsp, "LinePathImg");
+	ShowImage(img1Dsp, "LinePathImg");
 
 	//ShowImage(ilv1->GetResultImg(), "LinePathImg");
 }
 
 
+
+void ImageProcessor::DrawPntOnLinePathImg()
+{
+
+	F32ImageRef img1 = GlobalStuff::GetLinePathImg();
+
+	F32ImageRef img1Dsp = img1->Clone();
+
+
+	float x1 = IOMgr::ReadInt("x1");
+	float y1 = IOMgr::ReadInt("y1");
+	//float x2 = IOMgr::ReadInt("x2");
+	//float y2 = IOMgr::ReadInt("y2");
+
+
+	F32ImageArrayHolder3C_Ref dspHolder = new F32ImageArrayHolder3C(img1Dsp);
+	ActualArrayAccessor_2D<F32ColorVal> dspAcc = dspHolder->GetActualAccessor();
+
+	F32ColorVal pntColor(0, 128, 255);
+
+
+	F32ColorVal & rPntElm = dspAcc.GetAt((int)x1, (int)y1);
+	rPntElm.AssignVal(pntColor);
+
+	ShowImage(img1Dsp, "LinePathImg");
+}
 
 
 
@@ -411,7 +445,10 @@ void ImageProcessor::Try26_1()
 
 	//return;
 
-	Ns_Binarization::AngleDirMgrCollRef angleDirColl = new Ns_Binarization::AngleDirMgrColl(src, rotColl1);
+	//                                          Ns_Binarization::AngleDirMgrCollRef angleDirColl = new Ns_Binarization::AngleDirMgrColl(src, rotColl1);
+
+
+
 	//Ns_Binarization::ImgAngleDirMgrRef 
 	//imagean
 
@@ -889,9 +926,71 @@ void ImageProcessor::Try26_1()
 //}
 //
 
+
+
+
+void ImageProcessor::Try26_10()
+{
+	F32ImageRef src = GlobalStuff::GetLinePathImg();
+
+
+	ImgSizeRotationCollRef rotColl1 = new  ImgSizeRotationColl(size_2D(src->GetSize()), 4);
+	//Ns_BloodCells::RotationMgrCollRef rotColl1 = new  Ns_BloodCells::RotationMgrColl(src, 8);
+
+	//ImgRotationMgrRef rot33 = rotColl1->GetRotAt(0);
+	//ImageItrMgrRef imgItr33 = rot33->GetImageItrMgr();
+	//ImageLineItrProvider & imgLineItrPorv33 = imgItr33->GetItrProvAt(1);
+	//FixedVector< ImageLineItr > & lineItrArr33 = imgLineItrPorv33.GetLineItrArr();
+	//ImageLineItr & lineItr33 = lineItrArr33[0];
+	//ShowImage(rotColl1->GetRotAt(3)->GetResImg(), "Rot1_3");
+
+	//return;
+
+	Ns_BloodCells::AngleDirMgrCollRef angleDirColl = new Ns_BloodCells::AngleDirMgrColl(src, rotColl1);
+	//Ns_BloodCells::ImgAngleDirMgrRef 
+	//imagean
+
+	//ShowImage(rotColl1->GetRotAt(0)->GetResImg(), "Rot1_0");
+	//ShowImage(rotColl1->GetRotAt(1)->GetResImg(), "Rot1_1");
+	//ShowImage(rotColl1->GetRotAt(2)->GetResImg(), "Rot1_2");
+	//ShowImage(rotColl1->GetRotAt(3)->GetResImg(), "Rot1_3");
+
+	//ShowImage(rotColl1->GetRotAt(4)->GetResImg(), "Rot1_4");
+	//ShowImage(rotColl1->GetRotAt(5)->GetResImg(), "Rot1_5");
+	//ShowImage(rotColl1->GetRotAt(6)->GetResImg(), "Rot1_6");
+	//ShowImage(rotColl1->GetRotAt(7)->GetResImg(), "Rot1_7");
+
+	//ImgRotationMgrRef rotMgr1 = new ImgRotationMgr(src, 45);
+	//ImgRotationMgrRef rotMgr1 = rotColl1->GetRotAt(1);
+
+	//F32ImageRef res1 = rotMgr1->GetResImg();
+
+	//CircDiff2Ref cd1 = new CircDiff2( src, nRadius );
+
+	//ShowImage(res1, "Rot1");
+
+	//ShowImage( cd1->GetDifAngleImg(), "Diff Angle" );
+
+	//ShowImage( cd1->GenColorShowImg(), "Color Show Img" );
+
+	//F32ImageRef difMagImg = cd1->GetDifMagImg();
+	//ShowImage( difMagImg, "Diff Mag" );
+
+	//GlobalStuff::SetLinePathImg( difMagImg );
+	//GlobalStuff::ShowLinePathImg();
+
+}
+
+
+
+
+
 //	This is the TRUE Try26()
 void ImageProcessor::Try26()
 {
+	Try26_10();
+	return;
+
 	//Try26_5();
 	//return;
 
@@ -904,7 +1003,7 @@ void ImageProcessor::Try26()
 	//Try26_2();
 	//return;
 
-	Try26_1();
+	//Try26_1();
 }
 
 

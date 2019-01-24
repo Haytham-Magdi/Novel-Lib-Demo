@@ -197,9 +197,13 @@ class ImageProcessor {
 	void Try26_3();
 	void Try26_4();
 	void Try26_5();
-    void Undo();	
+	
+	void Try26_10();
+    
+	void Undo();	
     void Redo();	
 	void DrawLinePath();
+	void DrawPntOnLinePathImg();
 
 	void ClipLinePathImg();
 	//void AvgColorsOfLinePathImg();

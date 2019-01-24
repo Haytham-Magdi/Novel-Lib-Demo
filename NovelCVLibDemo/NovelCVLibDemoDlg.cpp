@@ -269,7 +269,20 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "paint_filled_1.png";
 
 		//CString sFile = "bin_images_1.jpg";
-		CString sFile = "bin_images_2.jpg";
+
+		//CString sFile = "bin_images_2.jpg";
+		CString sFile = "Image_20151117_081741_2.jpg";
+		//CString sFile = "IMG_20151117_075234_2.jpg";
+		//CString sFile = "shapes1.png";
+		//CString sFile = "shapes1.jpg";
+		//CString sFile = "shapes2.png";
+
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.png";
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
+		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
+		//CString sFile = "car-dent_balanced_02.jpg";
+
+
 		//CString sFile = "bin_images_3.jpg";
 		//CString sFile = "Fig-3-1-Binarization-using-Otsu's-method-2-smooth-operation-3-second-binarization.png";
 
@@ -512,6 +525,10 @@ void CNovelCVLibDemoDlg::LinePath_Mouse_Callback(
 		if (pDlg->ValueExists("x2"))
 		{
 			proc->DrawLinePath();
+		}
+		else
+		{
+			proc->DrawPntOnLinePathImg();
 		}
 
 
