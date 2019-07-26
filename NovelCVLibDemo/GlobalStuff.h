@@ -54,6 +54,9 @@ public:
 		m_linePathImgVect.SetSize( m_linePathImgIndex + 1 );
 
 		m_linePathImgVect[ m_linePathImgIndex ] = a_src;
+
+		//m_linePathImageMap.insert(std::pair< std::string, Ncv::F32ImageRef >("LinePath", m_linePathImgVect[m_linePathImgIndex]));
+		m_linePathImageMap["LinePath"] = m_linePathImgVect[m_linePathImgIndex];
 	}
 
 
@@ -66,6 +69,9 @@ public:
 
 		m_linePathImgIndex--;
 
+		//m_linePathImageMap.insert(std::pair< std::string, Ncv::F32ImageRef >("LinePath", m_linePathImgVect[m_linePathImgIndex]));
+		m_linePathImageMap["LinePath"] = m_linePathImgVect[m_linePathImgIndex];
+
 		return true;
 	}
 
@@ -76,9 +82,35 @@ public:
 
 		m_linePathImgIndex++;
 
+		//m_linePathImageMap.insert(std::pair< std::string, Ncv::F32ImageRef >("LinePath", m_linePathImgVect[m_linePathImgIndex]));
+		m_linePathImageMap["LinePath"] = m_linePathImgVect[m_linePathImgIndex];
+
 		return true;
 	}
 
+
+	static void SetImageInLinePathMap(const std::string & a_key, Ncv::F32ImageRef a_image)
+	{
+		m_linePathImageMap[a_key] = a_image;
+	}
+
+	static Ncv::F32ImageRef FindImageInLinePathMap(const std::string & a_key)
+	{
+		return m_linePathImageMap[a_key];
+	}
+
+	static void FillLinePathMapKeysIn(Ncpp::FixedVector<std::string> & a_arr)
+	{
+		//a_arr.SetCapacity(m_linePathImageMap.count());
+		a_arr.SetCapacity(1500);
+
+		int i = 0;
+		for (std::map<std::string, Ncv::F32ImageRef >::iterator it = m_linePathImageMap.begin(); it != m_linePathImageMap.end(); ++it) {
+			std::string str1 = it->first;
+			a_arr.PushBack(it->first);
+			i++;
+		}
+	}
 
 	static Ncv::F32Point GetPoint0( )
 	{
@@ -101,7 +133,11 @@ public:
 	}
 
 
-	
+	static std::map<std::string, Ncv::F32ImageRef > & GetLinePathMap()
+	{
+		return m_linePathImageMap;
+	}
+
 
 public:
 
@@ -122,6 +158,8 @@ protected:
 	static Ncpp::FixedVector < Ncv::F32ImageRef > m_linePathImgVect;
 
 	static int m_linePathImgIndex;
+
+	static std::map<std::string, Ncv::F32ImageRef > m_linePathImageMap;
 
 	static Ncv::F32Point m_point0;
 	static Ncv::F32Point m_point1;

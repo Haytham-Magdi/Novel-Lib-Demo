@@ -242,7 +242,9 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		CString sFolder =
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
-		"E:\\HthmWork\\Computer-Vision\\Images";
+			"E:\\HthmWork\\Computer-Vision\\Images";
+			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
+			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images\\white-balance-output";
 
 		////CString sFile = "h4_3C_3_Dn.jpg";
 		////CString sFile = "h4_3C_3_Dn_By2.jpg";
@@ -271,11 +273,55 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "bin_images_1.jpg";
 
 		//CString sFile = "bin_images_2.jpg";
-		CString sFile = "Image_20151117_081741_2.jpg";
+		//CString sFile = "image_20151117_081741_2.jpg";
 		//CString sFile = "IMG_20151117_075234_2.jpg";
 		//CString sFile = "shapes1.png";
+		//CString sFile = "shapes1-2.png";
 		//CString sFile = "shapes1.jpg";
 		//CString sFile = "shapes2.png";
+
+		CString sFile = "desktop-part.png";
+
+		//CString sFile = "grey128_mf.jpeg";
+		//CString sFile = "colorBars03_mf.jpeg";
+		//CString sFile = "colorBars05_rgb128_mf.jpeg";
+		//CString sFile = "colorBars06_rgb128_mf.jpeg";
+		//CString sFile = "colorBars01_mf.jpeg";
+		
+		//CString sFile = "savedImage.jpeg";
+		
+		//CString sFile = "black_mf.jpeg";
+		//CString sFile = "white_mf.jpeg";
+		//CString sFile = "yellow_mf.jpeg";
+		//CString sFile = "yellow128_mf.jpeg";
+
+		
+
+		//CString sFile = "savedImage.jpeg";
+		
+		
+		//CString sFile = "colorBars05_rgb128.png";
+		//CString sFile = "colorBars05_rgb128_wb_t100.jpeg";
+		//CString sFile = "colorBars05_rgb128_wb_t50.jpeg";
+		//CString sFile = "colorBars05_rgb128_wb_tm50.jpeg";
+		//CString sFile = "colorBars05_rgb128_wb_tm100.jpeg";
+
+		//CString sFile = "colorBars05_rgb128_wb_n100.jpeg";
+
+		//CString sFile = "colorBars06_rgb128_wb_t100.jpeg";
+		//CString sFile = "colorBars06_rgb128_wb_tm100.jpeg";
+		//CString sFile = "colorBars06_rgb128_wb_n100.jpeg";
+		
+
+		//CString sFile = "grey128_wb_t100.jpeg";
+		//CString sFile = "grey128_wb_n100.jpeg";
+
+		//CString sFile = "white_wb_t100.jpeg";
+		//CString sFile = "white_wb_n100.jpeg";
+
+		//CString sFile = "colorBars02_wb_t100.jpeg";
+
+
 
 		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.png";
 		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";

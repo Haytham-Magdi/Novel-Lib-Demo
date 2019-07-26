@@ -253,82 +253,106 @@ void ImageProcessor::FastAvgLinePathImg(int a_nAprSiz)
 
 void ImageProcessor::DrawLinePath()
 {
-	/*	F32ImageRef src = GenF32FromS16Image(
-			GenS16FromU8Image(img));
-			F32ImageRef res = src;
 
-			//GlobalStuff::OrgImg = res;
-			*/
-
-
-	F32ImageRef img1 = GlobalStuff::GetLinePathImg();
-
-
-
-
-
-	//img1 = GenCvSmoothedImg( img1, 5 );
-
-	//U8ImageRef img1Dsp = GenU8FromF32Image( img1 );
-
-	F32ImageRef img1Dsp = img1->Clone();
-
-
-	float x1 = IOMgr::ReadInt("x1");
-	float y1 = IOMgr::ReadInt("y1");
-	float x2 = IOMgr::ReadInt("x2");
-	float y2 = IOMgr::ReadInt("y2");
-
-
-	//LinePathRef lp = new LinePath( x1, y1, x2, y2 );
-	//LinePathRef lp = new LinePath( x1, y1, x2, y1 );
-	LinePathRef lp = new LinePathInt(x1, y1, x2, y2);
-
-	Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder( 3000, 0 );
-	Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder( 3000, 0 );
-	Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder( 3000, 0 );
-
-	F32ColorVal * srcBuf = (F32ColorVal *)img1->GetPixAt(0, 0);
-	CvSize imgSiz = img1->GetSize();
-	IndexCalc2D idxCalc(imgSiz.width, imgSiz.height);
-
-	F32ImageArrayHolder3C_Ref dspHolder = new F32ImageArrayHolder3C(img1Dsp);
-	ActualArrayAccessor_2D<F32ColorVal> dspAcc = dspHolder->GetActualAccessor();
-
-	F32ColorVal lineColor(255, 128, 0);
-	do
+	FixedVector<S32Point> linePointsArr;
 	{
-		F32Point pnt = lp->GetCurrent();
-		F32ColorVal & rColor1 = srcBuf[idxCalc.Calc(pnt.x, pnt.y)];
+		float x1 = IOMgr::ReadInt("x1");
+		float y1 = IOMgr::ReadInt("y1");
+		float x2 = IOMgr::ReadInt("x2");
+		float y2 = IOMgr::ReadInt("y2");
 
-		sigBuilder0->AddValue(rColor1.val0);
-		sigBuilder1->AddValue(rColor1.val1);
-		sigBuilder2->AddValue(rColor1.val2);
+		//LinePathRef lp = new LinePath( x1, y1, x2, y2 );
+		//LinePathRef lp = new LinePath( x1, y1, x2, y1 );
+		LinePathRef lp = new LinePathInt(x1, y1, x2, y2);
 
-		F32ColorVal & rDspElm = dspAcc.GetAt((int)pnt.x, (int)pnt.y);
+		const int linePointsArrCapacity = (int)((abs(x2 - x1) + abs(y2 - y1)) * 1.5);
+		linePointsArr.SetCapacity(linePointsArrCapacity);
 
-		rDspElm.AssignVal(lineColor);
-	} while (lp->MoveNext());
+		do
+		{
+			const F32Point pnt = lp->GetCurrent();
 
-
-
-	Signal1DViewerRef sv1 = new Signal1DViewer();
-
-	sv1->AddSignal( sigBuilder0->GetResult(), u8ColorVal(200, 0, 0) );
-	sv1->AddSignal( sigBuilder1->GetResult(), u8ColorVal(0, 180, 0) );
-	sv1->AddSignal( sigBuilder2->GetResult(), u8ColorVal(0, 0, 255) );
-
-	ShowImage( sv1->GenDisplayImage(), "Signals" );
-
-	//ShowImage(ilv1->GetSignalDspImg(), "Signals");
+			linePointsArr.IncSize();
+			linePointsArr.GetBack().SetValue((int)pnt.x, (int)pnt.y);
+		} while (lp->MoveNext());
+	}
+	ActualArrayAccessor_1D<S32Point> linePointsAcc = linePointsArr.GenAcc_1D();
 
 
 
+	{
+		//F32ImageRef img1 = GlobalStuff::GetLinePathImg();
+		F32ImageRef img1 = GlobalStuff::FindImageInLinePathMap("LinePath");
+
+		F32ImageRef img1Dsp = img1->Clone();
+
+		F32ImageArrayHolder3C_Ref dspHolder = new F32ImageArrayHolder3C(img1Dsp);
+		ActualArrayAccessor_2D<F32ColorVal> dspAcc = dspHolder->GetActualAccessor();
+
+		F32ColorVal lineColor(255, 128, 0);
 
 
-	ShowImage(img1Dsp, "LinePathImg");
+		for (int i = 0; i < linePointsAcc.GetSize(); i++)
+		{
+			S32Point & pnt = linePointsAcc[i];
+			F32ColorVal & rDspElm = dspAcc.GetAt((int)pnt.x, (int)pnt.y);
 
-	//ShowImage(ilv1->GetResultImg(), "LinePathImg");
+			rDspElm.AssignVal(lineColor);
+		}
+
+		ShowImage(img1Dsp, "LinePathImg");
+	}
+
+
+
+
+	FixedVector<std::string> linePathMapKeys(500);
+	GlobalStuff::FillLinePathMapKeysIn(linePathMapKeys);
+
+	for (int keyIdx = 0; keyIdx < linePathMapKeys.GetSize(); keyIdx++)
+	{
+		std::string & key = linePathMapKeys[keyIdx];
+
+		F32ImageRef img1 = GlobalStuff::FindImageInLinePathMap(key);
+		Ncpp_ASSERT(3 == img1->GetNofChannels());
+
+		{
+			Signal1DBuilderRef sigBuilder0 = new Signal1DBuilder(linePointsAcc.GetSize(), 0);
+			Signal1DBuilderRef sigBuilder1 = new Signal1DBuilder(linePointsAcc.GetSize(), 0);
+			Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder(linePointsAcc.GetSize(), 0);
+
+			F32ColorVal * srcBuf = (F32ColorVal *)img1->GetPixAt(0, 0);
+			const CvSize imgSiz = img1->GetSize();
+			const IndexCalc2D idxCalc(imgSiz.width, imgSiz.height);
+
+			for (int i = 0; i < linePointsAcc.GetSize(); i++)
+			{
+				const S32Point & pnt = linePointsAcc[i];
+				const F32ColorVal & rColor1 = srcBuf[idxCalc.Calc(pnt.x, pnt.y)];
+
+				sigBuilder0->AddValue(rColor1.val0);
+				sigBuilder1->AddValue(rColor1.val1);
+				sigBuilder2->AddValue(rColor1.val2);
+			}
+
+
+			//Signal1DViewerRef sv1 = new Signal1DViewer();
+			//Signal1DViewerRef sv1 = new Signal1DViewer(8);
+			Signal1DViewerRef sv1 = new Signal1DViewer(16, 2);
+
+			sv1->AddSignal(sigBuilder0->GetResult(), u8ColorVal(200, 0, 0));
+			sv1->AddSignal(sigBuilder1->GetResult(), u8ColorVal(0, 140, 0));
+			sv1->AddSignal(sigBuilder2->GetResult(), u8ColorVal(0, 0, 255));
+
+			ShowImage(sv1->GenDisplayImage(), (key + " Signals").c_str());
+			
+			if ("LinePath" == key)
+			{
+				ShowImage(sv1->GenColorBarsDisplayImage(), (key + "Color Bars").c_str());
+			}
+		}
+
+	}
 }
 
 

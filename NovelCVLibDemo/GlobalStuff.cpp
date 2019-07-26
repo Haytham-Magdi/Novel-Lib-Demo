@@ -8,6 +8,8 @@ Ncv::F32ImageRef GlobalStuff::OrgImg = NULL;
 //std::vector < Ncv::F32ImageRef >  GlobalStuff::m_linePathImgVect;
 Ncpp::FixedVector  < Ncv::F32ImageRef >  GlobalStuff::m_linePathImgVect( 300 );
 
+std::map<std::string, Ncv::F32ImageRef > GlobalStuff::m_linePathImageMap;
+
 
 int GlobalStuff::m_linePathImgIndex = -1;
 int GlobalStuff::m_nLA_Index = -1;
