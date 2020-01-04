@@ -243,7 +243,8 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
 			"E:\\HthmWork\\Computer-Vision\\Images";
-			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
+		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
+		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images2\\Vignette";
 			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images\\white-balance-output";
 
 		////CString sFile = "h4_3C_3_Dn.jpg";
@@ -276,17 +277,26 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "image_20151117_081741_2.jpg";
 		//CString sFile = "IMG_20151117_075234_2.jpg";
 		//CString sFile = "shapes1.png";
-		//CString sFile = "shapes1-2.png";
+		CString sFile = "shapes1-2.png";
 		//CString sFile = "shapes1.jpg";
 		//CString sFile = "shapes2.png";
 
-		CString sFile = "desktop-part.png";
+		//CString sFile = "desktop-part.png";
+
+		//CString sFile = "checker-board-16.png";
 
 		//CString sFile = "grey128_mf.jpeg";
 		//CString sFile = "colorBars03_mf.jpeg";
 		//CString sFile = "colorBars05_rgb128_mf.jpeg";
 		//CString sFile = "colorBars06_rgb128_mf.jpeg";
 		//CString sFile = "colorBars01_mf.jpeg";
+		
+		//CString sFile = "test1.jpg";
+
+
+		//CString sFile = "savedImage.png";
+		
+		
 		
 		//CString sFile = "savedImage.jpeg";
 		
@@ -320,6 +330,38 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "white_wb_n100.jpeg";
 
 		//CString sFile = "colorBars02_wb_t100.jpeg";
+
+
+		//CString sFile = "grey128_vign_inr_50.jpeg";
+		//CString sFile = "grey128_vign_inr_100.jpeg";
+		//CString sFile = "grey128_vign_inr_m100.jpeg";
+		
+		//CString sFile = "grey128_vign_out_50.jpeg";
+
+		//CString sFile = "black_vign_inr_50.jpeg";
+		//CString sFile = "black_vign_out_50.jpeg";
+		//CString sFile = "black_vign_out_m50.jpeg";
+
+		//CString sFile = "grey64_vign_inr_50.jpeg";
+		//CString sFile = "grey64_vign_inr_m50.jpeg";
+		//CString sFile = "grey64_vign_out_50.jpeg";
+		//CString sFile = "grey64_vign_out_m50.jpeg";
+
+		//CString sFile = "white_vign_out_50.jpeg";
+		//CString sFile = "white_vign_out_m50.jpeg";
+		//CString sFile = "white_vign_inr_m100.jpeg";
+
+		//CString sFile = "grey128_vign_out_m25.jpeg";
+		//CString sFile = "grey128_vign_out_m50.jpeg";
+		//CString sFile = "grey128_vign_out_m75.jpeg";
+		//CString sFile = "grey128_vign_out_m100.jpeg";
+
+		//CString sFile = "Not-Used-Temp\\grey128_vign_out_m50_inr_m50.jpeg";
+		
+
+		//CString sFile = "blue128_vign_out_m50.jpeg";
+		//CString sFile = "green128_vign_out_m50.jpeg";
+		//CString sFile = "red128_vign_out_m50.jpeg";
 
 
 

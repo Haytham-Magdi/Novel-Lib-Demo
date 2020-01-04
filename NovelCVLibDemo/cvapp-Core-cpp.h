@@ -336,9 +336,19 @@ void ImageProcessor::DrawLinePath()
 			}
 
 
-			//Signal1DViewerRef sv1 = new Signal1DViewer();
-			//Signal1DViewerRef sv1 = new Signal1DViewer(8);
-			Signal1DViewerRef sv1 = new Signal1DViewer(16, 2);
+			//const bool isOldMode = false;
+			const bool isOldMode = true;
+
+			Signal1DViewerRef sv1;
+			if (isOldMode)
+			{
+				sv1 = new Signal1DViewer();
+			}
+			else
+			{
+				//sv1 = new Signal1DViewer(8);
+				sv1 = new Signal1DViewer(16, 2);
+			}
 
 			sv1->AddSignal(sigBuilder0->GetResult(), u8ColorVal(200, 0, 0));
 			sv1->AddSignal(sigBuilder1->GetResult(), u8ColorVal(0, 140, 0));
@@ -346,7 +356,7 @@ void ImageProcessor::DrawLinePath()
 
 			ShowImage(sv1->GenDisplayImage(), (key + " Signals").c_str());
 			
-			if ("LinePath" == key)
+			if ("LinePath" == key && !isOldMode)
 			{
 				ShowImage(sv1->GenColorBarsDisplayImage(), (key + "Color Bars").c_str());
 			}
