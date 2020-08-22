@@ -242,8 +242,8 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		CString sFolder =
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
-			"E:\\HthmWork\\Computer-Vision\\Images";
-		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
+			//"E:\\HthmWork\\Computer-Vision\\Images";
+		"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
 		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images2\\Vignette";
 			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images\\white-balance-output";
 
@@ -277,9 +277,13 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "image_20151117_081741_2.jpg";
 		//CString sFile = "IMG_20151117_075234_2.jpg";
 		//CString sFile = "shapes1.png";
-		CString sFile = "shapes1-2.png";
+		//CString sFile = "shapes1-2.png";
 		//CString sFile = "shapes1.jpg";
 		//CString sFile = "shapes2.png";
+
+		//CString sFile = "hair1.jpg";
+		//CString sFile = "images10.jpg";
+		
 
 		//CString sFile = "desktop-part.png";
 
@@ -291,11 +295,196 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//CString sFile = "colorBars06_rgb128_mf.jpeg";
 		//CString sFile = "colorBars01_mf.jpeg";
 		
+		//CString sFile = "\\color-output\\1579460520384.jpg";
+		//CString sFile = "\\color-output\\1579461176026.jpg";
+		//CString sFile = "\\color-output\\1579462261731.jpg";
+		
+		//CString sFile = "\\color-output\\1579462670891.jpg";
+		//CString sFile = "\\color-output\\1579462710282.jpg";
+
+		//CString sFile = "\\color-output\\1579500328813.jpg";
+		
+		//CString sFile = "\\color-output\\1579675990833.jpg";
+		//CString sFile = "\\color-output\\1579716916112.jpg";
+		
+		//CString sFile = "\\color-output\\1579779178005.jpg";
+		//CString sFile = "\\color-output\\1579779481370.jpg";
+		//CString sFile = "\\color-output\\1579780392833.jpg";
+		//CString sFile = "\\color-output\\1579812542028.jpg";
+		
+		//CString sFile = "\\color-output\\1579841895225.jpg";
+		//CString sFile = "\\color-output\\1579841907200.jpg";
+		
+		//CString sFile = "\\color-output\\1579842364047.jpg";
+		//CString sFile = "\\color-output\\1579842382585.jpg";
+		//CString sFile = "\\color-output\\1579842982182.jpg";
+		
+		//CString sFile = "\\color-output\\1579893546059.jpg";
+		//CString sFile = "\\color-output\\1579894972372.jpg";
+		//CString sFile = "\\color-output\\1579895139964.jpg";
+		//CString sFile = "\\color-output\\1579948777902.jpg";
+		//CString sFile = "\\color-output\\1579951473438.jpg";
+		//CString sFile = "\\color-output\\1579951573618.jpg";
+
+		//CString sFile = "\\color-output\\1579968834916.jpg";
+		//CString sFile = "\\color-output\\1579977436421.jpg";
+		//CString sFile = "\\color-output\\1579977697702.jpg";
+		
+		//CString sFile = "\\color-output\\1580013379540.jpg";
+		//CString sFile = "\\color-output\\1580015533276.jpg";
+
+		//CString sFile = "\\color-output\\1580017497693.jpg";
+		
+		//CString sFile = "\\color-output\\1580118992211.jpg";
+		//CString sFile = "\\color-output\\1580130136255.jpg";
+		
+		//CString sFile = "\\color-output\\1580142532506.jpg";
+		//CString sFile = "\\color-output\\1580148277403.jpg";
+		//CString sFile = "\\color-output\\1580148875533.jpg";
+		
+		//CString sFile = "\\color-output\\1580219775502.jpg";
+		//CString sFile = "\\color-output\\1580284643054.jpg";
+
+		//CString sFile = "\\color-output\\1580297096527.jpg";
+		//CString sFile = "\\color-output\\1580299376402.jpg";
+
+		//CString sFile = "\\color-output\\1580308486796.jpg";
+		//CString sFile = "\\color-output\\1580311030608.jpg";
+		
+		//CString sFile = "\\color-output\\1580311272499.jpg";
+		//CString sFile = "\\color-output\\1580311546591.jpg";
+				
+		//CString sFile = "\\color-output\\1580311899802.jpg";
+
+		//CString sFile = "\\color-output\\1580312259410.jpg";
+		//CString sFile = "\\color-output\\1580323169522.jpg";
+
+		//CString sFile = "\\color-output\\1580335880997.jpg";
+		//CString sFile = "\\color-output\\1580337118565.jpg";
+		
+		//CString sFile = "\\color-output\\1580337735794.jpg";
+		
+		//CString sFile = "\\color-output\\1580338108170.jpg";
+		//CString sFile = "\\color-output\\1580338747914.jpg";
+		
+		//CString sFile = "\\color-output\\1580369771901.jpg";
+		//CString sFile = "\\color-output\\1580370496761.jpg";
+				
+		//CString sFile = "\\color-output\\1580481146329.jpg";
+		//CString sFile = "\\color-output\\1580487698126.jpg";
+		//CString sFile = "\\color-output\\1580495182200.jpg";
+		
+		//CString sFile = "\\color-output\\1580496141665.jpg";
+		//CString sFile = "\\color-output\\1580496784879.jpg";
+
+
+		//CString sFile = "\\lr\\lr_all-hues-sats (13).jpg";
+
+		//CString sFile = "\\lr\\lr_all-hues-sats (15).jpg";
+		//CString sFile = "\\lr\\lr_all-hues-sats (16).jpg";
+		//CString sFile = "\\lr\\lr_all-hues-sats (17).jpg";
+
+
+		//CString sFile = "\\color-output\\1580560127590.jpg";
+		//CString sFile = "\\color-output\\1580587605460.jpg";
+		//CString sFile = "\\color-output\\1580588078341.jpg";
+		//CString sFile = "\\color-output\\1580588799019.jpg";
+		//CString sFile = "\\color-output\\1580589206589.jpg";
+		////CString sFile = "\\color-output\\1580589676528.jpg";
+		
+		//CString sFile = "\\color-output\\1580658074648.jpg";
+		////CString sFile = "\\color-output\\1580675140158.jpg";
+		
+	
+		//	tuning saturation.
+
+		//CString sFile = "\\lr\\lr_all-hues-sats (14).jpg";
+		
+		//CString sFile = "\\color-output\\1580701608787.jpg";
+		//CString sFile = "\\color-output\\1580708074741.jpg";
+		//CString sFile = "\\color-output\\1580708420283.jpg";
+
+		//CString sFile = "\\color-output\\1580758486413.jpg";
+		//CString sFile = "\\color-output\\1580759115326.jpg";
+		//CString sFile = "\\color-output\\1580759437925.jpg";
+		//CString sFile = "\\color-output\\1580759784192.jpg";
+
+		// // work on rgb
+
+		//CString sFile = "\\color-output\\1580783289146.jpg";
+		//CString sFile = "\\color-output\\1580783311005.jpg";
+
+		//CString sFile = "\\color-output\\1580820667490.jpg";
+		//CString sFile = "\\color-output\\1580820690285.jpg";
+
+		//	//		
+
+		//CString sFile = "\\color-output\\1580829309121.jpg";
+		//CString sFile = "\\color-output\\1580829871398.jpg";
+		//CString sFile = "\\color-output\\1580830899418.jpg";
+
+		//CString sFile = "\\color-output\\1580861681041.jpg";
+		
+		//CString sFile = "\\color-output\\1580882679116.jpg";
+		//CString sFile = "\\color-output\\1580884848816.jpg";
+		//CString sFile = "\\color-output\\1580886464584.jpg";
+		//CString sFile = "\\color-output\\1580889393428.jpg";
+		
+		//CString sFile = "\\color-output\\1580976451943.jpg";
+
+		//CString sFile = "\\color-output\\1581059903233.jpg";
+		//CString sFile = "\\color-output\\1581061115961.jpg";
+		//CString sFile = "\\color-output\\1581061500095.jpg";
+		
+		//CString sFile = "\\color-output\\1581081143702.jpg";
+		
+		//CString sFile = "\\color-output\\1581159792691.jpg";
+		//CString sFile = "\\color-output\\1581160588308.jpg";
+		
+		//CString sFile = "\\color-output\\1581161097080.jpg";
+		//CString sFile = "\\color-output\\1581161749819.jpg";
+		
+		//CString sFile = "\\color-output\\1581161972188.jpg";
+		//CString sFile = "\\color-output\\1581163475320.jpg";
+
+		//CString sFile = "\\color-output\\1581250781009.jpg";
+		//CString sFile = "\\color-output\\1581252075591.jpg";
+		
+		//CString sFile = "\\color-output\\1581260788690.jpg";
+		//CString sFile = "\\color-output\\1581276615383.jpg";
+		//CString sFile = "\\color-output\\1581277171470.jpg";
+		//CString sFile = "\\color-output\\1581277798444.jpg";
+		//CString sFile = "\\color-output\\1581278876650.jpg";
+
+		//CString sFile = "\\color-output\\1581296536489.jpg";
+		//CString sFile = "\\color-output\\1581297146274.jpg";
+		CString sFile = "\\color-output\\1581298050097.jpg";
+
+
+		
+
 		//CString sFile = "test1.jpg";
 
 
 		//CString sFile = "savedImage.png";
+
+		//CString sFile = "lr\\lr_all-hues-sats.jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (1).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (2).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (3).jpg";
+
+		//CString sFile = "lr\\lr_all-hues-sats (4).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (5).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (6).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (7).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (8).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (9).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (10).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (11).jpg";
+		//CString sFile = "lr\\lr_all-hues-sats (12).jpg";
 		
+		//CString sFile = "lr\\lr_all-hues-sats-and-brightnesses.jpg";
+
 		
 		
 		//CString sFile = "savedImage.jpeg";
