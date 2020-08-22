@@ -159,7 +159,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>E:\HthmWork\Computer-Vision\OpenCV-Stuff\Current-Version\OpenCV-2.4.9\opencv\build\include;E:\HthmWork\Lib-Stuff\NovelCVLib-Stuff;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\HthmWork\Computer-Vision\OpenCV-Stuff\Current-Version\OpenCV-2.4.9\opencv\build\include;E:\HthmWork\Lib-Stuff\NovelCVLib-Stuff\NovelCV-Dev;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
