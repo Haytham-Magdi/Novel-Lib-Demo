@@ -58,19 +58,13 @@ void process(U8ImageRef img)
 
 	for (int i = 0; i < 1; i++)
 	{
-		cvErode(img->GetIplImagePtr(),
-			img->GetIplImagePtr(), 0, j);
+		throw "Refactor not Complete";
 
-		//	   cvDilate( img->GetIplImagePtr(), 
-		//		   img->GetIplImagePtr(), 0, j );
-
+		//cv::erode(img->GetMat(),
+		//	img->GetMat(), 0, j);
 	}
 }
 
-//class Obj2 : FRM_Object
-//{
-//};
-//
 
 class Base// : FRM_Object
 {
@@ -322,7 +316,7 @@ void ImageProcessor::DrawLinePath()
 			Signal1DBuilderRef sigBuilder2 = new Signal1DBuilder(linePointsAcc.GetSize(), 0);
 
 			F32ColorVal * srcBuf = (F32ColorVal *)img1->GetPixAt(0, 0);
-			const CvSize imgSiz = img1->GetSize();
+			const cv::Size imgSiz = img1->GetSize();
 			const IndexCalc2D idxCalc(imgSiz.width, imgSiz.height);
 
 			for (int i = 0; i < linePointsAcc.GetSize(); i++)
@@ -1069,11 +1063,13 @@ void ImageProcessor::MaxMinEdge()
 
 	for (int i = 0; i < 1; i++)
 	{
-		cvDilate(resU8->GetIplImagePtr(),
-			resMax->GetIplImagePtr(), 0, j);
+		throw "Refactor not Complete";
 
-		cvErode(resU8->GetIplImagePtr(),
-			resMin->GetIplImagePtr(), 0, j);
+		//cv::dilate(resU8->GetMat(),
+		//	resMax->GetMat(), 0, j);
+
+		//cv::erode(resU8->GetMat(),
+		//	resMin->GetMat(), 0, j);
 
 	}
 
@@ -1081,10 +1077,10 @@ void ImageProcessor::MaxMinEdge()
 		resU8->GetNofChannels());
 
 	HCV_CALL(
-		cvSub(
-		resMax->GetIplImagePtr(),
-		resMin->GetIplImagePtr(),
-		resDif->GetIplImagePtr())
+		cv::subtract(
+		resMax->GetMat(),
+		resMin->GetMat(),
+		resDif->GetMat())
 		);
 
 	res = GenS16FromU8Image(resDif);
@@ -1094,7 +1090,7 @@ void ImageProcessor::MaxMinEdge()
 	U8ImageRef dsp;
 
 	dsp = GenU8FromS16Image(gradImg);
-	ShowImage(dsp->GetIplImagePtr(), "gradImg");
+	ShowImage(dsp->GetMat(), "gradImg");
 
 	res = gradImg;
 
@@ -1114,13 +1110,13 @@ void ImageProcessor::MaxMinEdge()
 	bool bColorDsp = false;
 
 	dsp = GenU8FromS16Image(avg_Img);
-	ShowImage(dsp->GetIplImagePtr(), "avg_Img");
+	ShowImage(dsp->GetMat(), "avg_Img");
 
 	dsp = GenU8FromS16Image(res);
-	ShowImage(dsp->GetIplImagePtr(), "Result");
+	ShowImage(dsp->GetMat(), "Result");
 
-	HCV_CALL(cvvSaveImage("hcvResult.jpg",
-		dsp->GetIplImagePtr()));
+	HCV_CALL(cv::imwrite("hcvResult.jpg",
+		dsp->GetMat()));
 
 }
 
@@ -1138,10 +1134,10 @@ void ImageProcessor::FastAvg()
 
 	dsp = GenU8FromS16Image(res);
 
-	ShowImage(dsp->GetIplImagePtr(), "Result");
+	ShowImage(dsp->GetMat(), "Result");
 
-	HCV_CALL(cvvSaveImage("hcvResult.jpg",
-		dsp->GetIplImagePtr()));
+	HCV_CALL(cv::imwrite("hcvResult.jpg",
+		dsp->GetMat()));
 }
 
 
@@ -1149,23 +1145,17 @@ void ImageProcessor::Sobel()
 {
 	double nMin, nMax;
 
-	//Try1();
-
-	//U8ImageRef src = img;
-	//U8ImageRef src = U8Image::Create(
-	//	cvGetSize(img->GetIplImagePtr()), 1);
-
 	U8ImageRef src0 = U8Image::Create(
-		cvGetSize(img->GetIplImagePtr()), 1);
+		img->GetMat().size(), 1);
 
-	HCV_CALL(cvCvtColor(img->GetIplImagePtr(),
-		src0->GetIplImagePtr(), CV_RGB2GRAY));
+	HCV_CALL(cv::cvtColor(img->GetMat(),
+		src0->GetMat(), CV_RGB2GRAY));
 
 	S16ImageRef src = S16Image::Create(
-		cvGetSize(img->GetIplImagePtr()), 1);
+		img->GetMat().size(), 1);
 
-	HCV_CALL(cvConvertScale(src0->GetIplImagePtr(),
-		src->GetIplImagePtr()));
+	HCV_CALL(cv::convertScaleAbs(src0->GetMat(),
+		src->GetMat()));
 
 	{
 		S16ChannelRef chnl = src->GetAt(0);
@@ -1182,19 +1172,16 @@ void ImageProcessor::Sobel()
 
 
 
-	cvMinMaxLoc(src->GetIplImagePtr(), &nMin, &nMax);
-
-	//HCV_CALL( cvvSaveImage("C:\\src1.bmp", 
-	//	src->GetIplImagePtr()) );
+	cv::minMaxLoc(src->GetMat(), &nMin, &nMax);
 
 	S16ImageRef outra;
 	U8ImageRef sobelImg;
 
 	//cvSetImageCOI (src, 1);
 
-	//CvMat * pMat = (CvMat *) img;
+	//cv::Mat * pMat = (cv::Mat *) img;
 
-	//CvMat srcstub, *src1 = (CvMat*)img;
+	//cv::Mat srcstub, *src1 = (cv::Mat*)img;
 
 	int i;
 
@@ -1206,22 +1193,22 @@ void ImageProcessor::Sobel()
 
 	// load src
 	outra = S16Image::Create(
-		cvGetSize(src->GetIplImagePtr()), src->GetNofChannels());
-	//cvSobel( src->GetIplImagePtr(), 
-	cvSobel(src0->GetIplImagePtr(),
-		//outra->GetIplImagePtr(), 1, 0, 7);
-		outra->GetIplImagePtr(), 1, 0, 5);
-	//outra->GetIplImagePtr(), 1, 0, 3);
-	//outra->GetIplImagePtr(), 1, 0, 1);
-	sobelImg = U8Image::Create(cvGetSize(
-		src->GetIplImagePtr()), src->GetNofChannels());
+		src->GetMat().size(), src->GetNofChannels());
+	//cv::Sobel( src->GetMat(), 
+	cv::Sobel(src0->GetMat(),
+		//outra->GetMat(), 1, 0, 7);
+		outra->GetMat(), 1, 0, 5);
+	//outra->GetMat(), 1, 0, 3);
+	//outra->GetMat(), 1, 0, 1);
+	sobelImg = U8Image::Create(
+		src->GetMat().size(), src->GetNofChannels());
 
-	cvMinMaxLoc(outra->GetIplImagePtr(), &nMin, &nMax);
+	cv::minMaxLoc(outra->GetMat(), &nMin, &nMax);
 
 
-	cvConvertScale(outra->GetIplImagePtr(), sobelImg->GetIplImagePtr());
+	cv::convertScaleAbs(outra->GetMat(), sobelImg->GetMat());
 
-	cvMinMaxLoc(sobelImg->GetIplImagePtr(), &nMin, &nMax);
+	cv::minMaxLoc(sobelImg->GetMat(), &nMin, &nMax);
 
 
 	int hist[256];
@@ -1237,10 +1224,8 @@ void ImageProcessor::Sobel()
 		}
 	}
 
-
-
-	cvNamedWindow("3.Sobel", 1);
-	cvShowImage("3.Sobel", sobelImg->GetIplImagePtr());
+	cv::namedWindow("3.Sobel", 1);
+	cv::imshow("3.Sobel", sobelImg->GetMat());
 
 }
 
@@ -1261,24 +1246,21 @@ void ImageProcessor::Create()
 	img = U8Image::Create(
 		cvSize(nWidth, nHeight), 3);
 
-	cvRectangle(
-		img->GetIplImagePtr(),
-		cvPoint(0, 0),
-		//cvPoint(nWidth-1, nHeight-1), 
-		cvPoint(nWidth / 2, nHeight / 2),
-		//cvPoint(nWidth+50, nHeight+170), 
+	cv::rectangle(
+		img->GetMat(),
+		cv::Point(0, 0),
+		//cv::Point(nWidth-1, nHeight-1), 
+		cv::Point(nWidth / 2, nHeight / 2),
+		//cv::Point(nWidth+50, nHeight+170), 
 		//CV_RGB(64, 128, 255),
 		CV_RGB(255, 128, 64),
 		//CV_RGB(255, 255, 255),
 		-1);
 
-	//cvCircle(
-	//	img->GetIplImagePtr(), 
+	//cv::Circle(
+	//	img->GetMat(), 
 
-	uchar *uData;
-
-	//cvGetImageRawData( img->GetIplImagePtr(), &uData );
-	cvGetRawData(img->GetIplImagePtr(), &uData);
+	uchar * uData = (uchar *)img->GetMat().data;
 
 
 	img = img;

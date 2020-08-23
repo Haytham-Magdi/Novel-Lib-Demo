@@ -22,7 +22,7 @@ float GlobalStuff::AprSize1D = 15;
 
 int GlobalStuff::ScanDir = 4;
 
-CString GlobalStuff::m_imgFilePath;
+std::string GlobalStuff::m_imgFilePath;
 
 int Ncpp::FixedVectorDebug::AllocCnt = 0;
 int Ncpp::FixedVectorDebug::AllocCnt_Old = 0;

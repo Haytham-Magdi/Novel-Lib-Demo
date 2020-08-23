@@ -8,7 +8,7 @@
 
 		F32ColorVal * resBuf = (F32ColorVal *)m_resImg->GetPixAt(0, 0);
 
-		CvSize srcSiz = m_srcImg->GetSize();
+		cv::Size srcSiz = m_srcImg->GetSize();
 
 		//int nSrcSiz1D = srcSiz.width * srcSiz.height;
 

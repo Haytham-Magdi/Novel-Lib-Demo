@@ -239,7 +239,7 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 {
 	//if (false)
 	{
-		CString sFolder =
+		std::string sFolder =
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Images";
@@ -247,325 +247,325 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images2\\Vignette";
 			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images\\white-balance-output";
 
-		////CString sFile = "h4_3C_3_Dn.jpg";
-		////CString sFile = "h4_3C_3_Dn_By2.jpg";
-		////CString sFile = "diamond_1_Dn_By2.jpg";
-		//CString sFile = "41004.jpg";
-		////CString sFile = "24004.jpg";
-		////CString sFile = "clrpic1_U.jpg";
-		////CString sFile = "clrpic1.jpg";
-		////CString sFile = "White-All.png";
+		////std::string sFile = "h4_3C_3_Dn.jpg";
+		////std::string sFile = "h4_3C_3_Dn_By2.jpg";
+		////std::string sFile = "diamond_1_Dn_By2.jpg";
+		//std::string sFile = "41004.jpg";
+		////std::string sFile = "24004.jpg";
+		////std::string sFile = "clrpic1_U.jpg";
+		////std::string sFile = "clrpic1.jpg";
+		////std::string sFile = "White-All.png";
 
-		//CString sFile = "patternReflection2.png";
-		//CString sFile = "patternReflection2_2.jpg";
+		//std::string sFile = "patternReflection2.png";
+		//std::string sFile = "patternReflection2_2.jpg";
 
-		//CString sFile = "patternReflection1_2.jpg";
+		//std::string sFile = "patternReflection1_2.jpg";
 
 
-		//CString sFile = "Image_0005_d0.png";
-		//CString sFile = "Image_0005_d0_2.png";
+		//std::string sFile = "Image_0005_d0.png";
+		//std::string sFile = "Image_0005_d0_2.png";
 		
-		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2).png";
-		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
+		//std::string sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2).png";
+		//std::string sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02 (2)_2.png";
 
-		//CString sFile = "paint_1.png";
-		//CString sFile = "paint_filled_1.png";
+		//std::string sFile = "paint_1.png";
+		//std::string sFile = "paint_filled_1.png";
 
-		//CString sFile = "bin_images_1.jpg";
+		//std::string sFile = "bin_images_1.jpg";
 
-		//CString sFile = "bin_images_2.jpg";
-		//CString sFile = "image_20151117_081741_2.jpg";
-		//CString sFile = "IMG_20151117_075234_2.jpg";
-		//CString sFile = "shapes1.png";
-		//CString sFile = "shapes1-2.png";
-		//CString sFile = "shapes1.jpg";
-		//CString sFile = "shapes2.png";
+		//std::string sFile = "bin_images_2.jpg";
+		//std::string sFile = "image_20151117_081741_2.jpg";
+		//std::string sFile = "IMG_20151117_075234_2.jpg";
+		//std::string sFile = "shapes1.png";
+		//std::string sFile = "shapes1-2.png";
+		//std::string sFile = "shapes1.jpg";
+		//std::string sFile = "shapes2.png";
 
-		//CString sFile = "hair1.jpg";
-		//CString sFile = "images10.jpg";
+		//std::string sFile = "hair1.jpg";
+		//std::string sFile = "images10.jpg";
 		
 
-		//CString sFile = "desktop-part.png";
+		//std::string sFile = "desktop-part.png";
 
-		//CString sFile = "checker-board-16.png";
+		//std::string sFile = "checker-board-16.png";
 
-		//CString sFile = "grey128_mf.jpeg";
-		//CString sFile = "colorBars03_mf.jpeg";
-		//CString sFile = "colorBars05_rgb128_mf.jpeg";
-		//CString sFile = "colorBars06_rgb128_mf.jpeg";
-		//CString sFile = "colorBars01_mf.jpeg";
+		//std::string sFile = "grey128_mf.jpeg";
+		//std::string sFile = "colorBars03_mf.jpeg";
+		//std::string sFile = "colorBars05_rgb128_mf.jpeg";
+		//std::string sFile = "colorBars06_rgb128_mf.jpeg";
+		//std::string sFile = "colorBars01_mf.jpeg";
 		
-		//CString sFile = "\\color-output\\1579460520384.jpg";
-		//CString sFile = "\\color-output\\1579461176026.jpg";
-		//CString sFile = "\\color-output\\1579462261731.jpg";
+		//std::string sFile = "\\color-output\\1579460520384.jpg";
+		//std::string sFile = "\\color-output\\1579461176026.jpg";
+		//std::string sFile = "\\color-output\\1579462261731.jpg";
 		
-		//CString sFile = "\\color-output\\1579462670891.jpg";
-		//CString sFile = "\\color-output\\1579462710282.jpg";
+		//std::string sFile = "\\color-output\\1579462670891.jpg";
+		//std::string sFile = "\\color-output\\1579462710282.jpg";
 
-		//CString sFile = "\\color-output\\1579500328813.jpg";
+		//std::string sFile = "\\color-output\\1579500328813.jpg";
 		
-		//CString sFile = "\\color-output\\1579675990833.jpg";
-		//CString sFile = "\\color-output\\1579716916112.jpg";
+		//std::string sFile = "\\color-output\\1579675990833.jpg";
+		//std::string sFile = "\\color-output\\1579716916112.jpg";
 		
-		//CString sFile = "\\color-output\\1579779178005.jpg";
-		//CString sFile = "\\color-output\\1579779481370.jpg";
-		//CString sFile = "\\color-output\\1579780392833.jpg";
-		//CString sFile = "\\color-output\\1579812542028.jpg";
+		//std::string sFile = "\\color-output\\1579779178005.jpg";
+		//std::string sFile = "\\color-output\\1579779481370.jpg";
+		//std::string sFile = "\\color-output\\1579780392833.jpg";
+		//std::string sFile = "\\color-output\\1579812542028.jpg";
 		
-		//CString sFile = "\\color-output\\1579841895225.jpg";
-		//CString sFile = "\\color-output\\1579841907200.jpg";
+		//std::string sFile = "\\color-output\\1579841895225.jpg";
+		//std::string sFile = "\\color-output\\1579841907200.jpg";
 		
-		//CString sFile = "\\color-output\\1579842364047.jpg";
-		//CString sFile = "\\color-output\\1579842382585.jpg";
-		//CString sFile = "\\color-output\\1579842982182.jpg";
+		//std::string sFile = "\\color-output\\1579842364047.jpg";
+		//std::string sFile = "\\color-output\\1579842382585.jpg";
+		//std::string sFile = "\\color-output\\1579842982182.jpg";
 		
-		//CString sFile = "\\color-output\\1579893546059.jpg";
-		//CString sFile = "\\color-output\\1579894972372.jpg";
-		//CString sFile = "\\color-output\\1579895139964.jpg";
-		//CString sFile = "\\color-output\\1579948777902.jpg";
-		//CString sFile = "\\color-output\\1579951473438.jpg";
-		//CString sFile = "\\color-output\\1579951573618.jpg";
+		//std::string sFile = "\\color-output\\1579893546059.jpg";
+		//std::string sFile = "\\color-output\\1579894972372.jpg";
+		//std::string sFile = "\\color-output\\1579895139964.jpg";
+		//std::string sFile = "\\color-output\\1579948777902.jpg";
+		//std::string sFile = "\\color-output\\1579951473438.jpg";
+		//std::string sFile = "\\color-output\\1579951573618.jpg";
 
-		//CString sFile = "\\color-output\\1579968834916.jpg";
-		//CString sFile = "\\color-output\\1579977436421.jpg";
-		//CString sFile = "\\color-output\\1579977697702.jpg";
+		//std::string sFile = "\\color-output\\1579968834916.jpg";
+		//std::string sFile = "\\color-output\\1579977436421.jpg";
+		//std::string sFile = "\\color-output\\1579977697702.jpg";
 		
-		//CString sFile = "\\color-output\\1580013379540.jpg";
-		//CString sFile = "\\color-output\\1580015533276.jpg";
+		//std::string sFile = "\\color-output\\1580013379540.jpg";
+		//std::string sFile = "\\color-output\\1580015533276.jpg";
 
-		//CString sFile = "\\color-output\\1580017497693.jpg";
+		//std::string sFile = "\\color-output\\1580017497693.jpg";
 		
-		//CString sFile = "\\color-output\\1580118992211.jpg";
-		//CString sFile = "\\color-output\\1580130136255.jpg";
+		//std::string sFile = "\\color-output\\1580118992211.jpg";
+		//std::string sFile = "\\color-output\\1580130136255.jpg";
 		
-		//CString sFile = "\\color-output\\1580142532506.jpg";
-		//CString sFile = "\\color-output\\1580148277403.jpg";
-		//CString sFile = "\\color-output\\1580148875533.jpg";
+		//std::string sFile = "\\color-output\\1580142532506.jpg";
+		//std::string sFile = "\\color-output\\1580148277403.jpg";
+		//std::string sFile = "\\color-output\\1580148875533.jpg";
 		
-		//CString sFile = "\\color-output\\1580219775502.jpg";
-		//CString sFile = "\\color-output\\1580284643054.jpg";
+		//std::string sFile = "\\color-output\\1580219775502.jpg";
+		//std::string sFile = "\\color-output\\1580284643054.jpg";
 
-		//CString sFile = "\\color-output\\1580297096527.jpg";
-		//CString sFile = "\\color-output\\1580299376402.jpg";
+		//std::string sFile = "\\color-output\\1580297096527.jpg";
+		//std::string sFile = "\\color-output\\1580299376402.jpg";
 
-		//CString sFile = "\\color-output\\1580308486796.jpg";
-		//CString sFile = "\\color-output\\1580311030608.jpg";
+		//std::string sFile = "\\color-output\\1580308486796.jpg";
+		//std::string sFile = "\\color-output\\1580311030608.jpg";
 		
-		//CString sFile = "\\color-output\\1580311272499.jpg";
-		//CString sFile = "\\color-output\\1580311546591.jpg";
+		//std::string sFile = "\\color-output\\1580311272499.jpg";
+		//std::string sFile = "\\color-output\\1580311546591.jpg";
 				
-		//CString sFile = "\\color-output\\1580311899802.jpg";
+		//std::string sFile = "\\color-output\\1580311899802.jpg";
 
-		//CString sFile = "\\color-output\\1580312259410.jpg";
-		//CString sFile = "\\color-output\\1580323169522.jpg";
+		//std::string sFile = "\\color-output\\1580312259410.jpg";
+		//std::string sFile = "\\color-output\\1580323169522.jpg";
 
-		//CString sFile = "\\color-output\\1580335880997.jpg";
-		//CString sFile = "\\color-output\\1580337118565.jpg";
+		//std::string sFile = "\\color-output\\1580335880997.jpg";
+		//std::string sFile = "\\color-output\\1580337118565.jpg";
 		
-		//CString sFile = "\\color-output\\1580337735794.jpg";
+		//std::string sFile = "\\color-output\\1580337735794.jpg";
 		
-		//CString sFile = "\\color-output\\1580338108170.jpg";
-		//CString sFile = "\\color-output\\1580338747914.jpg";
+		//std::string sFile = "\\color-output\\1580338108170.jpg";
+		//std::string sFile = "\\color-output\\1580338747914.jpg";
 		
-		//CString sFile = "\\color-output\\1580369771901.jpg";
-		//CString sFile = "\\color-output\\1580370496761.jpg";
+		//std::string sFile = "\\color-output\\1580369771901.jpg";
+		//std::string sFile = "\\color-output\\1580370496761.jpg";
 				
-		//CString sFile = "\\color-output\\1580481146329.jpg";
-		//CString sFile = "\\color-output\\1580487698126.jpg";
-		//CString sFile = "\\color-output\\1580495182200.jpg";
+		//std::string sFile = "\\color-output\\1580481146329.jpg";
+		//std::string sFile = "\\color-output\\1580487698126.jpg";
+		//std::string sFile = "\\color-output\\1580495182200.jpg";
 		
-		//CString sFile = "\\color-output\\1580496141665.jpg";
-		//CString sFile = "\\color-output\\1580496784879.jpg";
+		//std::string sFile = "\\color-output\\1580496141665.jpg";
+		//std::string sFile = "\\color-output\\1580496784879.jpg";
 
 
-		//CString sFile = "\\lr\\lr_all-hues-sats (13).jpg";
+		//std::string sFile = "\\lr\\lr_all-hues-sats (13).jpg";
 
-		//CString sFile = "\\lr\\lr_all-hues-sats (15).jpg";
-		//CString sFile = "\\lr\\lr_all-hues-sats (16).jpg";
-		//CString sFile = "\\lr\\lr_all-hues-sats (17).jpg";
+		//std::string sFile = "\\lr\\lr_all-hues-sats (15).jpg";
+		//std::string sFile = "\\lr\\lr_all-hues-sats (16).jpg";
+		//std::string sFile = "\\lr\\lr_all-hues-sats (17).jpg";
 
 
-		//CString sFile = "\\color-output\\1580560127590.jpg";
-		//CString sFile = "\\color-output\\1580587605460.jpg";
-		//CString sFile = "\\color-output\\1580588078341.jpg";
-		//CString sFile = "\\color-output\\1580588799019.jpg";
-		//CString sFile = "\\color-output\\1580589206589.jpg";
-		////CString sFile = "\\color-output\\1580589676528.jpg";
+		//std::string sFile = "\\color-output\\1580560127590.jpg";
+		//std::string sFile = "\\color-output\\1580587605460.jpg";
+		//std::string sFile = "\\color-output\\1580588078341.jpg";
+		//std::string sFile = "\\color-output\\1580588799019.jpg";
+		//std::string sFile = "\\color-output\\1580589206589.jpg";
+		////std::string sFile = "\\color-output\\1580589676528.jpg";
 		
-		//CString sFile = "\\color-output\\1580658074648.jpg";
-		////CString sFile = "\\color-output\\1580675140158.jpg";
+		//std::string sFile = "\\color-output\\1580658074648.jpg";
+		////std::string sFile = "\\color-output\\1580675140158.jpg";
 		
 	
 		//	tuning saturation.
 
-		//CString sFile = "\\lr\\lr_all-hues-sats (14).jpg";
+		//std::string sFile = "\\lr\\lr_all-hues-sats (14).jpg";
 		
-		//CString sFile = "\\color-output\\1580701608787.jpg";
-		//CString sFile = "\\color-output\\1580708074741.jpg";
-		//CString sFile = "\\color-output\\1580708420283.jpg";
+		//std::string sFile = "\\color-output\\1580701608787.jpg";
+		//std::string sFile = "\\color-output\\1580708074741.jpg";
+		//std::string sFile = "\\color-output\\1580708420283.jpg";
 
-		//CString sFile = "\\color-output\\1580758486413.jpg";
-		//CString sFile = "\\color-output\\1580759115326.jpg";
-		//CString sFile = "\\color-output\\1580759437925.jpg";
-		//CString sFile = "\\color-output\\1580759784192.jpg";
+		//std::string sFile = "\\color-output\\1580758486413.jpg";
+		//std::string sFile = "\\color-output\\1580759115326.jpg";
+		//std::string sFile = "\\color-output\\1580759437925.jpg";
+		//std::string sFile = "\\color-output\\1580759784192.jpg";
 
 		// // work on rgb
 
-		//CString sFile = "\\color-output\\1580783289146.jpg";
-		//CString sFile = "\\color-output\\1580783311005.jpg";
+		//std::string sFile = "\\color-output\\1580783289146.jpg";
+		//std::string sFile = "\\color-output\\1580783311005.jpg";
 
-		//CString sFile = "\\color-output\\1580820667490.jpg";
-		//CString sFile = "\\color-output\\1580820690285.jpg";
+		//std::string sFile = "\\color-output\\1580820667490.jpg";
+		//std::string sFile = "\\color-output\\1580820690285.jpg";
 
 		//	//		
 
-		//CString sFile = "\\color-output\\1580829309121.jpg";
-		//CString sFile = "\\color-output\\1580829871398.jpg";
-		//CString sFile = "\\color-output\\1580830899418.jpg";
+		//std::string sFile = "\\color-output\\1580829309121.jpg";
+		//std::string sFile = "\\color-output\\1580829871398.jpg";
+		//std::string sFile = "\\color-output\\1580830899418.jpg";
 
-		//CString sFile = "\\color-output\\1580861681041.jpg";
+		//std::string sFile = "\\color-output\\1580861681041.jpg";
 		
-		//CString sFile = "\\color-output\\1580882679116.jpg";
-		//CString sFile = "\\color-output\\1580884848816.jpg";
-		//CString sFile = "\\color-output\\1580886464584.jpg";
-		//CString sFile = "\\color-output\\1580889393428.jpg";
+		//std::string sFile = "\\color-output\\1580882679116.jpg";
+		//std::string sFile = "\\color-output\\1580884848816.jpg";
+		//std::string sFile = "\\color-output\\1580886464584.jpg";
+		//std::string sFile = "\\color-output\\1580889393428.jpg";
 		
-		//CString sFile = "\\color-output\\1580976451943.jpg";
+		//std::string sFile = "\\color-output\\1580976451943.jpg";
 
-		//CString sFile = "\\color-output\\1581059903233.jpg";
-		//CString sFile = "\\color-output\\1581061115961.jpg";
-		//CString sFile = "\\color-output\\1581061500095.jpg";
+		//std::string sFile = "\\color-output\\1581059903233.jpg";
+		//std::string sFile = "\\color-output\\1581061115961.jpg";
+		//std::string sFile = "\\color-output\\1581061500095.jpg";
 		
-		//CString sFile = "\\color-output\\1581081143702.jpg";
+		//std::string sFile = "\\color-output\\1581081143702.jpg";
 		
-		//CString sFile = "\\color-output\\1581159792691.jpg";
-		//CString sFile = "\\color-output\\1581160588308.jpg";
+		//std::string sFile = "\\color-output\\1581159792691.jpg";
+		//std::string sFile = "\\color-output\\1581160588308.jpg";
 		
-		//CString sFile = "\\color-output\\1581161097080.jpg";
-		//CString sFile = "\\color-output\\1581161749819.jpg";
+		//std::string sFile = "\\color-output\\1581161097080.jpg";
+		//std::string sFile = "\\color-output\\1581161749819.jpg";
 		
-		//CString sFile = "\\color-output\\1581161972188.jpg";
-		//CString sFile = "\\color-output\\1581163475320.jpg";
+		//std::string sFile = "\\color-output\\1581161972188.jpg";
+		//std::string sFile = "\\color-output\\1581163475320.jpg";
 
-		//CString sFile = "\\color-output\\1581250781009.jpg";
-		//CString sFile = "\\color-output\\1581252075591.jpg";
+		//std::string sFile = "\\color-output\\1581250781009.jpg";
+		//std::string sFile = "\\color-output\\1581252075591.jpg";
 		
-		//CString sFile = "\\color-output\\1581260788690.jpg";
-		//CString sFile = "\\color-output\\1581276615383.jpg";
-		//CString sFile = "\\color-output\\1581277171470.jpg";
-		//CString sFile = "\\color-output\\1581277798444.jpg";
-		//CString sFile = "\\color-output\\1581278876650.jpg";
+		//std::string sFile = "\\color-output\\1581260788690.jpg";
+		//std::string sFile = "\\color-output\\1581276615383.jpg";
+		//std::string sFile = "\\color-output\\1581277171470.jpg";
+		//std::string sFile = "\\color-output\\1581277798444.jpg";
+		//std::string sFile = "\\color-output\\1581278876650.jpg";
 
-		//CString sFile = "\\color-output\\1581296536489.jpg";
-		//CString sFile = "\\color-output\\1581297146274.jpg";
-		CString sFile = "\\color-output\\1581298050097.jpg";
+		//std::string sFile = "\\color-output\\1581296536489.jpg";
+		//std::string sFile = "\\color-output\\1581297146274.jpg";
+		std::string sFile = "\\color-output\\1581298050097.jpg";
 
-
-		
-
-		//CString sFile = "test1.jpg";
-
-
-		//CString sFile = "savedImage.png";
-
-		//CString sFile = "lr\\lr_all-hues-sats.jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (1).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (2).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (3).jpg";
-
-		//CString sFile = "lr\\lr_all-hues-sats (4).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (5).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (6).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (7).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (8).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (9).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (10).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (11).jpg";
-		//CString sFile = "lr\\lr_all-hues-sats (12).jpg";
-		
-		//CString sFile = "lr\\lr_all-hues-sats-and-brightnesses.jpg";
-
-		
-		
-		//CString sFile = "savedImage.jpeg";
-		
-		//CString sFile = "black_mf.jpeg";
-		//CString sFile = "white_mf.jpeg";
-		//CString sFile = "yellow_mf.jpeg";
-		//CString sFile = "yellow128_mf.jpeg";
 
 		
 
-		//CString sFile = "savedImage.jpeg";
+		//std::string sFile = "test1.jpg";
+
+
+		//std::string sFile = "savedImage.png";
+
+		//std::string sFile = "lr\\lr_all-hues-sats.jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (1).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (2).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (3).jpg";
+
+		//std::string sFile = "lr\\lr_all-hues-sats (4).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (5).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (6).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (7).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (8).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (9).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (10).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (11).jpg";
+		//std::string sFile = "lr\\lr_all-hues-sats (12).jpg";
+		
+		//std::string sFile = "lr\\lr_all-hues-sats-and-brightnesses.jpg";
+
 		
 		
-		//CString sFile = "colorBars05_rgb128.png";
-		//CString sFile = "colorBars05_rgb128_wb_t100.jpeg";
-		//CString sFile = "colorBars05_rgb128_wb_t50.jpeg";
-		//CString sFile = "colorBars05_rgb128_wb_tm50.jpeg";
-		//CString sFile = "colorBars05_rgb128_wb_tm100.jpeg";
+		//std::string sFile = "savedImage.jpeg";
+		
+		//std::string sFile = "black_mf.jpeg";
+		//std::string sFile = "white_mf.jpeg";
+		//std::string sFile = "yellow_mf.jpeg";
+		//std::string sFile = "yellow128_mf.jpeg";
 
-		//CString sFile = "colorBars05_rgb128_wb_n100.jpeg";
-
-		//CString sFile = "colorBars06_rgb128_wb_t100.jpeg";
-		//CString sFile = "colorBars06_rgb128_wb_tm100.jpeg";
-		//CString sFile = "colorBars06_rgb128_wb_n100.jpeg";
 		
 
-		//CString sFile = "grey128_wb_t100.jpeg";
-		//CString sFile = "grey128_wb_n100.jpeg";
-
-		//CString sFile = "white_wb_t100.jpeg";
-		//CString sFile = "white_wb_n100.jpeg";
-
-		//CString sFile = "colorBars02_wb_t100.jpeg";
-
-
-		//CString sFile = "grey128_vign_inr_50.jpeg";
-		//CString sFile = "grey128_vign_inr_100.jpeg";
-		//CString sFile = "grey128_vign_inr_m100.jpeg";
+		//std::string sFile = "savedImage.jpeg";
 		
-		//CString sFile = "grey128_vign_out_50.jpeg";
+		
+		//std::string sFile = "colorBars05_rgb128.png";
+		//std::string sFile = "colorBars05_rgb128_wb_t100.jpeg";
+		//std::string sFile = "colorBars05_rgb128_wb_t50.jpeg";
+		//std::string sFile = "colorBars05_rgb128_wb_tm50.jpeg";
+		//std::string sFile = "colorBars05_rgb128_wb_tm100.jpeg";
 
-		//CString sFile = "black_vign_inr_50.jpeg";
-		//CString sFile = "black_vign_out_50.jpeg";
-		//CString sFile = "black_vign_out_m50.jpeg";
+		//std::string sFile = "colorBars05_rgb128_wb_n100.jpeg";
 
-		//CString sFile = "grey64_vign_inr_50.jpeg";
-		//CString sFile = "grey64_vign_inr_m50.jpeg";
-		//CString sFile = "grey64_vign_out_50.jpeg";
-		//CString sFile = "grey64_vign_out_m50.jpeg";
-
-		//CString sFile = "white_vign_out_50.jpeg";
-		//CString sFile = "white_vign_out_m50.jpeg";
-		//CString sFile = "white_vign_inr_m100.jpeg";
-
-		//CString sFile = "grey128_vign_out_m25.jpeg";
-		//CString sFile = "grey128_vign_out_m50.jpeg";
-		//CString sFile = "grey128_vign_out_m75.jpeg";
-		//CString sFile = "grey128_vign_out_m100.jpeg";
-
-		//CString sFile = "Not-Used-Temp\\grey128_vign_out_m50_inr_m50.jpeg";
+		//std::string sFile = "colorBars06_rgb128_wb_t100.jpeg";
+		//std::string sFile = "colorBars06_rgb128_wb_tm100.jpeg";
+		//std::string sFile = "colorBars06_rgb128_wb_n100.jpeg";
 		
 
-		//CString sFile = "blue128_vign_out_m50.jpeg";
-		//CString sFile = "green128_vign_out_m50.jpeg";
-		//CString sFile = "red128_vign_out_m50.jpeg";
+		//std::string sFile = "grey128_wb_t100.jpeg";
+		//std::string sFile = "grey128_wb_n100.jpeg";
+
+		//std::string sFile = "white_wb_t100.jpeg";
+		//std::string sFile = "white_wb_n100.jpeg";
+
+		//std::string sFile = "colorBars02_wb_t100.jpeg";
+
+
+		//std::string sFile = "grey128_vign_inr_50.jpeg";
+		//std::string sFile = "grey128_vign_inr_100.jpeg";
+		//std::string sFile = "grey128_vign_inr_m100.jpeg";
+		
+		//std::string sFile = "grey128_vign_out_50.jpeg";
+
+		//std::string sFile = "black_vign_inr_50.jpeg";
+		//std::string sFile = "black_vign_out_50.jpeg";
+		//std::string sFile = "black_vign_out_m50.jpeg";
+
+		//std::string sFile = "grey64_vign_inr_50.jpeg";
+		//std::string sFile = "grey64_vign_inr_m50.jpeg";
+		//std::string sFile = "grey64_vign_out_50.jpeg";
+		//std::string sFile = "grey64_vign_out_m50.jpeg";
+
+		//std::string sFile = "white_vign_out_50.jpeg";
+		//std::string sFile = "white_vign_out_m50.jpeg";
+		//std::string sFile = "white_vign_inr_m100.jpeg";
+
+		//std::string sFile = "grey128_vign_out_m25.jpeg";
+		//std::string sFile = "grey128_vign_out_m50.jpeg";
+		//std::string sFile = "grey128_vign_out_m75.jpeg";
+		//std::string sFile = "grey128_vign_out_m100.jpeg";
+
+		//std::string sFile = "Not-Used-Temp\\grey128_vign_out_m50_inr_m50.jpeg";
+		
+
+		//std::string sFile = "blue128_vign_out_m50.jpeg";
+		//std::string sFile = "green128_vign_out_m50.jpeg";
+		//std::string sFile = "red128_vign_out_m50.jpeg";
 
 
 
-		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.png";
-		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
-		//CString sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
-		//CString sFile = "car-dent_balanced_02.jpg";
+		//std::string sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.png";
+		//std::string sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
+		//std::string sFile = "Bitmap_inverse_pattern_from_Bitmap_led_mapping_phase_images_balanced_02(2)_by2.jpg";
+		//std::string sFile = "car-dent_balanced_02.jpg";
 
 
-		//CString sFile = "bin_images_3.jpg";
-		//CString sFile = "Fig-3-1-Binarization-using-Otsu's-method-2-smooth-operation-3-second-binarization.png";
+		//std::string sFile = "bin_images_3.jpg";
+		//std::string sFile = "Fig-3-1-Binarization-using-Otsu's-method-2-smooth-operation-3-second-binarization.png";
 
-		//CString sFile = "Hydrangeas.jpg";
+		//std::string sFile = "Hydrangeas.jpg";
 
-		CString path = sFolder + "\\" + sFile;
+		std::string path = sFolder + "\\" + sFile;
 
 		proc = new ImageProcessor(path);
 		//proc = new ImageProcessor(
@@ -591,7 +591,7 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 
 	if (dlg.DoModal() == IDOK)
 	{
-		CString path = dlg.GetPathName();
+		std::string path = dlg.GetPathName().GetBuffer(0);
 
 		if (proc != 0)
 			delete proc;
@@ -646,9 +646,9 @@ void CNovelCVLibDemoDlg::OnBnClickedFastAvgBtn()
 
 			edtAvg.GetWindowTextA(sTmp);
 
-			CString sTmp2 = sTmp.Trim();
+			std::string sTmp2 = sTmp.Trim().GetBuffer(0);
 
-			nAprSiz = atoi(sTmp2.GetBuffer());
+			nAprSiz = atoi(sTmp2.c_str());
 		}
 
 		proc->FastAvgLinePathImg(nAprSiz);
@@ -747,7 +747,7 @@ void CNovelCVLibDemoDlg::LinePath_Mouse_Callback(
 
 		CString sTmp2 = sTmp.Trim();
 
-		GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer());
+		GlobalStuff::AprSize1D = atoi(sTmp2.GetBuffer(0));
 		//GlobalStuff::AprSize1D = 7;
 	}
 
@@ -890,9 +890,9 @@ void CNovelCVLibDemoDlg::LinePath_Mouse_Callback(
 //
 //						HCV_CALL(
 //
-//						cvCircle (
-//						img1->GetIplImagePtr(),
-//						cvPoint( a_x, a_y ),
+//						cv::Circle (
+//						img1->GetMat(),
+//						cv::Point( a_x, a_y ),
 //						3,
 //						//CV_RGB( a_color.val2, a_color.val1, a_color.val0 ),
 //						CV_RGB( 255, 0, 0 ),

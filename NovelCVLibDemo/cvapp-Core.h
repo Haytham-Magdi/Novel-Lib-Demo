@@ -97,14 +97,19 @@ class ImageProcessor {
 
 
 
-    ImageProcessor(CString filename, bool display=true) 
+    ImageProcessor(std::string filename, bool display=true) 
 	{
 		Init_FixedVectorDebug();
     
 		//auto v1 = cvvLoadImage(filename);
 
+		Ncv::CvMatRef matRef = new cv::Mat();
+		*matRef = cv::imread(filename);
+
 		img = new Ncv::U8Image(
-		  cvvLoadImage( filename )); // load image
+			//cvvLoadImage(filename)); // load image
+				matRef
+			); // load image
 
 		GlobalStuff::m_imgFilePath = filename;
  
@@ -129,7 +134,7 @@ class ImageProcessor {
 					Ncv::F32ColorVal * srcBuf = 
 						(Ncv::F32ColorVal *)src->GetPixAt( 0, 0 );
 
-					CvSize srcSiz = src->GetSize();
+					cv::Size srcSiz = src->GetSize();
 
 					int nSrcSiz1D = srcSiz.width * srcSiz.height;
 
@@ -159,24 +164,18 @@ class ImageProcessor {
 
 		  }
  
-        //cvvNamedWindow( "Original Image", 1 );  
-        //cvvShowImage( "Original Image", img->GetIplImagePtr() );  
+        cv::namedWindow("LinePathImg", 1 );  
+        cv::imshow( "LinePathImg",  img->GetMat());  
 
-        cvvNamedWindow( "LinePathImg", 1 );  
-        cvvShowImage( "LinePathImg", img->GetIplImagePtr() );  
-
-
-		//ShowImage(img->GetIplImagePtr(), "Original Image" );  
-
-      }
+	  }	//	end if
 
     }
 
  
 
     void display() {
-      cvvNamedWindow( "Resulting Image", 1 );  
-      cvvShowImage( "Resulting Image", img->GetIplImagePtr() );  
+		cv::namedWindow("Resulting Image", 1);
+		cv::imshow("Resulting Image", img->GetMat() );  
     }
 
  

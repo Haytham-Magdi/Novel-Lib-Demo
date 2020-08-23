@@ -7,6 +7,7 @@
 #include <NovelCVLib\OpenCV\Types.h>
 #include <NovelCVLib\OpenCV\error.h>
 #include <vector>
+#include <string>
 #include <NovelCVLib\OpenCV\Channel.h>
 #include <NovelCVLib\OpenCV\Image.h>
 
@@ -147,7 +148,7 @@ public:
 	
 	static int m_nLA_Index;
 
-	static CString m_imgFilePath;
+	static std::string m_imgFilePath;
 	
 
 protected:
