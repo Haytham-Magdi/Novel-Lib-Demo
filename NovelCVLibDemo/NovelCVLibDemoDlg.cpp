@@ -242,10 +242,15 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		std::string sFolder =
 			//"E:\\HthmWork\\Lib\\Projects\\Images";
 			//"E:\\HthmWork\\Computer-Vision\\Car-Dent-Detection\\Images";
-			"E:\\HthmWork\\Computer-Vision\\Images";
+			// "E:\\HthmWork\\Computer-Vision\\Images";
 		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images";
 		//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images2\\Vignette";
 			//"E:\\HthmWork\\Computer-Vision\\Images\\Filtered-Images\\white-balance-output";
+
+			"E:\\HthmWork2\\New-Vision-Work\\Healing\\Images";
+
+		// std::string sFile = "\\face-2.png";
+		std::string sFile = "\\face-2-part.png";
 
 		////std::string sFile = "h4_3C_3_Dn.jpg";
 		////std::string sFile = "h4_3C_3_Dn_By2.jpg";
@@ -279,7 +284,7 @@ void CNovelCVLibDemoDlg::OnBnClickedOpenImageBtn()
 		//std::string sFile = "shapes1.png";
 		//std::string sFile = "shapes1-2.png";
 		//std::string sFile = "shapes1.jpg";
-		std::string sFile = "shapes2.png";
+		// std::string sFile = "shapes2.png";
 
 		//std::string sFile = "hair1.jpg";
 		//std::string sFile = "images10.jpg";
